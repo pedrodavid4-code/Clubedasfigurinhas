@@ -930,9 +930,9 @@ function renderCommercialNumbering(){
   }else{
     items=codes.map(c=>{
       if(currentYear==='2022' && c==='FWC 00'){
-        return `<div class="commercial-item initial sticker-has-photo" style="cursor:pointer" onclick="openSticker2022FWC00()">
+        return `<div class="commercial-item initial sticker-has-photo" style="cursor:pointer" onclick="addToCart({id:'2022-FWC00',name:'FWC 00',price:15})">
           <img src="${FWC_2022_00.img}" alt="FWC 00 Copa 2022" style="width:100%;aspect-ratio:1.35/1;object-fit:contain;border-radius:10px;background:#fff;margin-bottom:8px">
-          <b>FWC 00</b><br><span class="small">📷 Foto cadastrada<br>✅ 9 disponíveis<br>R$ 15,00<br>Toque para ver</span>
+          <b>FWC 00</b><br><span class="small">R$ 15,00</span>
         </div>`;
       }
       return `<div class="commercial-item ${c.startsWith('FWC')?'initial':''}">
