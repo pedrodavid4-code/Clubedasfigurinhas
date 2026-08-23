@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Figurinhas & Colecionáveis</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f5f6f8;color:#171717}
+header{background:#111827;color:#fff;padding:18px 5%;position:sticky;top:0;z-index:5}
+.top{display:flex;align-items:center;justify-content:space-between;gap:15px;max-width:1200px;margin:auto}
+.logo{font-size:23px;font-weight:800}.cart{background:#facc15;color:#111;padding:10px 15px;border-radius:10px;font-weight:700;cursor:pointer}
+.hero{background:linear-gradient(135deg,#111827,#374151);color:#fff;padding:55px 5%}.hero-inner{max-width:1200px;margin:auto}
+.hero h1{font-size:42px;margin:0 0 10px}.hero p{font-size:18px;color:#d1d5db;margin-bottom:25px}
+.search{width:100%;max-width:600px;padding:15px;border:0;border-radius:12px;font-size:16px}
+main{max-width:1200px;margin:30px auto;padding:0 5%}
+.cats{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:25px}.cat{border:0;background:#fff;padding:11px 17px;border-radius:20px;cursor:pointer;box-shadow:0 2px 8px #0001}.cat.active{background:#111827;color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:18px}
+.card{background:#fff;border-radius:15px;overflow:hidden;box-shadow:0 4px 15px #00000010}.pic{height:230px;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden}.pic img{width:100%;height:100%;object-fit:contain}
+.info{padding:15px}.info h3{margin:0 0 7px}.price{font-size:20px;font-weight:800;margin:12px 0}.buy{width:100%;border:0;background:#16a34a;color:#fff;padding:12px;border-radius:9px;font-weight:700;cursor:pointer}
+footer{margin-top:50px;background:#111827;color:#fff;padding:30px;text-align:center}
+#toast{position:fixed;bottom:20px;right:20px;background:#111827;color:#fff;padding:14px 18px;border-radius:10px;display:none}
+</style>
+</head>
+<body>
+<header><div class="top"><div class="logo">⭐ FIGURINHAS & COLECIONÁVEIS</div><button class="cart" onclick="verCarrinho()">🛒 Carrinho (<span id="count">0</span>)</button></div></header>
+
+<section class="hero"><div class="hero-inner">
+<h1>Encontre sua figurinha</h1>
+<p>Futebol, Pokémon, F1, Magic e muito mais. Monte sua coleção!</p>
+<input id="search" class="search" placeholder="🔎 Procure por número, jogador ou coleção..." oninput="render()">
+</div></section>
+
+<main>
+<div class="cats">
+<button class="cat active" onclick="categoria('Todos',this)">Todos</button>
+<button class="cat" onclick="categoria('Futebol',this)">⚽ Futebol</button>
+<button class="cat" onclick="categoria('Pokémon',this)">🟡 Pokémon</button>
+<button class="cat" onclick="categoria('F1',this)">🏎️ F1</button>
+<button class="cat" onclick="categoria('Magic',this)">🃏 Magic</button>
+</div>
+<div id="grid" class="grid"></div>
+</main>
+
+<footer>
+<strong>FIGURINHAS & COLECIONÁVEIS</strong><br><br>
+Pedidos pelo WhatsApp • Enviamos para todo o Brasil
+</footer>
+<div id="toast"></div>
+
+<script>
+const produtos=[
+{id:1,nome:"RSA 1 — África do Sul",cat:"Futebol",preco:10.00,imagem:"1000189019.png",estoque:6},
+{id:2,nome:"RSA 2 — Ronwen Williams",cat:"Futebol",preco:1.00,imagem:"1000189020.png",estoque:30},
+{id:3,nome:"RSA 3 — Sipho Chaine",cat:"Futebol",preco:1.00,imagem:"1000189021.png",estoque:34},
+{id:4,nome:"RSA 4 — Aubrey Modiba",cat:"Futebol",preco:1.00,imagem:"1000189022.png",estoque:33},
+{id:5,nome:"RSA 5 — Siphiwele Kasani",cat:"Futebol",preco:1.00,imagem:"1000189023.png",estoque:36},
+{id:6,nome:"RSA 6 — Mbekezeli Mbokazi",cat:"Futebol",preco:1.00,imagem:"1000189024.png",estoque:24}
+];
+let filtro="Todos",carrinho=[];
+function categoria(c,el){filtro=c;document.querySelectorAll('.cat').forEach(x=>x.classList.remove('active'));el.classList.add('active');render()}
+function render(){
+ let q=document.getElementById('search').value.toLowerCase();
+ let lista=produtos.filter(p=>(filtro==="Todos"||p.cat===filtro)&&p.nome.toLowerCase().includes(q));
+ document.getElementById('grid').innerHTML=lista.map(p=>`
+ <article class="card"><div class="pic"><img src="${p.imagem}" alt="${p.nome}" loading="lazy"></div><div class="info">
+ <h3>${p.nome}</h3><small>Estoque: ${p.estoque} un.</small><div class="price">R$ ${p.preco.toFixed(2).replace('.',',')}</div>
+ <button class="buy" onclick="add(${p.id})">Adicionar ao carrinho</button></div></article>`).join('');
+}
+function add(id){let p=produtos.find(x=>x.id===id);carrinho.push(p);document.getElementById('count').textContent=carrinho.length;toast(p.nome+" adicionado!")}
+function verCarrinho(){
+ if(!carrinho.length){toast("Seu carrinho está vazio.");return}
+ let texto="Olá! Quero fazer este pedido:%0A%0A";
+ let total=0;carrinho.forEach(p=>{texto+=`• ${p.nome} — R$ ${p.preco.toFixed(2).replace('.',',')}%0A`;total+=p.preco});
+ texto+=`%0A*Total: R$ ${total.toFixed(2).replace('.',',')}*`;
+ const numero="5562999999999"; // TROQUE pelo seu WhatsApp
+ window.open("https://wa.me/"+numero+"?text="+texto,"_blank");
+}
+function toast(t){let x=document.getElementById('toast');x.textContent=t;x.style.display='block';setTimeout(()=>x.style.display='none',1800)}
+render();
+</script>
+</body>
+</html>
