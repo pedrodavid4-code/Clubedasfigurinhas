@@ -1,12 +1,11 @@
-const express = require("express");
-const cors = require("cors");
+import express from "express";
+import cors from "cors";
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
-// Teste simples para saber se a API está funcionando
 app.get("/", (req, res) => {
   res.json({
     ok: true,
@@ -14,7 +13,6 @@ app.get("/", (req, res) => {
   });
 });
 
-// Verifica configuração do PagBank SEM mostrar o token
 app.get("/api/status", (req, res) => {
   res.json({
     api: "online",
@@ -23,4 +21,8 @@ app.get("/api/status", (req, res) => {
   });
 });
 
-// IMPORTANTE PARA
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Servidor Clube das Figurinhas rodando na porta ${PORT}`);
+});
