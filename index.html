@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Clube das Figurinhas - Copas</title>
+<meta name="theme-color" content="#210839">
+<style>
+:root{--purple:#2c0a56;--purple2:#5f1498;--yellow:#ffcc00;--ink:#1d1530;--muted:#6f6880;--line:#ece8f1;--soft:#f8f6fb;--white:#fff;--green:#19b66a;}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:#fff}
+button,input{font:inherit}a{color:inherit;text-decoration:none}.wrap{width:min(1180px,94vw);margin:auto}
+.top{position:sticky;top:0;z-index:60;background:#160627f2;color:#fff;border-bottom:1px solid #ffffff14;backdrop-filter:blur(10px)}
+.topin{display:flex;align-items:center;gap:18px;min-height:68px}.brand{font-weight:1000;letter-spacing:-.7px;font-size:22px;color:#fff;white-space:nowrap}.brand b{color:var(--yellow)}
+.nav{display:flex;gap:8px;align-items:center;flex:1}.nav button{border:0;background:transparent;color:#fff;padding:10px 12px;font-weight:800;cursor:pointer;border-radius:12px}.nav button:hover{background:#ffffff12}
+.search{display:flex;align-items:center;gap:8px;background:#ffffff10;border:1px solid #ffffff20;border-radius:999px;padding:9px 14px;min-width:240px}.search input{width:100%;border:0;outline:0;background:transparent;color:#fff}.cart{border:0;background:var(--yellow);color:#25103c;border-radius:12px;padding:10px 13px;font-weight:950;cursor:pointer}
+.hero{position:relative;background:#23073d;color:#fff;overflow:hidden}.heroImg{width:100%;height:clamp(320px,52vw,610px);object-fit:cover;object-position:center 46%;display:block;opacity:.92}.heroShade{position:absolute;inset:0;background:linear-gradient(90deg,#170424e8 0%,#1704248a 34%,#17042422 62%,#17042412)}
+.heroText{position:absolute;left:max(3vw,calc((100vw - 1180px)/2));top:50%;transform:translateY(-50%);width:min(520px,88vw)}.eyebrow{font-size:13px;font-weight:950;color:var(--yellow);letter-spacing:.12em}.hero h1{font-size:clamp(40px,6.5vw,76px);line-height:.92;margin:8px 0 16px;letter-spacing:-.055em}.hero p{font-size:clamp(15px,2vw,20px);line-height:1.5;max-width:500px;color:#f0eaf7}.cta{border:0;background:var(--yellow);color:#2b1244;border-radius:14px;padding:14px 19px;font-weight:1000;cursor:pointer;box-shadow:0 10px 25px #0005}
+.sponsor{margin:18px auto 0;border:1.5px dashed #bcb1cb;border-radius:18px;background:#fbf9fd;padding:18px;text-align:center;color:#766d83}.sponsor strong{color:#3b1b5f}
+.years{padding:30px 0 10px}.sectionTitle{display:flex;justify-content:space-between;gap:12px;align-items:end;margin-bottom:15px}.sectionTitle h2{margin:0;font-size:clamp(25px,4vw,38px);letter-spacing:-.04em}.sectionTitle p{margin:0;color:var(--muted)}
+.yearGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.yearCard{border:1px solid var(--line);background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 9px 30px #2e16420d;cursor:pointer;text-align:left;padding:0;transition:.18s}.yearCard:hover{transform:translateY(-3px);box-shadow:0 18px 35px #2e16421a}.yearCard img{width:100%;aspect-ratio:1.16;object-fit:cover;display:block}.yearBody{padding:13px 14px 15px}.yearBody strong{font-size:21px}.yearBody span{display:block;color:var(--muted);font-size:13px;margin-top:3px}
+.catalog{padding:30px 0 44px}.controls{display:flex;gap:8px;overflow:auto;padding:4px 0 12px;scrollbar-width:none}.chip{border:1px solid #ddd6e7;background:#fff;color:#31194c;padding:10px 15px;border-radius:999px;font-weight:900;white-space:nowrap;cursor:pointer}.chip.active{background:var(--purple);color:#fff;border-color:var(--purple)}
+.teamPanel{border:1px solid var(--line);border-radius:24px;background:var(--soft);padding:16px}.teamTitle{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}.teamTitle h3{margin:0;font-size:22px}.teamTitle small{color:var(--muted)}
+.teamGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.teamBtn{border:1px solid #e6e0eb;background:#fff;border-radius:15px;padding:12px;text-align:left;cursor:pointer;min-height:67px}.teamBtn:hover,.teamBtn.active{background:#2d0b55;color:#fff;border-color:#2d0b55}.teamBtn b{display:block;font-size:15px}.teamBtn span{font-size:12px;color:#8a8296}.teamBtn:hover span,.teamBtn.active span{color:#e9ddf4}
+.albumBox{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:24px;padding:16px;box-shadow:0 12px 35px #2e16420c}.albumHead{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:12px}.albumHead h3{margin:0;font-size:24px}.albumHead p{margin:2px 0 0;color:var(--muted);font-size:13px}.strip{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(150px,170px);overflow-x:auto;gap:10px;padding-bottom:8px;scroll-snap-type:x proximity}.sticker{scroll-snap-align:start;border:1px solid #e8e3ed;border-radius:17px;background:#fff;overflow:hidden;box-shadow:0 5px 18px #35184d0c}.sticker .photo{aspect-ratio:.75;background:#faf9fc;display:grid;place-items:center;position:relative}.sticker img{width:100%;height:100%;object-fit:contain}.sticker .info{padding:10px}.code{font-weight:1000;color:#4c1873}.meta{font-size:12px;color:var(--muted);margin-top:2px}.price{font-weight:1000;margin-top:8px}.buy{margin-top:8px;width:100%;border:0;border-radius:10px;background:var(--yellow);color:#25103c;font-weight:950;padding:9px;cursor:pointer}.emptyNote{padding:24px;border:1px dashed #cfc5d9;border-radius:18px;text-align:center;color:#7b7188;background:#fcfbfd}
+.shop{padding:20px 0 60px}.shopBox{border:1px dashed #cdbfd8;border-radius:24px;background:#fbfafc;padding:34px;text-align:center}.shopBox h2{margin:0 0 8px}.shopBox p{color:var(--muted);margin:0}
+.footer{background:#170628;color:#d9cde5;padding:30px 0 90px}.footer strong{color:#fff}.bottom{position:fixed;z-index:70;left:0;right:0;bottom:0;background:#23073ff4;color:#fff;border-top:1px solid #ffffff18;backdrop-filter:blur(10px)}.bottomIn{min-height:62px;display:flex;gap:12px;align-items:center;justify-content:space-between}.bottom strong{color:var(--yellow)}.wa{border:0;background:#21c46e;color:#072a18;border-radius:12px;padding:11px 14px;font-weight:950;cursor:pointer}
+@media(max-width:900px){.nav{display:none}.search{min-width:0;flex:1}.yearGrid{grid-template-columns:repeat(2,1fr)}.teamGrid{grid-template-columns:repeat(2,1fr)}.heroText{top:auto;bottom:24px;transform:none}.heroShade{background:linear-gradient(0deg,#170424f2 0%,#1704248f 42%,#17042410 76%)}}
+@media(max-width:560px){.topin{gap:9px;min-height:60px}.brand{font-size:17px}.search{padding:8px 10px}.cart{padding:9px 10px}.heroImg{height:470px;object-position:center 52%}.heroText{bottom:20px}.hero h1{font-size:42px;max-width:340px}.hero p{font-size:14px;max-width:330px}.yearGrid{gap:9px}.yearCard{border-radius:17px}.yearBody{padding:10px}.yearBody strong{font-size:17px}.teamPanel{padding:10px;border-radius:18px}.teamGrid{gap:7px}.teamBtn{padding:10px;min-height:62px}.albumBox{padding:10px;border-radius:18px}.strip{grid-auto-columns:145px}.sectionTitle{display:block}.sectionTitle p{margin-top:4px}.bottomIn{font-size:12px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap topin">
+  <div class="brand">CLUBE DAS <b>FIGURINHAS</b></div>
+  <nav class="nav"><button onclick="go('inicio')">INÍCIO</button><button onclick="go('copas')">COPAS</button><button onclick="go('lojinha')">LOJINHA</button><button onclick="go('contato')">CONTATO</button></nav>
+  <div class="search">🔎<input id="search" placeholder="Buscar MEX 1, Brasil, FWC..."></div>
+  <button class="cart">🛒 <span id="cartCount">0</span></button>
+</div></header>
+
+<section class="hero" id="inicio">
+  <img class="heroImg" src="assets/hero/pele_fachada.jpg" alt="Fachada Clube das Figurinhas">
+  <div class="heroShade"></div>
+  <div class="heroText">
+    <div class="eyebrow">2014 • 2018 • 2022 • 2026</div>
+    <h1>O MUNDO DAS COPAS EM FIGURINHAS</h1>
+    <p>Escolha o ano, entre na seleção e veja as figurinhas juntas, em sequência, como uma página de álbum.</p>
+    <button class="cta" onclick="go('copas')">VER FIGURINHAS</button>
+  </div>
+</section>
+
+<div class="wrap sponsor"><strong>ESPAÇO RESERVADO PARA PATROCINADORES</strong><br><small>Nenhum patrocinador cadastrado ainda.</small></div>
+
+<section class="years" id="copas"><div class="wrap">
+  <div class="sectionTitle"><div><h2>Escolha a Copa</h2><p>Somente as quatro coleções do seu site.</p></div></div>
+  <div class="yearGrid">
+    <button class="yearCard" onclick="setYear(2014)"><img src="assets/albuns/album_2014.jpg"><div class="yearBody"><strong>Brasil 2014</strong><span>Álbum + seleções por grupo</span></div></button>
+    <button class="yearCard" onclick="setYear(2018)"><img src="assets/albuns/album_2018.jpg"><div class="yearBody"><strong>Rússia 2018</strong><span>Álbum + seleções por grupo</span></div></button>
+    <button class="yearCard" onclick="setYear(2022)"><img src="assets/albuns/album_2022.jpg"><div class="yearBody"><strong>Catar 2022</strong><span>FIFA Museum + seleções</span></div></button>
+    <button class="yearCard" onclick="setYear(2026)"><img src="assets/albuns/album_2026.jpg"><div class="yearBody"><strong>Copa 2026</strong><span>FIFA Museum + áreas cadastradas</span></div></button>
+  </div>
+</div></section>
+
+<section class="catalog"><div class="wrap">
+  <div class="sectionTitle"><div><h2>Figurinhas</h2><p>Escolha o ano e depois o país. As figurinhas aparecem juntas em sequência.</p></div></div>
+  <div class="controls" id="yearChips"></div>
+  <div class="teamPanel">
+    <div class="teamTitle"><h3 id="teamPanelTitle">Copa 2026</h3><small>Toque no país/área</small></div>
+    <div class="teamGrid" id="teamGrid"></div>
+  </div>
+  <div class="albumBox" id="albumBox">
+    <div class="emptyNote">Escolha uma seleção para abrir as figurinhas.</div>
+  </div>
+</div></section>
+
+<section class="shop" id="lojinha"><div class="wrap">
+  <div class="shopBox"><h2>🛍️ Lojinha</h2><p>Esta área fica vazia até você cadastrar um produto. Quando enviar uma foto, o produto entra aqui.</p></div>
+</div></section>
+
+<footer class="footer" id="contato"><div class="wrap"><strong>Clube das Figurinhas</strong><br><small>Site focado exclusivamente em Copas 2014, 2018, 2022 e 2026.</small></div></footer>
+<div class="bottom"><div class="wrap bottomIn"><div>🛒 <span id="cartLabel">0 itens</span> • <strong id="totalLabel">R$ 0,00</strong></div><button class="wa">Finalizar pelo WhatsApp</button></div></div>
+
+<script>
+const TEAMS = {"2014": [["A", "Brasil", "BRA"], ["A", "Croácia", "CRO"], ["A", "México", "MEX"], ["A", "Camarões", "CMR"], ["B", "Espanha", "ESP"], ["B", "Holanda", "NED"], ["B", "Chile", "CHI"], ["B", "Austrália", "AUS"], ["C", "Colômbia", "COL"], ["C", "Grécia", "GRE"], ["C", "Costa do Marfim", "CIV"], ["C", "Japão", "JPN"], ["D", "Uruguai", "URU"], ["D", "Costa Rica", "CRC"], ["D", "Inglaterra", "ENG"], ["D", "Itália", "ITA"], ["E", "Suíça", "SUI"], ["E", "Equador", "ECU"], ["E", "França", "FRA"], ["E", "Honduras", "HON"], ["F", "Argentina", "ARG"], ["F", "Bósnia e Herzegovina", "BIH"], ["F", "Irã", "IRN"], ["F", "Nigéria", "NGA"], ["G", "Alemanha", "GER"], ["G", "Portugal", "POR"], ["G", "Gana", "GHA"], ["G", "Estados Unidos", "USA"], ["H", "Bélgica", "BEL"], ["H", "Argélia", "ALG"], ["H", "Rússia", "RUS"], ["H", "Coreia do Sul", "KOR"]], "2018": [["A", "Rússia", "RUS"], ["A", "Arábia Saudita", "KSA"], ["A", "Egito", "EGY"], ["A", "Uruguai", "URU"], ["B", "Portugal", "POR"], ["B", "Espanha", "ESP"], ["B", "Marrocos", "MAR"], ["B", "Irã", "IRN"], ["C", "França", "FRA"], ["C", "Austrália", "AUS"], ["C", "Peru", "PER"], ["C", "Dinamarca", "DEN"], ["D", "Argentina", "ARG"], ["D", "Islândia", "ISL"], ["D", "Croácia", "CRO"], ["D", "Nigéria", "NGA"], ["E", "Brasil", "BRA"], ["E", "Suíça", "SUI"], ["E", "Costa Rica", "CRC"], ["E", "Sérvia", "SRB"], ["F", "Alemanha", "GER"], ["F", "México", "MEX"], ["F", "Suécia", "SWE"], ["F", "Coreia do Sul", "KOR"], ["G", "Bélgica", "BEL"], ["G", "Panamá", "PAN"], ["G", "Tunísia", "TUN"], ["G", "Inglaterra", "ENG"], ["H", "Polônia", "POL"], ["H", "Senegal", "SEN"], ["H", "Colômbia", "COL"], ["H", "Japão", "JPN"]], "2022": [["A", "Catar", "QAT"], ["A", "Equador", "ECU"], ["A", "Senegal", "SEN"], ["A", "Holanda", "NED"], ["B", "Inglaterra", "ENG"], ["B", "Irã", "IRN"], ["B", "Estados Unidos", "USA"], ["B", "País de Gales", "WAL"], ["C", "Argentina", "ARG"], ["C", "Arábia Saudita", "KSA"], ["C", "México", "MEX"], ["C", "Polônia", "POL"], ["D", "França", "FRA"], ["D", "Austrália", "AUS"], ["D", "Dinamarca", "DEN"], ["D", "Tunísia", "TUN"], ["E", "Espanha", "ESP"], ["E", "Costa Rica", "CRC"], ["E", "Alemanha", "GER"], ["E", "Japão", "JPN"], ["F", "Bélgica", "BEL"], ["F", "Canadá", "CAN"], ["F", "Marrocos", "MAR"], ["F", "Croácia", "CRO"], ["G", "Brasil", "BRA"], ["G", "Sérvia", "SRB"], ["G", "Suíça", "SUI"], ["G", "Camarões", "CMR"], ["H", "Portugal", "POR"], ["H", "Gana", "GHA"], ["H", "Uruguai", "URU"], ["H", "Coreia do Sul", "KOR"]], "2026": [["", "FIFA Museum", "FWC"], ["", "México", "MEX"], ["", "África do Sul", "RSA"], ["", "Coreia do Sul", "KOR"], ["", "Alemanha", "GER"], ["", "Holanda", "NED"], ["", "Catar", "QAT"], ["", "Suíça", "SUI"], ["", "Suécia", "SWE"], ["", "Áustria", "AUT"], ["", "Jordânia", "JOR"], ["", "Uzbequistão", "UZB"], ["", "Coca-Cola", "CC"]]};
+const YEAR_INFO = {
+  2014: {label:"Brasil 2014", opening:true, perTeam:19},
+  2018: {label:"Rússia 2018", opening:true, perTeam:20},
+  2022: {label:"Catar 2022", opening:false, perTeam:20},
+  2026: {label:"Copa 2026", opening:false, perTeam:20}
+};
+let year=2026, selected=null, cart=[];
+
+function go(id){document.getElementById(id)?.scrollIntoView({behavior:"smooth"})}
+function money(v){return new Intl.NumberFormat("pt-BR",{style:"currency",currency:"BRL"}).format(v)}
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+function setYear(y){year=y;selected=null;renderChips();renderTeams();document.getElementById("teamPanelTitle").textContent=YEAR_INFO[y].label;go("copas")}
+function renderChips(){
+  document.getElementById("yearChips").innerHTML=[2014,2018,2022,2026].map(y=>`<button class="chip ${year===y?"active":""}" onclick="setYear(${y})">${y}</button>`).join("");
+}
+function get2014Number(teamIndex, localNo){return 32 + teamIndex*19 + (localNo-1)}
+function get2018Number(teamIndex, localNo){return 32 + teamIndex*20 + (localNo-1)}
+function teamCode(year, team, teamIndex, localNo){
+  const prefix=team[2];
+  if(year===2014) return prefix+" "+get2014Number(teamIndex,localNo);
+  if(year===2018) return prefix+" "+get2018Number(teamIndex,localNo);
+  if(prefix==="FWC") return "FWC "+String(localNo-1).padStart(2,"0");
+  if(prefix==="CC") return "CC "+localNo;
+  return prefix+" "+localNo;
+}
+function renderTeams(){
+  const q=document.getElementById("search").value.trim().toLowerCase();
+  let arr=TEAMS[String(year)];
+  const extra = YEAR_INFO[year].opening ? [[null,"Página Inicial","INI"]] : (year===2022 ? [[null,"FIFA Museum","FWC"]] : []);
+  arr=[...extra,...arr];
+  if(q) arr=arr.filter(t=>`${t[0]||""} ${t[1]} ${t[2]}`.toLowerCase().includes(q));
+  document.getElementById("teamGrid").innerHTML=arr.map((t,i)=>`<button class="teamBtn ${selected===t[2]?"active":""}" onclick="openTeam('${t[2]}')"><b>${t[0]?`Grupo ${t[0]} • `:""}${esc(t[1])}</b><span>${t[2]}</span></button>`).join("");
+}
+function openTeam(prefix){
+  selected=prefix; renderTeams();
+  const base=TEAMS[String(year)];
+  let team, teamIndex=-1, count=YEAR_INFO[year].perTeam;
+  if(prefix==="INI"){team=[null,"Página Inicial","INI"]; count=32;}
+  else if(prefix==="FWC"){team=[null,"FIFA Museum","FWC"];count=(year===2026?20:40);teamIndex=base.findIndex(t=>t[2]===prefix);}
+  else if(prefix==="CC"){team=[null,"Coca-Cola","CC"];count=14;teamIndex=base.findIndex(t=>t[2]===prefix);}
+  else {teamIndex=base.findIndex(t=>t[2]===prefix);team=base[teamIndex];}
+  const cards=[];
+  for(let n=1;n<=count;n++){
+    let code;
+    if(prefix==="INI") code = n===1 ? "00" : String(n-1);
+    else code=teamCode(year,team,teamIndex,n);
+    cards.push(`<article class="sticker"><div class="photo"><img src="assets/figurinhas/placeholder.svg" alt="${esc(code)}"></div><div class="info"><div class="code">${esc(code)}</div><div class="meta">Foto a cadastrar</div><div class="price">Preço a cadastrar</div><button class="buy" onclick="addCart('${esc(code)}')">Adicionar</button></div></article>`);
+  }
+  document.getElementById("albumBox").innerHTML=`<div class="albumHead"><div><h3>${esc(team[1])}</h3><p>${YEAR_INFO[year].label} • todas juntas em sequência</p></div><small>arraste para o lado →</small></div><div class="strip">${cards.join("")}</div>`;
+  document.getElementById("albumBox").scrollIntoView({behavior:"smooth",block:"start"});
+}
+function addCart(code){cart.push(code);document.getElementById("cartCount").textContent=cart.length;document.getElementById("cartLabel").textContent=cart.length+" item(ns)";}
+document.getElementById("search").addEventListener("input",renderTeams);
+renderChips(); renderTeams();
+</script>
+</body>
+</html>
