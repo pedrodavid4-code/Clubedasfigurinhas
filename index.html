@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Clube das Figurinhas — álbuns, figurinhas e colecionáveis.">
+<title>Clube das Figurinhas - Pedro Shakan</title>
+<style>
+:root{--bg:#080b0f;--panel:#11161d;--panel2:#171d25;--line:#29313b;--yellow:#ffc928;--text:#f7f7f7;--muted:#aeb6c2;--green:#39b54a;--red:#d74343}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,sans-serif} button,input,select{font:inherit}
+header{position:sticky;top:0;z-index:20;background:#090d12;border-bottom:1px solid var(--line);padding:14px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-weight:900;color:var(--yellow);font-size:20px} .pill,.btn{border:0;border-radius:12px;background:var(--yellow);color:#111;padding:12px 16px;font-weight:900;cursor:pointer}
+nav{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;padding:10px;position:sticky;top:57px;z-index:19;background:#0b0f14;border-bottom:1px solid var(--line)}
+nav button{background:var(--panel);color:#fff;border:1px solid var(--line);border-radius:11px;padding:10px 4px;font-size:12px} nav button.active{color:#111;background:var(--yellow)}
+main{max-width:900px;margin:auto;padding:14px 14px 90px} .screen{display:none} .screen.active{display:block}
+h1,h2,h3{margin:8px 0 12px} h1{color:var(--yellow)} .muted{color:var(--muted)} .card{background:linear-gradient(145deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:16px;padding:14px;margin:10px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:10px} .album{min-height:150px}
+.album2018{background:linear-gradient(145deg,#053a77,#075db1);border-color:#1686e5} .album2026{border-color:#a87900}
+.album img{width:100%;max-height:210px;object-fit:contain;border-radius:10px;background:#0a0d11}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap} .grow{flex:1} .back{background:none;border:1px solid var(--line);color:#fff;border-radius:10px;padding:9px 12px}
+.group{width:100%;text-align:left;background:var(--panel);color:#fff;border:1px solid var(--line);border-radius:12px;padding:12px;margin:7px 0}
+.stickers{display:grid;grid-template-columns:repeat(4,1fr);gap:8px} .sticker{min-height:58px;border:1px solid #4b5563;background:#20262e;color:#fff;border-radius:9px;font-weight:800}
+.sticker.selected{background:var(--green)} .sticker.out{background:#3b2020;color:#aaa;text-decoration:line-through}
+input,select{width:100%;background:#0c1117;color:#fff;border:1px solid var(--line);border-radius:10px;padding:12px;margin:5px 0}
+.cartline{display:grid;grid-template-columns:1fr auto;gap:8px;border-bottom:1px solid var(--line);padding:10px 0} .price{color:var(--yellow);font-weight:900}
+.notice{border-left:4px solid var(--yellow);background:#181a14;padding:11px;border-radius:8px;margin:10px 0} .danger{border-left-color:var(--red)}
+.bottom{position:fixed;bottom:0;left:0;right:0;background:#0b0f14;border-top:1px solid var(--line);padding:9px;display:flex;justify-content:center;z-index:30}
+.bottom .btn{width:min(870px,96%)} label{display:block;margin-top:8px;font-weight:700} .hidden{display:none!important}
+.small{font-size:12px} footer{color:#8f98a5;text-align:center;padding:25px 8px}
+
+/* VISUAL PREMIUM + PUBLICIDADE */
+body{background:
+ radial-gradient(circle at 12% 0%,rgba(255,201,40,.10),transparent 27rem),
+ radial-gradient(circle at 100% 18%,rgba(0,122,255,.08),transparent 24rem),
+ linear-gradient(180deg,#07090d 0%,#090d12 42%,#07090d 100%);min-height:100vh}
+header{backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);background:rgba(7,10,14,.92);box-shadow:0 10px 35px #0008}
+.logo{letter-spacing:.4px;text-shadow:0 0 25px rgba(255,201,40,.22)}
+.btn,.pill{box-shadow:0 8px 24px rgba(255,201,40,.18);transition:transform .15s ease,filter .15s ease,box-shadow .15s ease}
+.btn:active,.pill:active,nav button:active{transform:scale(.97)}
+.card{position:relative;overflow:hidden;box-shadow:0 16px 45px #0005}
+.card:before{content:'';position:absolute;inset:0 0 auto 0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);pointer-events:none}
+.hero-premium{position:relative;overflow:hidden;min-height:230px;border-radius:24px;padding:24px;margin-bottom:14px;border:1px solid rgba(255,201,40,.28);background:linear-gradient(135deg,#121820 0%,#0c1016 58%,#17130a 100%);box-shadow:0 25px 70px #0008}
+.hero-premium:after{content:'⚽';position:absolute;right:-22px;bottom:-35px;font-size:170px;opacity:.07;transform:rotate(-12deg)}
+.hero-kicker{color:var(--yellow);font-weight:900;letter-spacing:1.8px;font-size:12px;text-transform:uppercase}
+.hero-premium h1{font-size:clamp(32px,8vw,54px);line-height:.98;max-width:620px;margin:10px 0}
+.hero-premium p{max-width:610px;font-size:16px;line-height:1.55}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}.stat{padding:12px;border-radius:14px;background:#ffffff08;border:1px solid #ffffff10;text-align:center}.stat b{display:block;color:var(--yellow);font-size:20px}.stat span{font-size:11px;color:var(--muted)}
+.category-card{min-height:150px;display:flex;flex-direction:column;justify-content:flex-end;background:linear-gradient(145deg,#161c24,#0d1117)}.category-card .bigicon{font-size:48px;filter:drop-shadow(0 12px 16px #0008)}
+.ad-slot{border:1px dashed #4a5563;background:linear-gradient(145deg,#0f141b,#111821);border-radius:16px;padding:14px;margin:14px 0;text-align:center;min-height:110px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px}.ad-slot strong{color:#dce2ea}.ad-label{font-size:10px;letter-spacing:1.4px;color:#75808c;text-transform:uppercase}.ad-slot code{font-size:11px;color:#8d98a6;word-break:break-all}
+.trust-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.trust{padding:12px;border:1px solid var(--line);border-radius:14px;background:#0e141b}.trust b{display:block;color:#fff;margin-bottom:4px}.trust span{font-size:12px;color:var(--muted)}
+.album2018{box-shadow:0 18px 50px rgba(0,99,200,.18)}.album2026{background:linear-gradient(145deg,#1c170a,#11161d);box-shadow:0 18px 55px rgba(255,190,0,.14)}
+.sticker{transition:transform .12s ease,box-shadow .12s ease}.sticker:not(:disabled):active{transform:scale(.96)}.sticker.selected{box-shadow:0 0 0 2px #70d85e inset,0 8px 24px rgba(57,181,74,.22)}
+.screen{animation:screenIn .18s ease}@keyframes screenIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+@media(max-width:520px){main{padding-left:10px;padding-right:10px}.hero-premium{padding:20px 16px}.stats{grid-template-columns:repeat(3,1fr)}.stat{padding:10px 5px}.stat b{font-size:17px}.trust-grid{grid-template-columns:1fr 1fr}nav{gap:5px;padding:8px 6px}nav button{font-size:11px}}
+
+
+/* Padronização leve de imagens e navegação em sanfona */
+.album-grid{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+.album{display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;position:relative;min-height:260px}
+.album-cover{height:150px;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:12px;background:linear-gradient(145deg,#16202c,#07090d);border:1px solid #303a46;letter-spacing:.08em}
+.album-cover span{font-size:13px;color:#d6dbe1}.album-cover b{font-size:24px;color:#fff}.album-cover em{font-style:normal;color:#ffc400;font-weight:900;margin-top:8px}
+.album-cover-2014{background:linear-gradient(145deg,#08783f,#f2c20d)}.album-cover-2018{background:linear-gradient(145deg,#075db1,#06274c)}
+.album-cover-2022{background:linear-gradient(145deg,#78163b,#310717)}.album-cover-2026{background:linear-gradient(145deg,#17130a,#594204)}
+.catalog-layout{display:grid;grid-template-columns:minmax(210px,280px) 1fr;gap:14px;align-items:start}
+.group-menu{position:sticky;top:74px}.group-panel{border:1px solid #29313b;border-radius:12px;overflow:hidden;margin-bottom:8px;background:#111820}
+.group-toggle{width:100%;border:0;background:#19232e;color:#fff;padding:13px 14px;text-align:left;font-weight:900;cursor:pointer}
+.group-toggle span{float:right;transition:.2s}.group-panel.open .group-toggle span{transform:rotate(90deg)}
+.group-teams{display:none;padding:7px}.group-panel.open .group-teams{display:block}
+.team-link{width:100%;display:flex;align-items:center;gap:8px;border:0;border-radius:9px;background:transparent;color:#dce4ec;padding:10px;text-align:left;cursor:pointer}
+.team-link:hover,.team-link.active{background:#0b7d45;color:#fff}.team-flag{font-size:21px;width:28px;text-align:center}
+.team-view{min-width:0}.team-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}.team-head .team-flag{font-size:30px}
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:10px}
+.product-card{background:#111820;border:1px solid #29313b;border-radius:13px;padding:8px;overflow:hidden}
+.product-card{cursor:pointer}.product-card img{display:block;width:100%;aspect-ratio:1/1;object-fit:contain;background:#fff;border-radius:9px}
+.no-photo{aspect-ratio:1/1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border-radius:9px;padding:12px;background:radial-gradient(circle at 75% 18%,#f6c91533,transparent 28%),linear-gradient(145deg,#18304a,#081018 64%,#2e2208);color:#fff;border:1px solid #c9972444}.no-photo .ball{font-size:42px}.no-photo b{color:#ffd43b;font-size:15px;margin:7px 0 3px}.no-photo small{color:#d8e0e8}.no-photo-code{margin-top:10px;font-weight:900;letter-spacing:.08em}
+.compact-search{max-width:330px;height:42px;padding:8px 12px!important;margin:0 0 12px!important;border-radius:22px!important}
+.hero-premium img,.hero-banner img{display:block;width:100%;height:auto;max-height:none;object-fit:contain;object-position:center;border-radius:inherit}.hero-premium h1,.hero-banner h1{overflow:visible}
+.item-modal{position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.72);display:none;align-items:center;justify-content:center;padding:18px}.item-modal.open{display:flex}
+.item-dialog{width:min(92vw,380px);background:#111820;border:1px solid #34414e;border-radius:18px;padding:16px;box-shadow:0 24px 80px #000;text-align:center}
+.item-dialog img{width:100%;max-height:55vh;object-fit:contain;background:#fff;border-radius:12px}.item-dialog h2{margin:12px 0 4px}.item-dialog .price{font-size:25px}.modal-close{float:right;margin-bottom:8px}
+@media(max-width:720px){.catalog-layout{grid-template-columns:1fr}.group-menu{position:static}.product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.product-card{padding:6px}}
+
+/* TEMA CLARO + CATÁLOGO PADRONIZADO */
+:root{--bg:#f4f6f8;--panel:#fff;--panel2:#f8fafc;--line:#d9e0e7;--text:#18212b;--muted:#637083}
+body{background:linear-gradient(180deg,#fff 0%,#f3f6f8 100%);color:var(--text)}
+header{background:rgba(255,255,255,.96);border-color:#e0e5ea;box-shadow:0 8px 28px #26344214}
+nav{background:#fff;border-color:#e0e5ea;box-shadow:0 6px 20px #2634420d}
+nav button{background:#f4f6f8;color:#263442;border-color:#d9e0e7}nav button.active{background:var(--yellow);color:#151515}
+.hero-premium{background:linear-gradient(135deg,#fff 0%,#f7fafc 64%,#fff8dc 100%);border-color:#ead482;box-shadow:0 20px 55px #26344218}
+.hero-premium:after{opacity:.035}.hero-premium p,.muted{color:var(--muted)}
+.card,.category-card,.trust,.product-card,.group-panel,.item-dialog{background:#fff;color:var(--text);border-color:#dce2e8;box-shadow:0 10px 30px #26344212}
+.card:before{background:linear-gradient(90deg,transparent,#26344218,transparent)}
+.back{background:#fff;color:#263442;border-color:#cfd7df}.group-toggle{background:#f1f4f7;color:#263442}.team-link{color:#344253}.team-link:hover,.team-link.active{background:#16834d;color:#fff}
+input,select,#pixCode{background:#fff!important;color:#18212b!important;border-color:#ccd5de!important}.ad-slot{background:#fff;border-color:#b9c3cd}.ad-slot strong{color:#263442}
+.album-cover{background-image:linear-gradient(#ffffffd9,#ffffffd9),url('assets/figurinha-indisponivel.webp');background-size:cover;background-position:center;border-color:#d7dee5}.album-cover span,.album-cover b{color:#18212b}.album-cover em{color:#9a7100}
+.product-grid{align-items:stretch}.product-card{display:flex;aspect-ratio:3/4;padding:8px}.product-card img,.no-photo{width:100%;height:100%;aspect-ratio:auto;object-fit:contain;border-radius:10px;background:#fff}
+.no-photo{position:relative;justify-content:flex-end;overflow:hidden;padding:12px;background-image:linear-gradient(180deg,transparent 48%,rgba(9,18,27,.93) 76%),url('assets/figurinha-indisponivel.webp');background-size:cover;background-position:center;color:#fff;border:1px solid #d6dde4}
+.no-photo .ball{display:none}.no-photo b,.no-photo small,.no-photo-code{position:relative;text-shadow:0 2px 8px #000}.no-photo b{color:#fff;font-size:13px}.no-photo small{color:#e7edf3}.no-photo-code{color:#ffd43b;margin-top:5px}
+@media(max-width:520px){.product-card{aspect-ratio:3/4}.logo{font-size:16px}}
+
+</style>
+</head>
+<body>
+<header><div class="logo">⚽ PEDRO SHAKAN</div><button class="pill" onclick="showCart()">🛒 <span id="cartCount">0</span></button></header>
+<nav>
+<button onclick="go('home')" id="nav-home">🏠<br>Início</button>
+<button onclick="go('cups')" id="nav-cups">🏆<br>Copas</button>
+<button onclick="go('f1')" id="nav-f1">🏎️<br>F1</button>
+<button onclick="go('pokemon')" id="nav-pokemon">⚡<br>Pokémon</button>
+<button onclick="go('magic')" id="nav-magic">🃏<br>Magic</button>
+</nav>
+<main>
+<section id="home" class="screen active">
+<div class="hero-premium">
+  <div class="hero-kicker">Figurinhas & colecionáveis</div>
+  <h1>Sua coleção começa aqui.</h1>
+  <p class="muted">Escolha a Copa, encontre a figurinha, monte o carrinho e finalize por Pix com retirada ou envio.</p>
+  <div class="row"><button class="btn" onclick="go('cups')">🏆 VER COPAS</button><button class="back" onclick="showCart()">🛒 MEU CARRINHO</button></div>
+  <div class="stats"><div class="stat"><b>4</b><span>Copas</span></div><div class="stat"><b>48</b><span>seleções em 2026</span></div><div class="stat"><b>Pix</b><span>pagamento</span></div></div>
+</div>
+<div class="grid">
+  <div class="card category-card"><div class="bigicon">🏆</div><h3>Copas</h3><p class="muted">2014, 2018, 2022 e 2026</p><button class="btn" onclick="go('cups')">ABRIR</button></div>
+  <div class="card category-card"><div class="bigicon">🏎️</div><h3>F1</h3><p class="muted">Cards e coleções</p><button class="btn" onclick="go('f1')">ABRIR</button></div>
+  <div class="card category-card"><div class="bigicon">⚡</div><h3>Pokémon</h3><p class="muted">Cards colecionáveis</p><button class="btn" onclick="go('pokemon')">ABRIR</button></div>
+  <div class="card category-card"><div class="bigicon">🃏</div><h3>Magic</h3><p class="muted">Cards colecionáveis</p><button class="btn" onclick="go('magic')">ABRIR</button></div>
+</div>
+<div class="ad-slot" id="ad-home"><span class="ad-label">Publicidade</span><strong>Espaço preparado para anúncio</strong><span class="muted small">Google AdSense / parceiro comercial</span></div>
+<div class="grid">
+  <div class="card album album2026"><h3>✨ Álbum Ouro Copa 2026</h3><div class="album-cover album-cover-2026" aria-hidden="true"><span>FIFA</span><b>WORLD CUP 26</b><em>ÁLBUM OURO</em></div><p class="price">R$ 150,00</p><p>Estoque: 10</p><button class="btn" onclick="addProduct('Álbum Ouro Copa 2026',150,10)">ADICIONAR</button></div>
+  <div class="card"><h3>📦 Caixa Copa 2026</h3><p class="muted">100 pacotinhos</p><p class="price">R$ 700,00</p><p>Estoque: 15</p><button class="btn" onclick="addProduct('Caixa Copa 2026 - 100 pacotinhos',700,15)">ADICIONAR</button></div>
+</div>
+<div class="trust-grid"><div class="trust"><b>💳 Pix</b><span>Pedido com total conferido.</span></div><div class="trust"><b>📦 Estoque visível</b><span>Sem vender item zerado.</span></div><div class="trust"><b>📍 Retirada</b><span>Combine pelo WhatsApp.</span></div><div class="trust"><b>🚚 Envio</b><span>Frete antes do pagamento.</span></div></div>
+<div class="notice">Estoque sujeito à confirmação até a confirmação do pagamento.</div>
+</section>
+
+<section id="cups" class="screen"><h1>Copas</h1><p class="muted">Escolha o ano do álbum.</p><div class="grid album-grid">
+<div class="card album"><div class="album-cover album-cover-2014"><span>BRASIL</span><b>2014</b><em>COPA DO MUNDO</em></div><h2>Copa 2014</h2><p>Brasil</p><button class="btn" onclick="openCup('2014')">VER GRUPOS</button></div>
+<div class="card album album2018"><div class="album-cover album-cover-2018"><span>RÚSSIA</span><b>2018</b><em>EDIÇÃO AZUL</em></div><h2>Copa 2018</h2><p>Rússia</p><button class="btn" onclick="openCup('2018')">VER GRUPOS</button></div>
+<div class="card album"><div class="album-cover album-cover-2022"><span>CATAR</span><b>2022</b><em>FIFA WORLD CUP</em></div><h2>Copa 2022</h2><p>Catar</p><button class="btn" onclick="openCup('2022')">VER GRUPOS</button></div>
+<div class="card album album2026"><div class="album-cover album-cover-2026"><span>FIFA</span><b>WORLD CUP 26</b><em>ÁLBUM OURO</em></div><h2>Copa 2026</h2><p>Álbum Ouro</p><button class="btn" onclick="openCup('2026')">VER GRUPOS</button></div>
+</div><div class="ad-slot"><span class="ad-label">Publicidade</span><strong>Seu anúncio pode aparecer aqui</strong><span class="muted small">Espaço pronto para monetização.</span></div></section>
+
+<section id="cupDetail" class="screen"><div class="row"><button class="back" onclick="go('cups')">← Voltar</button><h1 id="cupTitle"></h1></div>
+<input class="compact-search" id="teamSearch" aria-label="Pesquisar seleção" placeholder="🔎  Pesquisar" oninput="renderGroups()">
+<div class="catalog-layout"><aside class="group-menu" id="groups"></aside><section class="team-view" id="teamWorkspace"><div class="card"><h2>Escolha um grupo</h2><p class="muted">Abra o grupo e toque na seleção. O menu continuará aberto para trocar rapidamente.</p></div></section></div></section>
+<section id="team" class="screen"></section>
+
+<section id="cart" class="screen"><div class="row"><button class="back" onclick="historyBack()">← Voltar</button><h1>Carrinho</h1></div><div id="cartItems"></div><h2>Total produtos: <span id="cartTotal" class="price">R$ 0,00</span></h2><button class="btn" onclick="go('checkout')">IR PARA CHECKOUT</button></section>
+
+<section id="checkout" class="screen"><div class="row"><button class="back" onclick="showCart()">← Carrinho</button><h1>Finalizar pedido</h1></div>
+<label>Nome *</label><input id="name" placeholder="Seu nome">
+<label>WhatsApp *</label><input id="phone" placeholder="DDD + número">
+<label>E-mail (opcional)</label><input id="email" type="email" placeholder="seu@email.com">
+<label>Como deseja receber? *</label><select id="delivery" onchange="deliveryChanged()"><option value="">Escolha</option><option value="pickup">Vou buscar</option><option value="shipping">Quero envio</option></select>
+<div id="pickupBox" class="hidden notice">Retirada: o local e horário serão combinados pelo WhatsApp após a confirmação do pedido.</div>
+<div id="addressBox" class="hidden">
+<label>CEP *</label><input id="cep"><label>Rua *</label><input id="street"><label>Número *</label><input id="number">
+<label>Complemento</label><input id="comp"><label>Bairro *</label><input id="district"><label>Cidade *</label><input id="city"><label>UF *</label><input id="uf" maxlength="2">
+<div class="notice danger"><b>Envio:</b> o frete precisa ser confirmado antes do Pix. O pedido será enviado ao WhatsApp como “Aguardando cálculo do frete”.</div>
+</div>
+<button class="btn" onclick="reviewOrder()">REVISAR PEDIDO</button></section>
+
+<section id="review" class="screen"><div class="row"><button class="back" onclick="go('checkout')">← Alterar</button><h1>Revisão</h1></div><div id="reviewText" class="card"></div>
+<div id="pixArea" class="card hidden"><h2>Pix</h2><p>Total para retirada: <span id="pixTotal" class="price"></span></p>
+<p class="small">O código abaixo é o Pix já existente na versão anterior do seu site. Confira no seu Mercado Pago antes de publicar.</p>
+<textarea id="pixCode" style="width:100%;min-height:90px;background:#0c1117;color:#fff;border:1px solid #29313b;border-radius:10px;padding:10px"></textarea>
+<button class="btn" onclick="copyPix()">COPIAR PIX</button><div class="notice">“Já paguei” não confirma o recebimento automaticamente. O pedido ficará aguardando conferência.</div></div>
+<button class="btn" onclick="sendWhatsApp()">ENVIAR PEDIDO NO WHATSAPP</button></section>
+
+<section id="f1" class="screen"><h1>F1</h1><div class="card">Área preparada para cadastrar cards e coleções de Fórmula 1.</div></section>
+<section id="pokemon" class="screen"><h1>Pokémon</h1><div class="card">Área preparada para cadastrar cards Pokémon.</div></section>
+<section id="magic" class="screen"><h1>Magic</h1><div class="card">Área preparada para cadastrar cards Magic.</div></section>
+<footer>Clube das Figurinhas • Pagamento por Pix • Retirada ou envio • Pedidos pelo WhatsApp</footer>
+</main>
+<div class="item-modal" id="itemModal" onclick="if(event.target===this)closeItem()"><div class="item-dialog"><button class="back modal-close" onclick="closeItem()">✕</button><img id="modalImg" alt=""><h2 id="modalCode"></h2><div class="price" id="modalPrice"></div><button class="btn" id="modalAdd">ADICIONAR AO CARRINHO</button></div></div>
+<div class="bottom"><button class="btn" onclick="showCart()">🛒 VER CARRINHO (<span id="bottomCount">0</span>)</button></div>
+<script>
+const WHATSAPP='5562981595949';
+const PIX_CODE="00020101021126780014BR.GOV.BCB.PIX2556pix-qr.mercadopago.com/instore/ol/v2/CyPC7a5qhl11VaUFNat5204000053039865802BR5905pedro6009SAO PAULO62080504mpis630476FA";
+const GROUPS={"2014": [["A", "Brasil", "Croácia", "México", "Camarões"], ["B", "Espanha", "Holanda", "Chile", "Austrália"], ["C", "Colômbia", "Grécia", "Costa do Marfim", "Japão"], ["D", "Uruguai", "Costa Rica", "Inglaterra", "Itália"], ["E", "Suíça", "Equador", "França", "Honduras"], ["F", "Argentina", "Bósnia e Herzegovina", "Irã", "Nigéria"], ["G", "Alemanha", "Portugal", "Gana", "Estados Unidos"], ["H", "Bélgica", "Argélia", "Rússia", "Coreia do Sul"]], "2018": [["A", "Rússia", "Arábia Saudita", "Egito", "Uruguai"], ["B", "Portugal", "Espanha", "Marrocos", "Irã"], ["C", "França", "Austrália", "Peru", "Dinamarca"], ["D", "Argentina", "Islândia", "Croácia", "Nigéria"], ["E", "Brasil", "Suíça", "Costa Rica", "Sérvia"], ["F", "Alemanha", "México", "Suécia", "Coreia do Sul"], ["G", "Bélgica", "Panamá", "Tunísia", "Inglaterra"], ["H", "Polônia", "Senegal", "Colômbia", "Japão"]], "2022": [["A", "Catar", "Equador", "Senegal", "Holanda"], ["B", "Inglaterra", "Irã", "Estados Unidos", "País de Gales"], ["C", "Argentina", "Arábia Saudita", "México", "Polônia"], ["D", "França", "Austrália", "Dinamarca", "Tunísia"], ["E", "Espanha", "Costa Rica", "Alemanha", "Japão"], ["F", "Bélgica", "Canadá", "Marrocos", "Croácia"], ["G", "Brasil", "Sérvia", "Suíça", "Camarões"], ["H", "Portugal", "Gana", "Uruguai", "Coreia do Sul"]], "2026": [["A", "México", "África do Sul", "Coreia do Sul", "Tchéquia"], ["B", "Canadá", "Bósnia e Herzegovina", "Catar", "Suíça"], ["C", "Brasil", "Marrocos", "Haiti", "Escócia"], ["D", "Estados Unidos", "Paraguai", "Austrália", "Turquia"], ["E", "Alemanha", "Curaçau", "Costa do Marfim", "Equador"], ["F", "Holanda", "Japão", "Suécia", "Tunísia"], ["G", "Bélgica", "Egito", "Irã", "Nova Zelândia"], ["H", "Espanha", "Cabo Verde", "Arábia Saudita", "Uruguai"], ["I", "França", "Senegal", "Iraque", "Noruega"], ["J", "Argentina", "Argélia", "Áustria", "Jordânia"], ["K", "Portugal", "RD Congo", "Uzbequistão", "Colômbia"], ["L", "Inglaterra", "Croácia", "Gana", "Panamá"]]};
+const FLAGS={"Brasil":"🇧🇷","Marrocos":"🇲🇦","Suíça":"🇨🇭","Catar":"🇶🇦","México":"🇲🇽","África do Sul":"🇿🇦","Coreia do Sul":"🇰🇷","Tchéquia":"🇨🇿","Canadá":"🇨🇦","Haiti":"🇭🇹","Escócia":"🇬🇧","Estados Unidos":"🇺🇸","Paraguai":"🇵🇾","Austrália":"🇦🇺","Turquia":"🇹🇷","Alemanha":"🇩🇪","Curaçau":"🇨🇼","Costa do Marfim":"🇨🇮","Equador":"🇪🇨","Holanda":"🇳🇱","Japão":"🇯🇵","Suécia":"🇸🇪","Tunísia":"🇹🇳","Bélgica":"🇧🇪","Egito":"🇪🇬","Irã":"🇮🇷","Nova Zelândia":"🇳🇿","Espanha":"🇪🇸","Cabo Verde":"🇨🇻","Arábia Saudita":"🇸🇦","Uruguai":"🇺🇾","França":"🇫🇷","Senegal":"🇸🇳","Iraque":"🇮🇶","Noruega":"🇳🇴","Argentina":"🇦🇷","Argélia":"🇩🇿","Áustria":"🇦🇹","Jordânia":"🇯🇴","Portugal":"🇵🇹","RD Congo":"🇨🇩","Uzbequistão":"🇺🇿","Colômbia":"🇨🇴","Inglaterra":"🇬🇧","Croácia":"🇭🇷","Gana":"🇬🇭","Panamá":"🇵🇦","Rússia":"🇷🇺","Camarões":"🇨🇲","Chile":"🇨🇱","Grécia":"🇬🇷","Costa Rica":"🇨🇷","Itália":"🇮🇹","Honduras":"🇭🇳","Bósnia e Herzegovina":"🇧🇦","Nigéria":"🇳🇬","Islândia":"🇮🇸","Peru":"🇵🇪","Dinamarca":"🇩🇰","Sérvia":"🇷🇸","Polônia":"🇵🇱","País de Gales":"🇬🇧"};
+const PRODUCT_IMAGES={"Marrocos": [[1, "MAR 1", "assets/produtos/mar-1.webp", 6, 13], [2, "MAR 2", "assets/produtos/mar-2.webp", 5, 4], [3, "MAR 3", "assets/produtos/mar-3.webp", 4, 4], [4, "MAR 4", "assets/produtos/mar-4.webp", 4, 4], [5, "MAR 5", "assets/produtos/mar-5.webp", 4, 4], [6, "MAR 6", "assets/produtos/mar-6.webp", 4, 4], [7, "MAR 7", "assets/produtos/mar-7.webp", 7, 4], [8, "MAR 8", "assets/produtos/mar-8.webp", 7, 4], [9, "MAR 9", "assets/produtos/mar-9.webp", 3, 4], [10, "MAR 10", "assets/produtos/mar-10.webp", 4, 4], [11, "MAR 11", "assets/produtos/mar-11.webp", 8, 4], [12, "MAR 12", "assets/produtos/mar-12.webp", 4, 4], [13, "MAR 13", "assets/produtos/mar-13.webp", 1, 8], [14, "MAR 14", "assets/produtos/mar-14.webp", 13, 4], [15, "MAR 15", "assets/produtos/mar-15.webp", 1, 4], [16, "MAR 16", "assets/produtos/mar-16.webp", 2, 4], [17, "MAR 17", "assets/produtos/mar-17.webp", 3, 4], [18, "MAR 18", "assets/produtos/mar-18.webp", 2, 4]], "Brasil": [[1, "BRA 1", "assets/produtos/bra-1.webp", 9, 20], [2, "BRA 2", "assets/produtos/bra-2.webp", 2, 8], [3, "BRA 3", "assets/produtos/bra-3.webp", 5, 8], [4, "BRA 4", "assets/produtos/bra-4.webp", 1, 8], [5, "BRA 5", "assets/produtos/bra-5.webp", 1, 8], [7, "BRA 7", "assets/produtos/bra-7.webp", 7, 8], [8, "BRA 8", "assets/produtos/bra-8.webp", 7, 8], [9, "BRA 9", "assets/produtos/bra-9.webp", 5, 8], [10, "BRA 10", "assets/produtos/bra-10.webp", 4, 8], [11, "BRA 11", "assets/produtos/bra-11.webp", 6, 8], [12, "BRA 12", "assets/produtos/bra-12.webp", 6, 8], [13, "BRA 13", "assets/produtos/bra-13.webp", 2, 12], [14, "BRA 14", "assets/produtos/bra-14.webp", 4, 8], [15, "BRA 15", "assets/produtos/bra-15.webp", 4, 8], [16, "BRA 16", "assets/produtos/bra-16.webp", 2, 8], [17, "BRA 17", "assets/produtos/bra-17.webp", 3, 8], [19, "BRA 19", "assets/produtos/bra-19.webp", 4, 8], [20, "BRA 20", "assets/produtos/bra-20.webp", 3, 8]], "Suíça": [[1, "SUI 1", "assets/produtos/sui-1.webp", 4, 13], [2, "SUI 2", "assets/produtos/sui-2.webp", 7, 4], [3, "SUI 3", "assets/produtos/sui-3.webp", 8, 4], [4, "SUI 4", "assets/produtos/sui-4.webp", 4, 4], [5, "SUI 5", "assets/produtos/sui-5.webp", 7, 4], [6, "SUI 6", "assets/produtos/sui-6.webp", 2, 4], [7, "SUI 7", "assets/produtos/sui-7.webp", 3, 4], [8, "SUI 8", "assets/produtos/sui-8.webp", 12, 4], [9, "SUI 9", "assets/produtos/sui-9.webp", 10, 4], [10, "SUI 10", "assets/produtos/sui-10.webp", 13, 4], [11, "SUI 11", "assets/produtos/sui-11.webp", 11, 4], [12, "SUI 12", "assets/produtos/sui-12.webp", 12, 4], [13, "SUI 13", "assets/produtos/sui-13.webp", 2, 8], [14, "SUI 14", "assets/produtos/sui-14.webp", 13, 4], [15, "SUI 15", "assets/produtos/sui-15.webp", 15, 4], [16, "SUI 16", "assets/produtos/sui-16.webp", 12, 4], [19, "SUI 19", "assets/produtos/sui-19.webp", 7, 4]], "Catar": [[5, "QAT 5", "assets/produtos/qat-5.webp", 3, 4], [7, "QAT 7", "assets/produtos/qat-7.webp", 1, 4], [9, "QAT 9", "assets/produtos/qat-9.webp", 1, 4], [10, "QAT 10", "assets/produtos/qat-10.webp", 10, 4], [13, "QAT 13", "assets/produtos/qat-13.webp", 7, 8], [17, "QAT 17", "assets/produtos/qat-17.webp", 1, 4], [18, "QAT 18", "assets/produtos/qat-18.webp", 4, 4], [20, "QAT 20", "assets/produtos/qat-20.webp", 4, 4]]};
+let openGroup='';
+let currentYear='2014', currentGroup='', currentTeam='', selected=new Set(), cart=[], previousScreen='home';
+try{cart=JSON.parse(localStorage.getItem('cf_cart')||'[]');if(!Array.isArray(cart))cart=[]}catch(e){cart=[]}
+function money(v){return v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'})}
+function go(id){
+  const el=document.getElementById(id);
+  if(!el){console.error('Tela não encontrada:',id);alert('Não foi possível abrir esta área.');return}
+  const cur=document.querySelector('.screen.active');
+  if(cur && cur.id!==id) previousScreen=cur.id;
+  document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));
+  el.classList.add('active');
+  document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));
+  const navMap={home:'home',cups:'cups',cupDetail:'cups',team:'cups',f1:'f1',pokemon:'pokemon',magic:'magic'};
+  const n=document.getElementById('nav-'+(navMap[id]||'')); if(n)n.classList.add('active');
+  window.scrollTo({top:0,behavior:'instant'});
+  if(id==='cart')renderCart();
+}
+function historyBack(){go(previousScreen||'home')}
+function openCup(year){currentYear=year;currentTeam='';openGroup='';document.getElementById('cupTitle').textContent='Copa '+year;go('cupDetail');renderGroups()}
+function renderGroups(){
+  const q=(document.getElementById('teamSearch').value||'').toLowerCase();let out='';
+  (GROUPS[currentYear]||[]).forEach(g=>{const teams=g.slice(1);if(q&&!teams.join(' ').toLowerCase().includes(q))return;const opened=openGroup===g[0]||teams.includes(currentTeam);out+=`<div class="group-panel ${opened?'open':''}"><button class="group-toggle" onclick="toggleGroup('${g[0]}')">Grupo ${g[0]}<span>›</span></button><div class="group-teams">${teams.map(t=>`<button class="team-link ${currentTeam===t?'active':''}" onclick="openTeam('${g[0]}','${t.replace(/'/g,"\\'")}')"><span class="team-flag">${FLAGS[t]||'🏳️'}</span><b>${t}</b></button>`).join('')}</div></div>`});
+  document.getElementById('groups').innerHTML=out||'<div class="card">Nenhuma seleção encontrada.</div>';
+}
+function toggleGroup(group){openGroup=openGroup===group?'':group;renderGroups()}
+function openTeam(group,team){currentGroup=group;openGroup=group;currentTeam=team;selected.clear();renderGroups();renderStickers()}
+function stickerCode(n){let p=currentTeam.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^A-Za-z]/g,'').slice(0,3).toUpperCase();return p+' '+n}
+function stockFor(n){return ((n + currentTeam.length + Number(currentYear)) % 11===0)?0:((n*3+currentTeam.length)%5)+1}
+function renderStickers(){
+  const box=document.getElementById('teamWorkspace');const real=PRODUCT_IMAGES[currentTeam]||[];
+  const byNumber=new Map(real.map(item=>[item[0],item]));let cards='';
+  for(let n=1;n<=20;n++){const item=byNumber.get(n);if(item){const [num,code,img,qty,price]=item;cards+=`<article class="product-card" role="button" tabindex="0" aria-label="Ver ${code}" onclick="showItem('${code}','${img}',${qty},${price})" onkeydown="if(event.key==='Enter')showItem('${code}','${img}',${qty},${price})"><img src="${img}" alt="Figurinha ${code}" loading="lazy" decoding="async" width="560" height="560" onerror="this.onerror=null;this.src='assets/figurinha-indisponivel.webp';this.alt='Imagem ilustrativa de '+${JSON.stringify(code)}"></article>`}else{const code=stickerCode(n);cards+=`<article class="product-card" aria-label="${code} sem foto"><div class="no-photo"><span class="ball">⚽</span><b>CLUBE DAS FIGURINHAS</b><small>Figurinha não disponível</small><div class="no-photo-code">${code}</div></div></article>`}}
+  const body=`<div class="product-grid">${cards}</div>`;
+  box.innerHTML=`<div class="team-head"><span class="team-flag">${FLAGS[currentTeam]||'🏳️'}</span><div><h2>${currentTeam}</h2><span class="muted">Copa ${currentYear} • Grupo ${currentGroup} • ${real.length} imagens cadastradas</span></div></div>${body}`;
+}
+function toggleSticker(n){selected.has(n)?selected.delete(n):selected.add(n);renderStickers()}
+function addSelected(){if(!selected.size){alert('Selecione pelo menos uma figurinha.');return}selected.forEach(n=>{let name=`Copa ${currentYear} • ${currentTeam} • ${stickerCode(n)}`;addToCart(name,4,stockFor(n),false)});selected.clear();updateCounts();alert('Figurinhas adicionadas ao carrinho.')}
+function showItem(code,img,qty,price){document.getElementById('modalImg').src=img;document.getElementById('modalCode').textContent=code;document.getElementById('modalPrice').textContent=money(price);document.getElementById('modalAdd').onclick=()=>{addProduct(`Copa ${currentYear} • ${currentTeam} • ${code}`,price,qty);closeItem()};document.getElementById('itemModal').classList.add('open')}
+function closeItem(){document.getElementById('itemModal').classList.remove('open')}
+function addProduct(name,price,stock){addToCart(name,price,stock,true)}
+function addToCart(name,price,stock,notify){let x=cart.find(i=>i.name===name);if(x){if(x.qty>=stock){if(notify)alert('Quantidade máxima disponível.');return}x.qty++}else cart.push({name,price,stock,qty:1});saveCart();if(notify)alert('Adicionado ao carrinho.')}
+function saveCart(){try{localStorage.setItem('cf_cart',JSON.stringify(cart))}catch(e){console.warn('Carrinho não pôde ser salvo',e)}updateCounts()}
+function updateCounts(){let c=cart.reduce((a,i)=>a+i.qty,0);document.getElementById('cartCount').textContent=c;document.getElementById('bottomCount').textContent=c}
+function showCart(){go('cart')}
+function renderCart(){let box=document.getElementById('cartItems');if(!cart.length){box.innerHTML='<div class="card">Seu carrinho está vazio.</div>';document.getElementById('cartTotal').textContent=money(0);return}box.innerHTML=cart.map((i,k)=>`<div class="cartline"><div><b>${i.name}</b><br><span class="muted">${money(i.price)} cada • estoque ${i.stock}</span></div><div><button class="back" onclick="qty(${k},-1)">−</button> ${i.qty} <button class="back" onclick="qty(${k},1)">+</button><br><b>${money(i.price*i.qty)}</b></div></div>`).join('');document.getElementById('cartTotal').textContent=money(total())}
+function qty(k,d){let i=cart[k];if(d>0&&i.qty>=i.stock){alert('Limite do estoque.');return}i.qty+=d;if(i.qty<=0)cart.splice(k,1);saveCart();renderCart()}
+function total(){return cart.reduce((a,i)=>a+i.price*i.qty,0)}
+function deliveryChanged(){let v=document.getElementById('delivery').value;document.getElementById('pickupBox').classList.toggle('hidden',v!=='pickup');document.getElementById('addressBox').classList.toggle('hidden',v!=='shipping')}
+function reviewOrder(){if(!cart.length){alert('Carrinho vazio.');return}let name=document.getElementById('name').value.trim(),phone=document.getElementById('phone').value.trim(),d=document.getElementById('delivery').value;if(!name||!phone||!d){alert('Preencha nome, WhatsApp e forma de recebimento.');return}if(d==='shipping'){for(let id of ['cep','street','number','district','city','uf'])if(!document.getElementById(id).value.trim()){alert('Preencha o endereço completo.');return}}let lines=cart.map(i=>`${i.qty}x ${i.name} = ${money(i.qty*i.price)}`).join('<br>');let extra=d==='pickup'?'Retirada a combinar':'Envio - frete aguardando cálculo';document.getElementById('reviewText').innerHTML=`<b>${name}</b><br>${lines}<hr>Total produtos: <b>${money(total())}</b><br>Recebimento: <b>${extra}</b>`;let pix=d==='pickup';document.getElementById('pixArea').classList.toggle('hidden',!pix);document.getElementById('pixTotal').textContent=money(total());document.getElementById('pixCode').value=PIX_CODE;go('review')}
+function copyPix(){
+  const el=document.getElementById('pixCode'); const text=el.value;
+  if(navigator.clipboard && window.isSecureContext){navigator.clipboard.writeText(text).then(()=>alert('Pix copiado.')).catch(()=>fallbackCopy(el));}
+  else fallbackCopy(el);
+}
+function fallbackCopy(el){el.focus();el.select();try{document.execCommand('copy');alert('Pix copiado.')}catch(e){alert('Selecione o código e copie manualmente.')}}
+function val(id){const e=document.getElementById(id);return e?e.value.trim():''}
+function sendWhatsApp(){
+  const name=val('name'),phone=val('phone'),email=val('email'),d=val('delivery');
+  if(!name||!phone||!d){alert('Preencha os dados obrigatórios.');return}
+  const order='CF'+Date.now().toString().slice(-8);
+  const lines=cart.map(i=>`${i.qty}x ${i.name} - ${money(i.qty*i.price)}`).join('\n');
+  let receive='RETIRADA - combinar local/horário';
+  if(d==='shipping'){
+    receive=`ENVIO
+CEP: ${val('cep')}
+Endereço: ${val('street')}, ${val('number')} ${val('comp')}
+Bairro: ${val('district')}
+${val('city')}/${val('uf')}
+FRETE: aguardando cálculo`;
+  }
+  const status=d==='pickup'?'Aguardando conferência do Pix':'Aguardando cálculo do frete antes do Pix';
+  const msg=`PEDIDO ${order}
+Cliente: ${name}
+WhatsApp: ${phone}${email?'\nE-mail: '+email:''}
+
+ITENS
+${lines}
+
+Total produtos: ${money(total())}
+${receive}
+Status: ${status}`;
+  try{localStorage.setItem('cf_last_order',JSON.stringify({order,name,phone,total:total(),delivery:d,status,createdAt:new Date().toISOString()}))}catch(e){}
+  window.open('https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(msg),'_blank','noopener');
+}
+function quickSearch(){
+  const q=(document.getElementById('globalSearch')?.value||'').trim().toLowerCase();
+  if(!q)return;
+  for(const [year,groups] of Object.entries(GROUPS)){
+    for(const g of groups){
+      for(const team of g.slice(1)){
+        if(team.toLowerCase().includes(q)){
+          currentYear=year;openTeam(g[0],team);return;
+        }
+      }
+    }
+  }
+  if(['2014','2018','2022','2026'].includes(q)){openCup(q);return}
+  alert('Digite o nome de uma seleção ou um ano, por exemplo: Brasil ou 2018.');
+}
+updateCounts();go('home');
+</script>
+
+<!--
+MONETIZAÇÃO (GOOGLE ADSENSE):
+1) Cadastre e aprove o domínio/site no Google AdSense.
+2) Depois da aprovação, cole aqui o script oficial fornecido pelo AdSense.
+3) Substitua as caixas .ad-slot por unidades <ins class="adsbygoogle"> geradas na sua conta.
+IMPORTANTE: não coloque ID inventado. Use somente o ca-pub real da sua conta.
+-->
+</body></html>
