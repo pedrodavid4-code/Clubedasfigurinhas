@@ -1,85 +1,123 @@
-```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Clube das Figurinhas | Álbuns, Cards e Colecionáveis</title>
-  
-  <!-- Tailwind CSS para Design Responsivo -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Ícones FontAwesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
+  <title>Meu Projeto</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&display=swap');
-    body { font-family: 'Plus Jakarta Sans', sans-serif; }
-    .gold-gradient { background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); }
-    .custom-scroll::-webkit-scrollbar { width: 6px; height: 6px; }
-    .custom-scroll::-webkit-scrollbar-track { background: #0f172a; }
-    .custom-scroll::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+
+    body {
+      background-color: #0f172a;
+      color: #f8fafc;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background-color: #1e293b;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #38bdf8;
+    }
+
+    nav a {
+      color: #cbd5e1;
+      text-decoration: none;
+      margin-left: 1.5rem;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: #38bdf8;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.125rem;
+      color: #94a3b8;
+      max-width: 600px;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .btn {
+      background-color: #38bdf8;
+      color: #0f172a;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s, background-color 0.2s;
+    }
+
+    .btn:hover {
+      background-color: #0284c7;
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    footer {
+      background-color: #1e293b;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.875rem;
+      color: #64748b;
+    }
   </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col selection:bg-amber-400 selection:text-slate-950">
+<body>
 
-  <!-- 1. BARRA SUPERIOR DE AVISOS -->
-  <div class="bg-emerald-600 text-white text-xs font-bold py-2 px-4 flex justify-between items-center flex-wrap gap-2">
-    <div class="flex items-center gap-3 mx-auto sm:mx-0">
-      <span><i class="fa-solid fa-shield-halved mr-1"></i> Embalagem Blindada Anti-Dobras</span>
-      <span class="hidden md:inline">•</span>
-      <span><i class="fa-solid fa-truck-fast mr-1"></i> Envio com Rastreio para todo o Brasil</span>
-    </div>
-    <button onclick="openAdminModal()" class="mx-auto sm:mx-0 text-[11px] bg-slate-950/40 hover:bg-slate-950/80 px-2.<button class="5 py-1 rounded-md transition flex items-center gap-1.5 border border-white/20"> <i class="fa-solid fa-lock text-amber-300"></i> Área do Lojista (Estoque) </button> </div> <!-- 2. CABEÇALHO --> <header class="sticky top-0 z-40 bg-slate-900/95 backdrop-blur-md border-b border-slate-800"> <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-3"> <!-- Logo --> <a href="#" onclick="filterCollection('todas')" class="flex items-center gap-2.5"> <div class="w-10 h-10 rounded-xl bg-amber-400 flex items-center justify-center text-slate-950 font-black <div class="text-xl shadow-lg shadow-amber-400/20"> CF </div> <div> <span class="font-black text-lg sm:text-xl tracking-tight text-white block leading-none">Clube das <span class="text-amber-400">Figurinhas</span></span> <span class="text-[10px] text-slate-400 font-bold tracking-widest uppercase">Paixão que Completa</span> </div> </a> <!-- Barra de Busca --> <div class="hidden md:flex flex-1 max-w-sm relative"> <input type="text" id="global-search" onkeyup="searchStickers()" placeholder="Buscar jogador, número ou time..." class="w-full bg-slate-950 border border-slate-700 rounded-full py-2 pl-4 pr-10 text-xs text-white <div class="bg-amber-400 focus:outline-none focus:border-amber-400"> <i class="fa-solid fa-magnifying-glass absolute right-3.5 top-2.5 text-slate-400 text-xs"></i></div><!-- Botão Carrinho --><button onclick="toggleCart()" class="bg-amber-400 hover:bg-amber-300 text-slate-950 px-4 py-2 rounded-full font-extrabold text-xs flex items-center gap-2 transition shadow-md"> <i class="fa-solid fa-cart-shopping text-sm"></i><span>Meu Álbum</span><span id="cart-counter" class="bg-slate-950 text-white text-[11px] px-2 py-0.5 rounded-full font-bold">0</span></button></div> </header> <!-- 3. SELETOR DE COLEÇÕES / CATEGORIAS --> <div class="bg-slate-900 border-b border-slate-800 overflow-x-auto custom-scroll"> <div class="max-w-7xl mx-auto px-4 py-2.5 flex items-center gap-2 min-w-max"> <button onclick="filterCollection('todas')" class="nav-tab active bg-amber-400 text-slate-950 px-3.5 py-1.5 rounded-lg text-xs font-bold transition">🌟 Todas</button> <button onclick="filterCollection('copa2026')" class="nav-tab bg-slate-800 text-slate-300 hover:text-white px-3.<button onclick="filterCollection('copa2022')" class="nav-tab bg-slate-800 text-slate-300 hover:text-white px-3.5 py-1.5 rounded-lg text-xs font-bold transition">🇺🇸🇨🇦🇲🇽 Copa 2026</button> <button onclick="filterCollection('copa2022')" class="nav-tab bg-slate-800 text-slate-300 hover:text-white px-3.5 py-1.5 rounded-lg text-xs font-bold transition">🇶🇦 Copa 2022</button> <button onclick="filterCollection('copa2018')" class="nav-tab bg-slate-800 text-slate-300 hover:text-white px-3.5 py-1.5 rounded-lg text-xs font-bold transition">🇷🇺 Copa 2018</button> <button onclick="filterCollection('copa2014')" class="nav-tab bg-slate-800 text-slate-300 hover:text-white px-3.5 py-1.5 rounded-lg text-xs font-bold transition">🇧🇷 Copa 2014</button> <button onclick="filterCollection('adrenalyn')" class="nav-tab bg-slate-800 text-slate-300 hover:text-white px-3.5 py-1.5 rounded-lg text-xs font-bold transition">⚡ Adrenalyn XL 2026</button> <button onclick="filterCollection('lojinha')" class="nav-tab bg-slate-800 text-slate-300 hover:text-white px-3.5 py-1.5 rounded-lg <button> <div class="text-xs font-bold transition">🛍️ Lojinha (Boxes e Álbuns)</button> </div> </div> <!-- 4. HERO + FERRAMENTA DE COLAR FALTANTES --> <section class="py-8 px-4 bg-gradient-to-b from-slate-900 to-slate-950 border-b border-slate-800"> <div class="max-w-4xl mx-auto text-center space-y-3"> <span class="inline-block bg-amber-400/10 text-amber-400 text-[11px] font-extrabold px-3 py-1 rounded-full border border-amber-400/20"> ⚡ ESTOQUE ATUALIZADO EM TEMPO REAL </span> <h1 class="text-2xl sm:text-4xl font-black text-white"> Complete seu álbum <span class="text-transparent bg-clip-text gold-gradient">sem comprar repetidas</span> </h1> <p class="text-slate-400 text-xs sm:text-sm max-w-xl mx-auto"> Selecione as figurinhas avulsas abaixo ou cole a lista de números que faltam em seu álbum. </p> <!-- Ferramenta de Colar Lista --> <div class="bg-slate-900 border-2 border-dashed border-amber-500/40 round-2xl p-4 sm:p-5 max-w-xl mx-auto text-left shadow-xl mt-4"> <label class="block text-xs font-bold text-slate-300 mb-1.5 flex justify-between items-center"> <span><i class="fa-solid fa-list-check text-amber-400 mr-1.5"></i> Cole os números faltantes:</span> <span class="text-[10px] text-slate-500 lowercase">Ex: 07, 10, 23, 99, 150</span> </label> <textarea id="bulk-input" rows="2" placeholder="Digite ou cole os números separados por vírgula ou espaço...<textarea class="w-full bg-slate-950 border border-slate-700 rounded-xl p-2.5 text-xs text-amber-300 font-mono focus:outline-none focus:border-amber-400"></textarea> <div class="flex justify-between items-center gap-2 mt-2"> <span class="text-[10px] text-slate-400"><i class="fa-solid fa-circle-check text-emerald-400 mr-1"></i> Figurinhas 100% originais</span> <button onclick="addBulkStickers()" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-extrabold px-4 py-2 rounded-xl transition flex items-center gap-1.5 shadow-md"> <i class="fa-solid fa-cart-plus"></i> Adicionar Todos </button> </div> </div> </div> </section> <!-- 5. CATÁLOGO / GRAU DE PRODUTOS --> <main class="max-w-7xl mx-auto px-4 py-8 flex-1 w-full"> <div class="flex items-center justifica-between mb-6"> <div> <h2 id="current-title" class="text-xl font-black text-white">Catálogo Geral</h2> <p class="text-xs text-slate-400">Figurinhas em estoque com avaliação de mercado e preço especial</p> </div> <span id="product-total-badge" class="bg-slate-800 text-slate-300 text-xs font-bold px-3 py-1 round-lg">0 itens</span> </div> <!-- Grade Dinâmica --> <div id="product-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3.5"> <!-- Inserido via JavaScript --> </div> </main> <!-- 6. RODAPÉ --> <footer class="bg-slate-950 py-8 px-4 text-center text-xs text-slate-500 border-t border-slate-900 space-y-2"> <p class="font-bold text-slate-400">Clube das Figurinhas • www.clubedasfigurinhas.com.br</p> <p>Álbuns, Figurinhas Avulsas e Cartões Colecionáveis.</p> <div class="pt-2"> <button onclick="openAdminModal()" class="text-slate-400 hover:text-amber-400 <button text-[11px] underline">Acesso Restrito: Painel de Controle de Estoque</button> </div> </footer> <!-- 7. GAVETA LATERAL DO CARRINHO --> <div id="cart-drawer" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex justify-end"> <div class="w-full max-w-md bg-slate-900 h-full flex flex-col border-l border-slate-800 p-5 shadow-2xl"> <!-- Topo Carrinho --> <div class="flex items-center justify-between pb-3 border-b border-slate-800"> <div class="flex items-center gap-2"> <i class="fa-solid fa-cart-shopping text-amber-400"></i> <h3 class="font-extrabold text-base text-white">Meu Álbum de Compras</h3> </div> <button onclick="toggleCart()" class="text-slate-400 hover:text-white p-1 text-lg"> <i class="fa-solid fa-xmark"></i> </button> </div> <!-- Barra de Frete Grátis --> <div class="mt-3 bg-slate-950 p-3 rounded-xl border border-slate-800"> <div class="flex justify-between text-[11px] font-bold mb-1"> <span id="shipping-label" <div class="text-slate-300">Falta R$ 80,00 para Frete Grátis</span><span id="shipping-percent" class="text-amber-400">0%</span></div><div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden"> <div id="shipping-bar" class="bg-amber-400 h-full transition-all duration-300" style="width: 0%"></div></div></div><!-- Lista de Itens --><div id="cart-items" class="flex-1 overflow-y-auto py-3 space-y-2 custom-scroll"> <!-- Renderizado dinamicamente --></div><!-- Order Bump (Capa de Álbum) --><div class="bg-amber-400/10 border border-amber-400/30 p-2.5 rounded-xl mb-3 flex items-center justify-between"> <div class="flex items-center gap-2"> <i class="fa-solid fa-shield text-amber-400"></i> <div> <p class="text-xs font-bold text-white leading-tight">Capa Protetora para Álbum</p> <p class="text-[10px] text-amber-300/80">+ R$ 9,90 no pedido</p> </div> </div> <button onclick="addOrderBump()" class="bg-amber-400 hover:bg-amber-300 text-slate-950 text-[11px] font-black px-2.5 py-1 rounded-md"> + Adicionar </button> </div> <!-- Total e Checkout --> <div class="pt-3 border-t border-slate-800 space-y-2"> <div class="flex justify-between text-sm text-slate-400"> <span>Total do Pedido:</span> <span id="cart-total-value" class="font-black text-white text-base">R$ 0,00</span> </div> <button onclick="checkoutWhatsApp()" class="w-full bg-emerald-500 hover:<div class="bg-emerald-400 text-slate-950 font-black py-3 rounded-xl transition flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20 text-sm"> <i class="fa-brands fa-whatsapp text-base"></i> Finalizar Pedido via WhatsApp </button> </div> </div> </div> <!-- 8. MODAL DO PAINEL DO LOJISTA (ADMIN) --> <div id="admin-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4"> <div class="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-4xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden"> <!-- Topo Modal Admin --> <div <div class="bg-slate-950 p-4 border-b border-slate-800 flex justify-between items-center"> <div class="flex items-center gap-2"> <i class="fa-solid fa-gears text-amber-400 text-lg"></i> <h3 class="font-black text-white text-base">Painel de Controle de Estoque e Preços</h3> </div> <button onclick="closeAdminModal()" class="text-slate-400 hover:text-white text-lg"> <i class="fa-solid fa-xmark"></i> </button> </div> <!-- Tela de Login (se não logado) --> <div id="admin-login-view" class="p-8 text-center space-y-4 max-w-sm mx-auto my-auto"> <div class="w-14 h-14 bg-amber-400/10 <div class="text-amber-400 rounded-2xl flex items-center justify-center text-2xl mx-auto border border-amber-400/20"> <i class="fa-solid fa-lock"></i> </div> <div> <h4 class="font-bold text-white text-lg">Identificação do Administrador</h4> <p class="text-xs text-slate-400 mt-1">Acesso exclusivo para atualizar quantidades de estoque.</p> </div> <div class="space-y-2 text-left"> <div> <label class="text-[11px] font-bold text-slate-400">Usuário:</label> <input type="text" id="admin-user" value="admin" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-2 text-xs text-white focus:outline-none <div><label class="text-[11px] font-bold text-slate-400">Senha:</label><input type="password" id="admin-pass" value="clube123" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-2 text-xs text-white focus:outline-none focus:border-amber-400"> </div> </div> <button onclick="loginAdmin()" class="w-full bg-amber-400 hover:bg-amber-300 text-slate-950 font-black py-2.5 rounded-lg text-xs transition"> Entrar no Painel </button> <p class="text-[10px] text-slate-500">Padrão de fábrica: <b>admin</b> / <b>clube123</b></p> </div> <!-- Painel do Gerenciador (quando logado) --> <div id="admin-dashboard-view" class="hidden flex-1 flex flex-col overflow-hidden"> <!-- Ações Globais de Estoque --> <div class="p-3 bg-slate-950/60 border-b border-slate-800 flex flex-wrap justify-between items-center gap-2"> <div class="flex items-center gap-2"> <span class="text-xs text-slate-400">Ações Rápidas:</span> <button onclick="setAllStockTo(3)" class="bg-emerald-500/20 text-emerald-400 hover:bg-emerald-500 hover:text-slate-950 border border-emerald-500/30 text-xs font-extrabold px-3 py-1.5 rounded-lg transition"> <i class="fa-solid fa-boxes-stacked mr-1"></i> Definir Todo Estoque em 3 un. </button> <button onclick="setAllStockTo(0)" class="bg-red-500/20 text-red-400 hover:bg-red-500 hover:text-slate-950 border border-red-500/30 text-xs font-extrabold px-3 py-1.5 round-lg transaction"> Zerar Todo Estoque </button> </div> <button onclick="logoutAdmin()" class="text-xs text-slate-400 hover:text-red-400"> <i class="fa-solid fa-right-from-bracket mr-1"></i> Sair </button> </div> <!-- Tabela Editável de Produtos --> <div class="flex-1 overflow-y-auto p-4 custom-scroll"> <table class="w-full text-left text-xs border-collapse"> <thead> <tr class="text-slate-400 border-b border-slate-800 pb-2"> <th class="py-2">Código/Nome</th> <th class="py-2">Coleção</th> <th class="py-2">Avaliação Mercado</th> <th class="py-2">Preço Loja (R$)</th> <th class="py-2">Estoque (Qtd)</th></tr></thead><tbody id="admin-table-body" class="divide-y divide-slate-800/60"> <!-- Renderizado via JS --> </tbody></table></div><!-- Rodapé Admin -->
-        <div class="p-3 bg-slate-950 border-t border-slate-800 flex justify-between items-center text-xs">
-          <span class="text-slate-400">Modificações salvas automaticamente no navegador.</span>
-          <button onclick="closeAdminModal()" class="bg-amber-400 text-slate-950 font-black px-4 py-1.5 rounded-lg">
-            Concluir e Ver Loja
-          </button>
-        </div>
-      </div>
+  <header>
+    <div class="logo">Logo</div>
+    <nav>
+      <a href="#home">Início</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
 
-    </div>
-  </div>
+  <main>
+    <h1>Bem-vindo à Página</h1>
+    <p>Este é o arquivo <code>index.html</code> base. Você pode editar os textos, cores e componentes conforme a necessidade do seu projeto.</p>
+    <a href="#" class="btn" id="btnAcao">Começar</a>
+  </main>
 
-  <!-- JAVASCRIPT COMPLETO E PERSISTENTE -->
+  <footer>
+    <p>&copy; 2026 Todos os direitos reservados.</p>
+  </footer>
+
   <script>
-    const SEU_WHATSAPP = "5562981595949"; 
-    const ADMIN_USER_DEFAULT = "admin";
-    const ADMIN_PASS_DEFAULT = "clube123";
-    const META_FRETE_GRATIS = 80.00;
-
-    const DEFAULT_PRODUCTS = [
-      // --- COPA 2026 ---
-      { id: 2601, code: "BRA 10", name: "Vini Jr - Brasil", collection: "copa2026", category: "Craque", price: 4.50, marketValue: 8.00, stock: 3, flag: "🇧🇷" },
-      { id: 2602, code: "BRA 01", name: "Escudo Seleção Brasileira (Ouro)", collection: "copa2026", category: "Raras", price: 9.90, marketValue: 18.00, stock: 3, flag: "🇧🇷" },
-      { id: 2603, code: "MEX 01", name: "Escudo México (País-Sede)", collection: "copa2026", category: "Brilhante", price: 6.50, marketValue: 12.00, stock: 3, flag: "🇲🇽" },
-      { id: 2604, code: "USA 10", name: "Christian Pulisic - EUA", collection: "copa2026", category: "Comum", price: 2.50, marketValue: 5.00, stock: 3, flag: "🇺🇸" },
-      { id: 2605, code: "FWC 00", name: "Taça Copa do Mundo 2026", collection: "copa2026", category: "Legend", price: 14.90, marketValue: 30.00, stock: 3, flag: "🏆" },
-      { id: 2606, code: "CC 01", name: "Coca-Cola Especial 01", collection: "copa2026", category: "Extra", price: 7.90, marketValue: 15.00, stock: 3, flag: "🥤" },
-
-      // --- COPA 2022 ---
-      { id: 2201, code: "ARG 10", name: "Lionel Messi (Campeão 2022)", collection: "copa2022", category: "Legend", price: 8.90, marketValue: 25.00, stock: 3, flag: "🇦🇷" },
-      { id: 2202, code: "FRA 07", name: "Kylian Mbappé (Artilheiro)", collection: "copa2022", category: "Craque", price: 6.90, marketValue: 18.00, stock: 3, flag: "🇫🇷" },
-      { id: 2203, code: "BRA 09", name: "Richarlison - Brasil", collection: "copa2022", category: "Comum", price: 2.50, marketValue: 5.00, stock: 3, flag: "🇧🇷" },
-      { id: 2204, code: "FWC 01", name: "Emblema Oficial Catar 2022", collection: "copa2022", category:"Brilhante", price: 7.50, marketValue: 15.00, stock: 3, flag: "🇶🇦" },
-
-      // --- COPA 2018 ---
-      { id: 1801, code: "POR 07", name: "Cristiano Ronaldo - Portugal", collection: "copa2018", category: "Legend", price: 7.90, marketValue: 20.00, stock: 3, flag: "🇵🇹" },
-      { id: 1802, code: "CRO 10", name: "Luka Modric (Melhor da Copa)", collection: "copa2018", category: "Craque", price: 5.50, marketValue: 14.00, stock: 3, flag: "🇭🇷" },
-      { id: 1803, code: "BRA 11", name: "Philippe Coutinho - Brasil", collection: "copa2018", category: "Comum", price: 2.50, marketValue: 5.00, stock: 3, flag: "🇧🇷" },
-      { id: 1804, code: "RUS 01", name: "Mascote Zabivaka 2018", collection: "copa2018", category: "Brilhante", price: 6.00, marketValue: 12.00, stock: 3, flag: "🇷🇺" },
-
-      // --- COPA 2014 ---
-      { id: 1401, code: "BRA 10", name: "Neymar Jr (Copa no Brasil)", collection: "copa2014", category: "Legend", price: 8.50, marketValue: 22.00, stock: 3, flag: "🇧🇷" },
-      { id: 1402, code: "GER 11", name: "Miroslav Klose (Recordista)", collection: "copa2014", category: "Craque", price: 6.00, marketValue: 15.00, stock: 3, flag: "🇩🇪" },
-      { id: 1403, code: "COL 10", name: "James Rodríguez (Gol da Copa)", collection: "copa2014", category: "Comum", price: 3.50, marketValue: 8.00, stock: 3, flag: "🇨🇴" },
-
-      // --- ADRENALYN XL 2026 ---
-      { id: 9001, code: "ADR-01", name: "Card Top Master - Erling Haaland", collection: "adrenalyn", category: "Card Ouro", price: 19.90, marketValue: 45.00, stock: 3, flag: "⚡" },
-      { id: 9002, code: "ADR-02", name: "Card Invincible - All Stars", collection: "adrenalyn", category: "Raríssimo", price: 29.90, marketValue: 70.00, stock: 3, flag: "⚡" },
-      { id: 9003, code: "ADR-03", name: "Card Golden Baller - Jude Bellingham", collection: "adrenalyn", category: "Card Ouro", price: 16.90, marketValue: 35.00, stock: 3, flag: "⚡" },
-
-      // --- LOJINHA ---
-      { id: 5001, code: "ALB-01", name: "Álbum Capa Dura Oficial Copa 2026", collection: "lojinha", category: "Álbum", price: 49.90, marketValue: 65.00, stock: 3, flag: "📕" },
-      { id: 5002, code: "BOX-50", name: "Box Lacrado Panini (50 Envelopes)", collection: "lojinha", category: "Box Lacrada", price: 189.90, marketValue: 220.00, stock: 3, flag: "📦" },
-      { id: 5003, code: "KIT-50", name:"Kit 50 Figurinhas Sem Repetição", coleção: "lojinha", categoria: "Kit Especial", preço: 39.90, valorDeMercado: 55.00, estoque: 3, flag: "✨" } ]; let productsDB = []; try { const saved = localStorage.getItem('cf_products_database'); productsDB = saved ? JSON.parse(saved) : DEFAULT_PRODUCTS; } catch(e) { productsDB = DEFAULT_PRODUCTS; } let cart = []; let activeFilter = 'todas'; let isAdminLoggedIn = false; function saveDatabase() { try { localStorage.setItem('cf_products_database', JSON.stringify(productsDB)); } catch(e) { console.error(e); } renderProducts(); } function renderProducts() { const grid = document.getElementById('product-grid'); let filtered = activeFilter === 'todas' ? productsDB : productsDB.filter(p => p.collection === activeFilter); document.getElementById('product-total-badge').innerText = `${filtered.length} itens`; if (filtered.length === 0) { grid.innerHTML = `<div class="col-span-full text-center py-12 text-slate-500 text-xs">Nenhum produto cadastrado para esta categoria no momento.</div>`; return; } grid.innerHTML = filtered.map(p => { const isOutOfStock = p.stock <= 0; return ` <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3 flex flex-col justify-between hover:border-amber-400/40 transition"> <div> <div class="flex items-center justify-between mb-1.5"> <span class="text-xs">${p.flag}</span> <span class="text-[10px] font-extrabold px-2 py-0.5 rounded-md ${p.category.includes('Legend') || p.category.includes('Ouro') ? 'bg-amber-400/20 text-amber-300' : 'bg-slate-800 text-slate-300'}"> ${p.category}</span></div><div class="w-full aspect-[4/5] bg-slate-950 rounded-xl border border-slate-800 flex flex-col items-center justify-center p-2 mb-2 relative overflow-hidden"> <span class="text-2xl">${p.flag}</span><b class="text-amber-400 text-xs font-mono font-black mt-1">${p.code}</b><span class="text-[9px] text-slate-400 text-center leading-tight line-clamp-1 mt-0.5">${p.name}</span> ${isOutOfStock ? `<span class="absolute inset-0 bg-black/80 flex items-center justify-center text-red-400 font-bold text-xs">ESGOTADO</span>` : ''}</div><div class="text-[10px] text-slate-400 bg-slate-950/80 p-1.5 rounded-lg mb-2"> <div class="flex justify-between"> <span>Avaliação de Mercado:</span> <s class="text-slate-500 font-bold">R$ ${p.marketValue.toFixed(2).replace('.', ',')}</s> </div> <div class="flex justify-between mt-0.5"> <span>Estoque:</span> <b class="${isOutOfStock ? 'text-red-400' : 'text-emerald-400'}">${p.stock} un.</b> </div> </div> </div> <div class="pt-2 border-t border-slate-800/80 flex items-center justify-between gap-1"> <div> <span class="text-[9px] text-slate-500 block leading-none">Preço Clube:</span> <span class="font-black text-amber-400 text-sm">R$ ${p.price.toFixed(2).replace('.', ',')}</span> </div> <button onclick="addToCart(${p.id})" ${isOutOfStock ? 'disabled' : ''} class="${isOutOfStock ? 'bg-slate-800 text-slate-600 cursor-not-allowed' : 'bg-amber-400 hover:bg-amber-300 text-slate-950'} font-bold w-8 h-8 rounded-lg flex items-center justify-center transition"> <i class="fa-solid fa-plus text-xs"></i> </button> </div> </div> `; }).join(''); } function filterCollection(col) { activeFilter = col; document.querySelectorAll('.nav-tab').forEach(b => { b.classList.remove('bg-amber-400', 'text-slate-950', 'active'); b.classList.add('bg-slate-800', 'text-slate-300'); }); event.target.classList.add('bg-amber-400', 'text-slate-950', 'ativo'); event.target.classList.remove('bg-slate-800', 'text-slate-300'); const title = { todas: 'Todas as Coleções', copa2026: 'Copa do Mundo 2026 (EUA, Canadá e México)', copa2022: 'Copa do Mundo 2022 (Catar)', copa2018: 'Copa do Mundo 2018 (Rússia)', copa2014: 'Copa do Mundo 2014 (Brasil)', adrenalyn: 'Cartas Panini Adrenalyn XL 2026', lojinha: 'Loja Oficial do Clube (Álbuns e Boxes)' }; document.getElementById('título atual').innerText = títulos[col] || 'Coleção'; renderProducts(); } function searchStickers() { const term = document.getElementById('global-search').value.toLowerCase(); const grid = document.getElementById('product-grid'); const filtered = productsDB.filter(p => p.name.toLowerCase().includes(term) || p.code.toLowerCase().includes(term) || p.category.toLowerCase().includes(term) ); grid.innerHTML = filtered.map(p => ` <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3 flex flex-col justify-between"> <div> <div class="flex justify-between items-center mb-1"> <span>${p.flag}</span> <span class="text-[10px] text-amber-400 font-bold">${p.code}</span> </div> <h4 class="font-bold text-xs text-white">${p.name}</h4> <p class="text-[10px] text-slate-400 mt-1">Estoque: <b>${p.stock} un.</b></p> </div> <div class="mt-3 pt-2 border-t border-slate-800 flex justify-between items-center"> <span class="font-black text-amber-400 text-sm">R$ ${p.price.toFixed(2).replace('.', ',')}</span> <button onclick="addToCart(${p.id})" class="bg-amber-400 text-slate-950 font-bold px-2 py-1 rounded text-xs">+ Carrinho</button> </div> </div> `).join(''); } function addToCart(productId) { const item = productsDB.find(p => p.id === productId); if (!item || item.stock <= 0) return alert("Item esgotado!"); const inCart = cart.find(c => c.id === productId); if (inCart) { if (inCart.qty >= item.stock) return alert(`Limite de estoque atingido (${item.stock} un.)`); inCart.qty++; } else { cart.push({ ...item, qty: 1 }); } updateCart(); } function addBulkStickers() { const input = document.getElementById('bulk-input').value; if (!input.trim()) return alert("Digite ou cole os números!"); const numbers = input.match(/\d+/g); if (!numbers) return alert("Nenhum número válido encontrado."); let added = 0; numbers.forEach(n => { const num = parseInt(n, 10); const match = productsDB.find(p => p.code.includes(String(num)) && p.stock > 0); if (match) { addToCart(match.id); adicionado++; } else { cart.push({ id: Date.now() + Math.random(), código: `Nº ${num}`, nome: `Figurinha Avulsa Nº ${num}`, preço: 2,50, estoque: 3, quantidade: 1 } adicionado++); document.getElementById('bulk-input').value = ''; updateCart(); toggleCart(); alert(`🎉 ${added} figurinhas adicionadas com sucesso ao seu pedido!`); } função addOrderBump() { carrinho.push({ id: 99999, code: "SLEEVE", name:"Capa Protetora de Álbum", preço: 9,90, estoque: 99, qtd: 1 }); atualizarCarrinho(); } função removerItemDoCarrinho(índice) { carrinho.splice(índice, 1); atualizarCarrinho(); } função atualizarCarrinho() { const contador = document.getElementById('carrinho-contador'); const contêiner = document.getElementById('carrinho-itens'); const contagemTotal = carrinho.reduce((a, b) => a + b.qtd, 0); contador.textoInterno = contagemTotal; if (carrinho.length === 0) { contêiner.HTMLInterno = `<div class="text-center py-10 text-slate-500 text-xs">Seu álbum está vazio! ⚽</div>`; } else { container.innerHTML = cart.map((i, idx) => ` <div class="flex items-center justify-between bg-slate-950 p-2.5 rounded-xl border border-slate-800 text-xs"> <div> <p class="font-bold text-white leading-tight">${i.code} - ${i.name}</p> <p class="text-[10px] text-amber-400 font-bold mt-0.5">${i.qty}x R$ ${i.price.toFixed(2).replace('.', ',')}</p> </div> <button onclick="removeCartItem(${idx})" class="text-slate-500 hover:text-red-400 p-1"> <i class="fa-solid fa-trash"></i> </button> </div> `).join(''); } const total = cart.reduce((a, b) => a + (b.price * b.qty), 0); document.getElementById('cart-total-value').innerText = `R$ ${total.toFixed(2).replace('.', ',')}`; const progress = Math.min((total / META_FRETE_GRATIS) * 100, 100); document.getElementById('shipping-bar').style.width = `${progress}%`; document.getElementById('shipping-percent').innerText = `${Math.round(progress)}%`; if (total >= META_FRETE_GRATIS) { document.getElementById('shipping-label').innerText = "🎉 Parabéns! Você ganhou Frete Grátis!"; document.getElementById('shipping-label').className = "text-emerald-400 font-bold"; } else { const restante = (META_FRETE_GRATIS - total).toFixed(2).replace('.', ','); document.getElementById('shipping-label').innerText = `Faltam R$ ${remaining} para Frete Grátis`; document.getElementById('etiqueta de envio').className = "text-slate-300"; } } function toggleCart() { document.getElementById('gaveta-carrinho').classList.toggle('oculto'); } function checkoutWhatsApp() { if (cart.length === 0) return alert("Seu carrinho está vazio!"); const total = cart.reduce((a, b) => a + (b.price * b.qty), 0); const list = cart.map(i => `• ${i.code} - ${i.name} (${i.qty}x) = R$ ${(i.price * i.qty).toFixed(2)}`).junte('%0A'); const msg = `*NOVO PEDIDO - CLUBE DAS FIGURINHAS*%0A%0A${list}%0A%0A*VALOR TOTAL: R$ ${total.toFixed(2).replace('.', ',')}*%0A%0AGostaria de confirmar o envio e a chave PIX para pagamento!`; window.open(`https://wa.me/${SEU_WHATSAPP}?text=${msg}`, '_blank'); } função openAdminModal() { document.getElementById('admin-modal').classList.remove('hidden'); if (isAdminLoggedIn) { showAdminDashboard(); } } function closeAdminModal() { document.getElementById('admin-modal').classList.add('hidden'); } function loginAdmin() { const u = document.getElementById('admin-user').value.trim(); const p = document.getElementById('admin-pass').value.trim(); if (u === ADMIN_USER_DEFAULT && p === ADMIN_PASS_DEFAULT) { isAdminLoggedIn = true; showAdminDashboard(); } else { alert("Usuário ou senha incorretos!"); } } function logoutAdmin() { isAdminLoggedIn = false; document.getElementById('admin-dashboard-view').classList.add('hidden'); document.getElementById('admin-login-view').classList.remove('hidden'); } function showAdminDashboard() { document.getElementById('admin-login-view').classList.add('hidden'); document.getElementById('admin-dashboard-view').classList.remove('hidden'); renderAdminTable(); } function renderAdminTable() { const tbody = document.getElementById('admin-table-body'); tbody.innerHTML = productsDB.map((p, idx) => ` <tr class="hover:bg-slate-800/40 transition"> <td class="py-2.5 font-bold text-white"> <span class="mr-1">${p.flag}</span> ${p.code} - ${p.name} </td> <td class="py-2.5 text-slate-400 uppercase text-[10px] font-mono">${p.collection}</td> <td class="py-2.5 text-slate-400">R$ ${p.marketValue.toFixed(2)}</td> <td class="py-2.5"> <input type="number" step="0.10" value="${p.price}" onchange="updateProductField(${idx}, 'price', this.value)" class="w-20 <td class="py-2.5"> <input type="number" min="0" value="${p.stock}" onchange="updateProductField(${idx}, 'stock', this.value)" class="w-16 bg-slate-950 border border-slate-700 rounded px-2 py-1 text-emerald-400 font-bold focus:border-amber-400 outline-none"> </td> </tr> `).join(''); } function updateProductField(index, field, value) { productsDB[index][field] = parseFloat(value) || 0; saveDatabase(); } function setAllStockTo(qty) { productsDB.forEach(p => p.stock = qty); saveDatabase(); renderAdminTable(); alert(`✅ Todo o estoque da loja foi definido em ${qty} unidades!`); } renderProducts(); updateCart(); </script> </body> </html> ```
+    document.getElementById('btnAcao').addEventListener('click', (e) => {
+      e.prevent
