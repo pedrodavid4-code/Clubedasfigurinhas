@@ -1,114 +1,128 @@
-code
-Html
 <!doctype html>
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta name="description" content="Clube das Figurinhas — Álbuns, figurinhas e colecionáveis oficiais.">
-<title>Clube das Figurinhas</title>
+<title>Clube das Figurinhas - Paixão que Completa</title>
 <style>
-:root{--bg:#f4f6f8;--panel:#fff;--panel2:#f8fafc;--line:#d9e0e7;--yellow:#ffc928;--text:#18212b;--muted:#637083;--green:#39b54a;--red:#d74343}
-*{box-sizing:border-box} body{margin:0;background:linear-gradient(180deg,#fff 0%,#f3f6f8 100%);color:var(--text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;padding-bottom:96px} button,input,select,textarea{font:inherit}
-header.site-header{position:sticky;top:8px;z-index:60;width:min(940px,calc(100% - 24px));height:78px;margin:12px auto 8px;padding:10px 16px;border:1px solid #dfe4e8;border-radius:18px;background:#fff;box-shadow:0 8px 25px rgba(31,43,56,.1);display:flex;justify-content:space-between;align-items:center}
-.approved-brand{display:flex;align-items:center;gap:10px;min-width:0;flex:1;cursor:pointer}
-.brand-logo-badge{width:46px;height:46px;flex:0 0 46px;display:grid;place-items:center;background:linear-gradient(135deg,#0a4428,#0e7545);border-radius:14px;color:#fff;font-size:24px;box-shadow:0 4px 12px rgba(10,68,40,.25)}
-.approved-brand-copy{min-width:0;line-height:1}
-.approved-brand-name{display:block;font-size:clamp(15px,3.5vw,20px);font-weight:900;color:#07361f;letter-spacing:-.45px}
-.approved-brand-tagline{display:block;margin-top:5px;color:#9c5b17;font-size:10px;font-weight:800;letter-spacing:1.8px;white-space:nowrap}
-.approved-header-actions{display:flex;align-items:center;gap:10px;flex:0 0 auto}
-.mini-search{width:clamp(80px,21vw,140px);height:42px;display:flex;align-items:center;gap:5px;padding:0 10px;border:1.5px solid #cfd5dc;border-radius:15px;background:#fff;color:#111}
-.mini-search .ui-icon{width:18px;height:18px;flex:0 0 18px;stroke:#555}
-.mini-search input{width:100%;height:36px!important;margin:0!important;padding:0!important;border:0!important;outline:0!important;background:transparent!important;color:#18212b!important;font-size:13px}
-.pill,.btn{border:0;border-radius:12px;background:var(--yellow);color:#111;padding:12px 16px;font-weight:900;cursor:pointer;box-shadow:0 6px 20px rgba(255,201,40,.25);transition:transform .15s ease}
-.pill:active,.btn:active{transform:scale(.97)}
-.cart-pill{height:46px;min-width:64px;padding:8px 12px;border-radius:15px;background:linear-gradient(135deg,#ffd338,#ffb800);display:flex;align-items:center;justify-content:center;gap:7px;border:0;cursor:pointer;font-weight:800}
-.ui-icon{width:20px;height:20px;display:block;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+:root{--royal-blue:#0047ab;--bg-secondary:#f5f5f5;--line:#e2e8f0;--yellow:#ffc928;--text:#18212b;--muted:#64748b;--green:#2e7d32;--red:#d32f2f}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg-secondary);color:var(--text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;padding-bottom:96px}
+button,input,select,textarea{font:inherit}
+header.site-header{position:sticky;top:8px;z-index:100;width:min(940px,calc(100% - 20px));height:74px;margin:8px auto;padding:8px 14px;border:1px solid var(--line);border-radius:18px;background:#fff;box-shadow:0 8px 24px rgba(0,71,171,0.08);display:flex;justify-content:space-between;align-items:center}
+.approved-brand{display:flex;align-items:center;gap:10px;cursor:pointer}
+.brand-logo-badge{width:44px;height:44px;border-radius:50%;background:radial-gradient(circle,#2e7d32 0%,#1b5e20 80%,#ffd700 100%);border:2px solid #ffd700;display:grid;place-items:center;font-size:22px}
+.approved-brand-copy{display:flex;flex-direction:column;line-height:1}
+.approved-brand-name{font-size:clamp(15px,3.8vw,20px);font-weight:900;color:#07361f;letter-spacing:-.5px}
+.approved-brand-tagline{font-size:9.5px;font-weight:800;color:#b45309;letter-spacing:1.8px;margin-top:4px}
+.approved-header-actions{display:flex;align-items:center;gap:8px}
+.mini-search{height:40px;display:flex;align-items:center;gap:6px;padding:0 12px;border:1.5px solid #cbd5e1;border-radius:20px;background:#fff;width:clamp(85px,22vw,140px)}
+.mini-search input{width:100%;border:0;outline:0;background:transparent;font-size:13px}
+.cart-pill{height:42px;min-width:58px;padding:6px 12px;border-radius:14px;background:linear-gradient(135deg,#ffd43f,#f59e0b);display:flex;align-items:center;justify-content:center;gap:6px;border:0;cursor:pointer;font-weight:900;font-size:14px;color:#111}
+.ui-icon{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 
-main{width:min(940px,100%);max-width:940px;margin:auto;padding:8px 12px 105px}
-.screen{display:none;animation:screenIn .18s ease} .screen.active{display:block}
-@keyframes screenIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
-h1,h2,h3{margin:8px 0 12px} h1{color:#07326f} .muted{color:var(--muted)} .card{background:#fff;border:1px solid #dce2e8;border-radius:16px;padding:14px;margin:10px 0;box-shadow:0 10px 30px rgba(38,52,66,.08)}
-.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap} .back{background:#fff;border:1px solid #cfd7df;color:#263442;border-radius:10px;padding:9px 14px;cursor:pointer;font-weight:700}
+.category-bar-wrapper{width:min(940px,100%);margin:4px auto 10px;padding:0 10px;overflow-x:auto;scrollbar-width:none}
+.category-bar-wrapper::-webkit-scrollbar{display:none}
+.category-bar{display:flex;gap:8px;width:max-content}
+.cat-btn{flex:0 0 76px;border:1px solid #cbd5e1;border-radius:12px;background:#fff;padding:6px 4px;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer}
+.cat-btn.active,.cat-btn:hover{border-color:#f97316;outline:2px solid #f97316;background:#fffaf0}
+.cat-btn-icon{width:100%;height:40px;border-radius:8px;display:grid;place-items:center;font-size:22px;color:#fff}
+.cat-btn-title{font-size:9px;font-weight:800;color:#1e293b}
 
-.approved-category-grid{width:min(940px,100%);margin:0 auto;display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:8px;padding:12px 12px 16px}
-.approved-category{overflow:hidden;border:1px solid #d8dde3;border-radius:14px;background:#fff;box-shadow:0 4px 14px rgba(34,49,63,.08);cursor:pointer;padding:0;transition:transform .16s ease;display:flex;flex-direction:column;min-height:100%}
-.approved-category:active{transform:scale(.97)}
-.approved-category.active-category,.approved-category:focus-visible{outline:2px solid #f28319;outline-offset:1px}
-.cat-card-art{flex:1;display:grid;place-items:center;min-height:60px;font-size:28px;padding:6px 2px}
-.cat-card-label{padding:6px 2px;background:#f8fafc;color:#12213d;font-size:clamp(8px,1.2vw,11px);font-weight:900;line-height:1.1;text-align:center;border-top:1px solid #e9edf1}
+main{width:min(940px,100%);margin:auto;padding:0 10px}
+.screen{display:none;animation:fadeIn .2s ease}
+.screen.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
 
-.fifa-landing,.collection-screen{padding:10px 4px 42px}
-.collection-hero{position:relative;isolation:isolate;overflow:hidden;min-height:240px;display:flex;align-items:flex-end;padding:24px;border-radius:22px;background:#072763;box-shadow:0 17px 38px rgba(20,40,59,.18);margin-bottom:14px}
-.collection-hero-copy{max-width:680px;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.6)}
-.collection-hero-copy .hero-kicker{color:#ffd66b;font-size:11px;font-weight:900;letter-spacing:2px}
-.collection-hero-copy h1{margin:6px 0 4px;color:#fff;font-size:clamp(26px,5vw,48px);line-height:1}
-.collection-hero-copy p{margin:6px 0 0;color:#fff;font-size:13px;font-weight:700;letter-spacing:1.5px}
-.worldcup-hero{background:linear-gradient(135deg,#073b9a,#041a4a)}
-.f1-screen .collection-hero{background:linear-gradient(135deg,#0d381e,#06170d)}
-.pokemon-screen .collection-hero{background:linear-gradient(135deg,#133b9e,#071742)}
-.brasileirao-screen .collection-hero{background:linear-gradient(135deg,#094727,#031f10)}
-.champions-screen .collection-hero{background:linear-gradient(135deg,#0b236b,#040e2b)}
-.libertadores-screen .collection-hero{background:linear-gradient(135deg,#422008,#1a0b02)}
-.adrenalyn-screen .collection-hero{background:linear-gradient(135deg,#841c14,#380a07)}
-.shop-screen .collection-hero{background:linear-gradient(135deg,#12422c,#071d13)}
+h1,h2{font-family:"Georgia","Times New Roman",serif;font-weight:700}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;margin:10px 0;box-shadow:0 6px 20px rgba(38,52,66,.06)}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.back{background:#fff;border:1px solid #cfd7df;color:#263442;border-radius:10px;padding:8px 12px;cursor:pointer;font-weight:700}
+.btn{background:var(--yellow);border:0;border-radius:12px;padding:12px 20px;font-weight:900;cursor:pointer;width:100%;margin-top:10px}
 
-.cup-year-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:20px 4px}
-.cup-year-card{border:0;background:transparent;color:#20252a;cursor:pointer;text-align:center;padding:0;transition:transform .12s}
-.cup-year-card:hover{transform:translateY(-2px)}
-.year-flag{display:grid;place-items:center;min-height:110px;border-radius:18px;background:#fff;border:1px solid #dce2e7;box-shadow:0 8px 22px rgba(29,42,55,.1);font-size:62px}
-.triple-hosts{font-size:36px;letter-spacing:-6px}
-.cup-year-card b{display:flex;align-items:center;justify-content:center;min-height:2.2em;margin-top:10px;font-size:14px;line-height:1.2}
+.home-hero-container{width:100%;border-radius:18px;overflow:hidden;background:linear-gradient(180deg,#1b0a2a 0%,#3b145d 50%,#19052b 100%);box-shadow:0 12px 30px rgba(45,10,75,0.25);margin-bottom:16px;border:2px solid #d4af37;text-align:center;padding:22px 10px 16px}
+.home-hero-title{color:#ffd700;font-size:clamp(24px,5.5vw,38px);font-weight:900;letter-spacing:1px;text-shadow:0 2px 8px #000;margin-bottom:4px}
+.home-hero-sub{color:#f8fafc;font-size:11px;letter-spacing:3px;font-weight:800;text-transform:uppercase;margin-bottom:16px}
+.pele-throne-art{max-width:650px;margin:0 auto;border-radius:14px;background:radial-gradient(circle at center,#ffd700 0%,#800020 60%,#1a0010 100%);padding:20px 10px;display:flex;flex-direction:column;align-items:center}
+.pele-illustration{font-size:54px}
+.pele-legend-row{display:flex;justify-content:center;gap:10px;margin-top:10px;font-size:22px}
 
-.finder-card{width:min(640px,94%);margin:12px auto 0;padding:20px;display:flex;align-items:center;gap:18px;border:1px solid #d9dfe5;border-radius:20px;background:#fff;box-shadow:0 8px 24px rgba(27,41,54,.08)}
-.finder-icon{flex:0 0 80px;height:80px;display:grid;place-items:center;border-radius:20px;background:linear-gradient(145deg,#123a8a,#05215c);color:#ffd54a;font-size:42px}
+.home-categories-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.home-cat-card{border-radius:16px;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:0 6px 18px rgba(0,0,0,.06);cursor:pointer;display:flex;flex-direction:column;transition:transform .15s ease}
+.home-cat-card:hover{transform:translateY(-3px)}
+.home-cat-banner{aspect-ratio:4/5;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:10px;text-align:center}
+.home-cat-card .cat-name{padding:8px 4px;font-weight:900;font-size:11px;text-align:center;color:#1e293b;text-transform:uppercase}
+.home-cat-card.full-width{grid-column:1 / -1;max-width:320px;margin:0 auto;width:100%}
+.home-cat-card.full-width .home-cat-banner{aspect-ratio:16/7}
 
-.cup-year-banner{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:60px;margin:2px 0 12px;padding:8px 16px;border:2px solid #e6b833;border-radius:18px;background:linear-gradient(180deg,#0642a8,#082d76);color:#fff}
-.cup-year-banner h1{margin:0;color:#ffd75f;font-size:22px}
-.album-switch{display:flex;justify-content:center;gap:7px;margin:0 0 12px}
-.album-switch button{padding:7px 16px;border:1px solid #d1d8df;border-radius:18px;background:#fff;color:#253141;font-weight:800;cursor:pointer}
-.album-switch button.active{background:#0b3b91;color:#fff;border-color:#0b3b91}
+.bg-fifa{background:linear-gradient(135deg,#073b9a,#031c4d)}
+.bg-f1{background:radial-gradient(circle,#facc15 0%,#15803d 70%,#064e3b 100%)}
+.bg-adrenalyn{background:linear-gradient(135deg,#dc2626,#7f1d1d)}
+.bg-pokemon{background:linear-gradient(135deg,#2563eb,#1e3a8a)}
+.bg-brasileirao{background:linear-gradient(135deg,#15803d,#064e3b)}
+.bg-champions{background:linear-gradient(135deg,#1e1b4b,#0f172a)}
+.bg-libertadores{background:linear-gradient(135deg,#78350f,#270e03)}
+.bg-loja{background:linear-gradient(135deg,#0f766e,#134e4a)}
 
-.catalog-layout{display:grid;grid-template-columns:160px 1fr;gap:12px;align-items:start}
+.collection-hero{border-radius:18px;padding:24px;color:#fff;text-align:center;margin-bottom:14px;border:2px solid rgba(255,255,255,0.2)}
+.cup-year-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:20px 0}
+.cup-year-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 6px;text-align:center;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.05)}
+.year-flag{font-size:38px;display:block;margin-bottom:6px}
+.triple-hosts{font-size:26px;letter-spacing:-4px}
+.cup-year-card b{font-size:12px;color:#0f172a;display:block}
+
+.cup-year-banner{background:linear-gradient(180deg,#0642a8,#082d76);border:2px solid #e6b833;color:#fff;border-radius:16px;padding:10px 16px;display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.cup-year-banner h1{font-size:20px;color:#ffd75f}
+
+.album-switch{display:flex;justify-content:center;gap:8px;margin-bottom:12px}
+.album-switch button{background:#fff;border:1px solid #cbd5e1;padding:6px 14px;border-radius:16px;font-weight:800;font-size:13px;cursor:pointer}
+.album-switch button.active{background:var(--royal-blue);color:#fff;border-color:var(--royal-blue)}
+
+.catalog-layout{display:grid;grid-template-columns:170px 1fr;gap:12px;align-items:start}
 .group-menu{padding:10px 8px;border:1px solid #d9dfe5;border-radius:16px;background:#fff;box-shadow:0 6px 20px rgba(27,42,57,.08)}
-.album-side-head{padding:2px 2px 10px;border-bottom:1px solid #e4e8ec;margin-bottom:8px}
-.album-side-head b{display:block;font-size:15px}
-.album-side-head span{display:block;margin-top:4px;font-size:10px;font-weight:800;color:#3c4651}
-.group-panel{margin:0 0 5px;border-radius:9px;overflow:hidden}
-.group-toggle{width:100%;min-height:44px;padding:6px 8px;border:1px solid transparent;border-radius:9px;background:#f8fafc;color:#151d25;text-align:left;cursor:pointer}
+.album-side-head{padding-bottom:8px;border-bottom:1px solid #f1f5f9;margin-bottom:8px;font-size:13px;font-weight:900;color:#0f172a}
+.group-panel{margin-bottom:6px;border-radius:8px;overflow:hidden}
+.group-toggle{width:100%;background:#f8fafc;border:1px solid #e2e8f0;padding:7px 8px;text-align:left;font-size:11px;font-weight:800;cursor:pointer;display:flex;justify-content:space-between}
 .group-panel.open .group-toggle{border-color:#f1a621;background:#fffaf0}
-.group-title{font-size:11px;display:block;font-weight:800}
-.group-flags{display:flex;align-items:center;gap:3px;margin-top:3px}
-.group-flags .team-flag{font-size:14px}
 .group-teams{padding:4px 2px 6px;background:#f7f9fb;display:none}
-.group-panel.open .group-teams{display:block}
-.team-link{width:100%;display:flex;align-items:center;gap:6px;padding:6px 5px;border:0;border-radius:7px;background:transparent;color:#344253;cursor:pointer;font-size:11px;text-align:left}
+.group-panel.open .group-teams{display:flex;flex-direction:column;gap:3px}
+.team-link{width:100%;display:flex;align-items:center;gap:6px;padding:6px 5px;border:0;border-radius:7px;background:transparent;color:#344253;cursor:pointer;font-size:11px;text-align:left;font-weight:700}
 .team-link:hover,.team-link.active{background:#16834d;color:#fff}
-.side-extra{display:block;width:100%;padding:8px 6px;border:1px solid #e1e5e9;border-radius:8px;background:#f8fafc;color:#35404c;text-align:left;font-size:10px;font-weight:800;margin-top:5px;cursor:pointer}
-.side-extra:hover{background:#e9edf2}
+.side-extra{width:100%;padding:7px 6px;margin-top:4px;background:#f1f5f9;border:1px solid #cbd5e1;border-radius:6px;font-size:10px;font-weight:800;cursor:pointer;text-align:left}
 
-.team-view{padding:14px 12px;border:1px solid #d9dfe5;border-radius:18px;background:#fff;box-shadow:0 6px 20px rgba(27,42,57,.08)}
-.team-toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+.team-view{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px}
+.team-toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;gap:10px}
 .team-head{display:flex;align-items:center;gap:8px}
 .team-head h2{margin:0;font-size:22px}
 .team-search{position:relative;flex:0 0 min(240px,45%)}
-.team-search .ui-icon{position:absolute;left:10px;top:10px;width:18px;height:18px}
-.team-search input{height:38px;padding:6px 9px 6px 34px!important;border-radius:14px!important;font-size:13px;border:1px solid #ccd5de}
-.clear-search{position:absolute;right:6px;top:6px;width:26px;height:26px;border:0;border-radius:50%;background:#eef1f4;cursor:pointer;font-weight:bold}
+.team-search input{width:100%;height:38px;padding:6px 30px 6px 12px;border-radius:14px;font-size:13px;border:1px solid #ccd5de}
+.clear-search{position:absolute;right:6px;top:6px;width:26px;height:26px;border:0;border-radius:50%;background:#eef1f4;cursor:pointer}
 
-.product-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
-.product-card{display:flex;flex-direction:column;padding:5px;border-radius:10px;background:#fff;border:1px solid #e1e4e7;box-shadow:0 3px 10px rgba(23,37,53,.08);cursor:pointer;transition:transform .12s, border-color .12s}
-.product-card:hover{transform:translateY(-2px);border-color:#f0b22a}
-.product-art{width:100%;aspect-ratio:2/3;overflow:hidden;border-radius:7px;background:#f8fafc;display:flex;align-items:center;justify-content:center}
+.product-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.product-card{display:flex;flex-direction:column;padding:5px;border-radius:10px;background:#fff;border:1px solid #e1e4e7;box-shadow:0 3px 10px rgba(23,37,53,.08);cursor:pointer;transition:transform .12s}
+.product-card:hover{transform:translateY(-2px);border-color:#f59e0b}
+.product-art{aspect-ratio:2/3;width:100%;border-radius:6px;overflow:hidden;background:#f8fafc;display:flex;align-items:center;justify-content:center}
+.flag-sticker{width:100%;height:100%;background:linear-gradient(135deg,var(--f1,#083b8f) 0%,var(--f2,#1c5fc4) 50%,var(--f3,#ffffff) 100%);display:flex;flex-direction:column;justify-content:space-between;align-items:center;padding:6px 3px;color:#fff;box-shadow:inset 0 0 10px rgba(0,0,0,0.3)}
+.flag-badge{font-size:8px;font-weight:900;background:rgba(0,0,0,0.5);padding:2px 4px;border-radius:4px;color:#ffd700}
+.flag-motif{font-size:24px;margin:auto;text-shadow:0 2px 4px rgba(0,0,0,0.6)}
+.flag-country{font-size:8px;font-weight:800;text-transform:uppercase;text-shadow:0 1px 2px #000}
+.product-code{text-align:center;font-weight:900;font-size:11px;margin-top:4px;color:#111}
+.product-meta{display:flex;justify-content:space-between;font-size:10px;color:#475569;margin-top:2px;border-top:1px solid #f1f5f9;padding-top:2px}
 
-.flag-sticker{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:space-between;position:relative;padding:8px 4px;background:linear-gradient(135deg,var(--f1, #083b8f) 0%,var(--f2, #1c5fc4) 50%,var(--f3, #ffffff) 100%);color:#fff;border-radius:7px;box-shadow:inset 0 0 12px rgba(0,0,0,0.35)}
-.flag-motif{font-size:clamp(16px,2.8vw,32px);text-shadow:0 2px 6px rgba(0,0,0,.7);margin:auto}
-.flag-badge{font-size:9px;font-weight:900;background:rgba(0,0,0,0.5);padding:2px 5px;border-radius:4px;letter-spacing:1px;color:#ffd700}
-.flag-country{font-size:8px;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;text-shadow:0 1px 3px #000}
+.finder-card{width:min(640px,94%);margin:12px auto 0;padding:18px;display:flex;align-items:center;gap:16px;border:1px solid #d9dfe5;border-radius:18px;background:#fff;box-shadow:0 6px 18px rgba(0,0,0,0.06)}
+.finder-icon{flex:0 0 70px;height:70px;display:grid;place-items:center;border-radius:18px;background:linear-gradient(145deg,#123a8a,#05215c);color:#ffd54a;font-size:36px}
 
-.product-code{padding-top:5px;text-align:center;font-size:11px;font-weight:900;color:#111}
-.product-meta{display:flex;justify-content:space-between;gap:2px;padding-top:3px;border-top:1px solid #e1e4e7;font-size:10px;color:#222}
-.sold-out{color:var(--red);font-weight:800}
+.shop-choice-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:20px 0 16px}
+.shop-choice{border:1px solid #d9dfe5;border-radius:16px;background:#fff;color:#15202a;box-shadow:0 6px 18px rgba(27,41,54,.08);cursor:pointer;text-align:left;overflow:hidden;transition:transform .12s}
+.shop-choice:hover{transform:translateY(-2px)}
+.shop-choice-art{min-height:100px;display:flex;align-items:center;justify-content:center;font-size:42px;background:linear-gradient(145deg,#0d3c29,#07140e);color:#fff}
+.shop-choice:nth-child(2) .shop-choice-art{background:linear-gradient(145deg,#123a78,#061a3a)}
+.shop-choice:nth-child(3) .shop-choice-art{background:linear-gradient(145deg,#831d23,#2d080b)}
+.shop-choice-copy{display:block;padding:10px 12px}
+.shop-choice-copy b{font-size:14px;display:block}
+.shop-choice-copy small{font-size:11px;color:#56616d}
+.shop-shelf{min-height:80px;display:flex;align-items:center;gap:12px;padding:14px 16px;border:1px solid #d9dfe5;border-radius:16px;background:#fff;margin-top:10px}
 
 .cartline{display:grid;grid-template-columns:1fr auto;gap:8px;border-bottom:1px solid var(--line);padding:10px 0}
 .price{color:#b47500;font-weight:900}
@@ -116,190 +130,303 @@ h1,h2,h3{margin:8px 0 12px} h1{color:#07326f} .muted{color:var(--muted)} .card{b
 .danger{border-left-color:var(--red);background:#fff0f0}
 input,select{width:100%;background:#fff;color:#18212b;border:1px solid var(--line);border-radius:10px;padding:12px;margin:5px 0}
 
-.item-modal{position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.75);display:none;align-items:center;justify-content:center;padding:18px}
-.item-modal.open{display:flex}
-.item-dialog{width:min(92vw,360px);background:#fff;border-radius:18px;padding:18px;box-shadow:0 24px 80px #000;text-align:center}
-.modal-fallback{width:100%;aspect-ratio:2/3;max-height:40vh;overflow:hidden;border-radius:12px;margin:0 auto 10px}
-.modal-fallback .flag-motif{font-size:64px}
+.item-modal{position:fixed;inset:0;background:rgba(0,0,0,0.75);display:none;place-items:center;z-index:200;padding:16px}
+.item-modal.open{display:grid}
+.item-dialog{background:#fff;border-radius:20px;padding:18px;width:min(360px,95vw);text-align:center}
+.modal-fallback{width:100%;aspect-ratio:2/3;max-height:40vh;border-radius:12px;overflow:hidden;margin:0 auto 12px}
 .modal-close{float:right;margin-bottom:8px}
 
-.bottom{position:fixed;bottom:0;left:0;right:0;height:86px;padding:12px;background:#02080c;border-top:1px solid #122430;display:flex;justify-content:center;z-index:50}
-.album-cta{width:min(900px,100%);height:62px;display:grid;grid-template-columns:58px 1fr auto 28px;align-items:center;gap:8px;padding:5px 15px;border:2px solid #ffe48d;border-radius:31px;background:linear-gradient(110deg,#ffd96d 0%,#ffc21d 55%,#ff9e16 100%);color:#07326f;font-weight:950;cursor:pointer}
-.album-cta .cta-cart{font-size:30px}
-.album-cta .cta-label{font-size:17px;text-align:center}
-.album-cta .cta-count{padding:8px 12px;border-radius:11px;background:#082c70;color:#fff;font-size:13px}
-.album-cta .cta-arrow{font-size:30px}
-
-.shop-choice-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:20px 0 16px}
-.shop-choice{border:1px solid #d9dfe5;border-radius:18px;background:#fff;color:#15202a;box-shadow:0 8px 22px rgba(27,41,54,.1);cursor:pointer;text-align:left;overflow:hidden;transition:transform .12s}
-.shop-choice:hover{transform:translateY(-2px)}
-.shop-choice-art{min-height:110px;display:flex;align-items:center;justify-content:center;font-size:46px;background:linear-gradient(145deg,#0d3c29,#07140e);color:#fff}
-.shop-choice:nth-child(2) .shop-choice-art{background:linear-gradient(145deg,#123a78,#061a3a)}
-.shop-choice:nth-child(3) .shop-choice-art{background:linear-gradient(145deg,#831d23,#2d080b)}
-.shop-choice-copy{display:block;padding:12px 14px}
-.shop-choice-copy b{font-size:15px;display:block}
-.shop-choice-copy small{font-size:11px;color:#56616d}
-.shop-shelf{min-height:80px;display:flex;align-items:center;gap:13px;padding:16px 18px;border:1px solid #d9dfe5;border-radius:17px;background:#fff;margin-top:10px}
+.bottom{position:fixed;bottom:0;left:0;right:0;height:86px;padding:12px;background:#02080c;border-top:1px solid #122430;display:flex;justify-content:center;z-index:90}
+.album-cta{width:min(900px,100%);height:60px;background:linear-gradient(90deg,#ffd54f 0%,#f59e0b 100%);border:2px solid #fff;border-radius:30px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;color:#07361f;font-weight:900;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,0.3)}
+.album-cta .cta-cart{font-size:28px}
+.album-cta .cta-label{font-size:16px;text-align:center}
+.album-cta .cta-count{padding:6px 10px;border-radius:10px;background:#082c70;color:#fff;font-size:12px}
 
 footer{color:#8f98a5;text-align:center;padding:25px 8px;font-size:13px}
 
 @media(max-width:720px){
-  header.site-header.approved-header{top:6px;width:calc(100% - 20px);height:68px;padding:7px 10px}
+  header.site-header{height:66px;padding:6px 10px}
   .approved-brand-copy{max-width:140px}
   .approved-brand-name{font-size:14px}
   .approved-brand-tagline{font-size:7px}
-  .approved-category-grid{gap:4px;padding:12px 4px}
-  .cup-year-grid{gap:8px;margin:16px 2px}
-  .year-flag{min-height:76px;font-size:38px;border-radius:14px}
-  .cup-year-card b{font-size:10px;min-height:2.8em}
+  .home-categories-grid{gap:6px}
   .catalog-layout{grid-template-columns:92px 1fr;gap:6px}
-  .group-menu{padding:6px 4px}
-  .group-title{font-size:9px}
-  .team-link{font-size:9px;padding:4px 2px}
-  .team-head h2{font-size:16px}
-  .product-grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:4px}
-  .product-card{padding:2px}
-  .product-code{font-size:8px}
-  .product-meta{font-size:7px}
-  .album-cta{height:54px;grid-template-columns:38px 1fr auto 18px;padding:4px 10px}
+  .product-grid{grid-template-columns:repeat(3,1fr);gap:4px}
+  .cup-year-grid{grid-template-columns:repeat(2,1fr);gap:8px;margin:16px 2px}
+  .year-flag{min-height:76px;font-size:36px;border-radius:14px}
+  .cup-year-card b{font-size:10px;min-height:2.8em}
+  .product-code{font-size:9px}
+  .product-meta{font-size:8px}
+  .album-cta{height:52px;grid-template-columns:36px 1fr auto 18px;padding:4px 10px}
   .album-cta .cta-label{font-size:13px}
 }
 </style>
 </head>
 <body>
-<header class="site-header approved-header">
+
+<header class="site-header">
   <div class="approved-brand" onclick="go('home')">
     <div class="brand-logo-badge" aria-hidden="true">⚽</div>
-    <span class="approved-brand-copy">
-      <b class="approved-brand-name">Clube das Figurinhas</b>
-      <small class="approved-brand-tagline">PAIXÃO QUE COMPLETA</small>
-    </span>
+    <div class="approved-brand-copy">
+      <span class="approved-brand-name">Clube das Figurinhas</span>
+      <span class="approved-brand-tagline">PAIXÃO QUE COMPLETA</span>
+    </div>
   </div>
   <div class="approved-header-actions">
-    <label class="mini-search" aria-label="Buscar"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="globalSearch" type="search" placeholder="Buscar" onkeydown="if(event.key==='Enter')quickSearch()"></label>
-    <button class="pill cart-pill" onclick="showCart()" aria-label="Abrir carrinho"><svg class="ui-icon" viewBox="0 0 24 24"><path d="M3 4h2l2.2 10h10.9l2-7H6"/><circle cx="9" cy="19" r="1.5"/><circle cx="18" cy="19" r="1.5"/></svg><span id="cartCount">0</span></button>
+    <div class="mini-search">
+      <svg class="ui-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+      <input id="globalSearch" type="search" placeholder="Buscar" onkeydown="if(event.key==='Enter')quickSearch()">
+    </div>
+    <button class="cart-pill" onclick="go('cart')" aria-label="Ver Carrinho">
+      🛒 <span id="cartCount">0</span>
+    </button>
   </div>
 </header>
+
+<div class="category-bar-wrapper">
+  <div class="category-bar">
+    <button class="cat-btn active" onclick="go('home')"><div class="cat-btn-icon bg-fifa">🏆</div><span class="cat-btn-title">FIFA</span></button>
+    <button class="cat-btn" onclick="go('f1')"><div class="cat-btn-icon bg-f1">🏎️</div><span class="cat-btn-title">FÓRMULA 1</span></button>
+    <button class="cat-btn" onclick="go('adrenalyn')"><div class="cat-btn-icon bg-adrenalyn">🎴</div><span class="cat-btn-title">ADRENALYN</span></button>
+    <button class="cat-btn" onclick="go('pokemon')"><div class="cat-btn-icon bg-pokemon">⚡</div><span class="cat-btn-title">POKÉMON</span></button>
+    <button class="cat-btn" onclick="go('brasileirao')"><div class="cat-btn-icon bg-brasileirao">⚽</div><span class="cat-btn-title">BRASILEIRÃO</span></button>
+    <button class="cat-btn" onclick="go('champions')"><div class="cat-btn-icon bg-champions">🌟</div><span class="cat-btn-title">CHAMPIONS</span></button>
+    <button class="cat-btn" onclick="go('libertadores')"><div class="cat-btn-icon bg-libertadores">⭐</div><span class="cat-btn-title">LIBERTA</span></button>
+    <button class="cat-btn" onclick="go('outros')"><div class="cat-btn-icon bg-loja">🛍️</div><span class="cat-btn-title">LOJA CLUBE</span></button>
+  </div>
+</div>
+
 <main>
-<div class="approved-category-grid" aria-label="Escolha sua coleção">
-  <button class="approved-category" type="button" onclick="go('home')" aria-label="Abrir FIFA e Copas"><div class="cat-card-art">🏆</div><span class="cat-card-label">FIFA</span></button>
-  <button class="approved-category" type="button" onclick="go('f1')" aria-label="Abrir Fórmula 1"><div class="cat-card-art">🏎️</div><span class="cat-card-label">F1</span></button>
-  <button class="approved-category" type="button" onclick="go('adrenalyn')" aria-label="Abrir Adrenalyn XL"><div class="cat-card-art">🎴</div><span class="cat-card-label">ADRENALYN</span></button>
-  <button class="approved-category" type="button" onclick="go('pokemon')" aria-label="Abrir Pokémon"><div class="cat-card-art">⚡</div><span class="cat-card-label">POKÉMON</span></button>
-  <button class="approved-category" type="button" onclick="go('brasileirao')" aria-label="Abrir Brasileirão"><div class="cat-card-art">⚽</div><span class="cat-card-label">BRASILEIRÃO</span></button>
-  <button class="approved-category" type="button" onclick="go('champions')" aria-label="Abrir Champions League"><div class="cat-card-art">🌟</div><span class="cat-card-label">CHAMPIONS</span></button>
-  <button class="approved-category" type="button" onclick="go('libertadores')" aria-label="Abrir Libertadores"><div class="cat-card-art">⭐</div><span class="cat-card-label">LIBERTA</span></button>
-  <button class="approved-category shop-category" type="button" onclick="go('outros')" aria-label="Abrir Loja do Clube"><span class="shop-art">🛍️</span><span class="shop-label">LOJA</span></button>
-</div>
-
-<section id="home" class="screen active approved-home">
-  <div class="fifa-landing">
-    <div class="collection-hero worldcup-hero">
-      <div class="collection-hero-copy"><span class="hero-kicker">COLEÇÕES OFICIAIS</span><h1>FIFA WORLD CUP</h1><p>ÁLBUNS E FIGURINHAS POR ANO</p></div>
+  <!-- HOME COM REI PELÉ -->
+  <section id="home" class="screen active">
+    <div class="home-hero-container">
+      <div class="home-hero-title">CLUBE DAS FIGURINHAS</div>
+      <div class="home-hero-sub">— PAIXÃO QUE COMPLETA —</div>
+      
+      <div class="pele-throne-art">
+        <div class="pele-illustration">👑 ⚽ 👑</div>
+        <div style="color:#ffd700;font-weight:900;font-size:17px;margin-top:6px;">REI PELÉ &amp; LENDAS DO FUTEBOL</div>
+        <div class="pele-legend-row">
+          <span>🇦🇷</span><span>🇧🇷</span><span>🇫🇷</span><span>🇩🇪</span><span>🇮🇹</span><span>🇵🇹</span><span>🇳🇱</span>
+        </div>
+      </div>
     </div>
-    <div class="cup-year-grid" aria-label="Escolha o ano da Copa">
-      <button class="cup-year-card" type="button" onclick="openCup('2014')"><span class="year-flag" aria-hidden="true">🇧🇷</span><b>🇧🇷 Copa 2014 🇧🇷</b></button>
-      <button class="cup-year-card" type="button" onclick="openCup('2018')"><span class="year-flag" aria-hidden="true">🇷🇺</span><b>🇷🇺 Copa 2018 🇷🇺</b></button>
-      <button class="cup-year-card" type="button" onclick="openCup('2022')"><span class="year-flag" aria-hidden="true">🇶🇦</span><b>🇶🇦 Copa 2022 🇶🇦</b></button>
-      <button class="cup-year-card" type="button" onclick="openCup('2026')"><span class="year-flag triple-hosts" aria-hidden="true">🇺🇸🇨🇦🇲🇽</span><b>🇺🇸🇨🇦🇲🇽 Copa 2026 🇺🇸🇨🇦🇲🇽</b></button>
+
+    <!-- GRADE DE CATEGORIAS DA HOME -->
+    <div class="home-categories-grid">
+      <div class="home-cat-card" onclick="go('cups')">
+        <div class="home-cat-banner bg-fifa">
+          <div style="font-size:36px;">🏆</div>
+          <b style="margin-top:4px;font-size:14px;">FIFA WORLD CUP</b>
+        </div>
+        <div class="cat-name">FIFA</div>
+      </div>
+
+      <div class="home-cat-card" onclick="go('f1')">
+        <div class="home-cat-banner bg-f1">
+          <div style="font-size:36px;">🏎️</div>
+          <b style="margin-top:4px;font-size:13px;">AYRTON SENNA</b>
+        </div>
+        <div class="cat-name">FÓRMULA 1</div>
+      </div>
+
+      <div class="home-cat-card" onclick="go('adrenalyn')">
+        <div class="home-cat-banner bg-adrenalyn">
+          <div style="font-size:36px;">🎴</div>
+          <b style="margin-top:4px;font-size:13px;">ADRENALYN XL</b>
+        </div>
+        <div class="cat-name">ADRENALYN XL</div>
+      </div>
+
+      <div class="home-cat-card" onclick="go('pokemon')">
+        <div class="home-cat-banner bg-pokemon">
+          <div style="font-size:36px;">⚡</div>
+          <b style="margin-top:4px;font-size:13px;">POKÉMON</b>
+        </div>
+        <div class="cat-name">POKÉMON</div>
+      </div>
+
+      <div class="home-cat-card" onclick="go('brasileirao')">
+        <div class="home-cat-banner bg-brasileirao">
+          <div style="font-size:36px;">⚽</div>
+          <b style="margin-top:4px;font-size:13px;">BRASILEIRÃO</b>
+        </div>
+        <div class="cat-name">BRASILEIRÃO</div>
+      </div>
+
+      <div class="home-cat-card" onclick="go('champions')">
+        <div class="home-cat-banner bg-champions">
+          <div style="font-size:36px;">🌟</div>
+          <b style="margin-top:4px;font-size:13px;">CHAMPIONS LEAGUE</b>
+        </div>
+        <div class="cat-name">CHAMPIONS LEAGUE</div>
+      </div>
+
+      <div class="home-cat-card full-width" onclick="go('libertadores')">
+        <div class="home-cat-banner bg-libertadores">
+          <div style="font-size:30px;">⭐ 🏆 ⭐</div>
+          <b style="font-size:13px;">CONMEBOL LIBERTADORES</b>
+        </div>
+        <div class="cat-name">LIBERTADORES</div>
+      </div>
     </div>
-    <div class="finder-card"><div class="finder-icon">⚽</div><div><h2>Encontre a figurinha que falta!</h2><p>Escolha o ano da Copa, encontre sua seleção e complete seu álbum.</p></div></div>
-  </div>
-</section>
+  </section>
 
-<section id="cupDetail" class="screen">
-  <div class="cup-year-banner"><button class="back" onclick="go('home')">← Voltar</button><h1 id="cupTitle">Copa do Mundo</h1></div>
-  <div class="album-switch" aria-label="Trocar álbum"><button data-year="2014" onclick="openCup('2014')">2014</button><button data-year="2018" onclick="openCup('2018')">2018</button><button data-year="2022" onclick="openCup('2022')">2022</button><button data-year="2026" onclick="openCup('2026')">2026</button></div>
-  <input class="hidden" id="teamSearch" value="">
-  <div class="catalog-layout"><aside class="group-menu" id="groups"></aside><section class="team-view" id="teamWorkspace"></section></div>
-</section>
+  <!-- SELEÇÃO DE COPAS -->
+  <section id="cups" class="screen">
+    <div class="collection-hero bg-fifa">
+      <h1 style="color:#ffd54a;font-size:28px;">FIFA WORLD CUP</h1>
+      <p style="font-size:12px;letter-spacing:2px;">ESCOLHA O ANO DA COPA</p>
+    </div>
+    <div class="cup-year-grid">
+      <div class="cup-year-card" onclick="openCup('2014')"><span class="year-flag">🇧🇷</span><b>🇧🇷 Copa 2014 🇧🇷</b></div>
+      <div class="cup-year-card" onclick="openCup('2018')"><span class="year-flag">🇷🇺</span><b>🇷🇺 Copa 2018 🇷🇺</b></div>
+      <div class="cup-year-card" onclick="openCup('2022')"><span class="year-flag">🇶🇦</span><b>🇶🇦 Copa 2022 🇶🇦</b></div>
+      <div class="cup-year-card" onclick="openCup('2026')"><span class="year-flag triple-hosts">🇺🇸🇨🇦🇲🇽</span><b>🇺🇸🇨🇦🇲🇽 Copa 2026 🇺🇸🇨🇦🇲🇽</b></div>
+    </div>
+    <div class="finder-card"><div class="finder-icon">⚽</div><div><h2>Encontre a figurinha que falta!</h2><p class="muted">Escolha o ano, acesse o grupo e complete sua coleção.</p></div></div>
+  </section>
 
-<section id="adrenalyn" class="screen collection-screen adrenalyn-screen">
-  <div class="collection-hero"><div class="collection-hero-copy"><span class="hero-kicker">PANINI</span><h1>ADRENALYN XL</h1><p>CARDS, CRAQUES E EDIÇÕES ESPECIAIS</p></div></div>
-  <div class="album-switch"><button class="active" onclick="renderAdrenalynSection('base')">Team Mates</button><button onclick="renderAdrenalynSection('fans')">Fans' Favourite</button><button onclick="renderAdrenalynSection('power')">Power & Titans</button><button onclick="renderAdrenalynSection('masters')">Top Masters</button></div>
-  <div class="team-view" id="adrenalynWorkspace" style="margin-top:10px"></div>
-</section>
+  <!-- CATÁLOGO DE FIGURINHAS DA COPA -->
+  <section id="cupDetail" class="screen">
+    <div class="cup-year-banner"><button class="back" onclick="go('cups')">← Voltar</button><h1 id="cupTitle">Copa do Mundo</h1></div>
+    <div class="album-switch"><button data-year="2014" onclick="openCup('2014')">2014</button><button data-year="2018" onclick="openCup('2018')">2018</button><button data-year="2022" onclick="openCup('2022')">2022</button><button data-year="2026" onclick="openCup('2026')">2026</button></div>
+    <div class="catalog-layout"><aside class="group-menu" id="groups"></aside><section class="team-view" id="teamWorkspace"></section></div>
+  </section>
 
-<section id="f1" class="screen collection-screen f1-screen">
-  <div class="collection-hero"><div class="collection-hero-copy"><span class="hero-kicker">AYRTON SENNA</span><h1>FÓRMULA 1</h1><p>NOSSA LENDA</p></div></div>
-  <div class="finder-card"><div class="finder-icon">🏎️</div><div><h2>Em breve!</h2><p>Coleção em atualização com novidades exclusivas.</p></div></div>
-</section>
+  <!-- ADRENALYN XL -->
+  <section id="adrenalyn" class="screen collection-screen adrenalyn-screen">
+    <div class="collection-hero"><span class="hero-kicker">PANINI</span><h1>ADRENALYN XL</h1><p>CARDS, CRAQUES E EDIÇÕES ESPECIAIS</p></div>
+    <div class="album-switch"><button class="active" onclick="renderAdrenalynSection('base')">Team Mates</button><button onclick="renderAdrenalynSection('fans')">Fans' Favourite</button><button onclick="renderAdrenalynSection('power')">Power & Titans</button><button onclick="renderAdrenalynSection('masters')">Top Masters</button></div>
+    <div class="team-view" id="adrenalynWorkspace" style="margin-top:10px"></div>
+  </section>
 
-<section id="pokemon" class="screen collection-screen pokemon-screen">
-  <div class="collection-hero"><div class="collection-hero-copy"><span class="hero-kicker">CARDS E FIGURINHAS</span><h1>POKÉMON</h1><p>COLECIONE, TROQUE E COMPLETE</p></div></div>
-  <div class="finder-card"><div class="finder-icon">⚡</div><div><h2>Em breve!</h2><p>Coleção em atualização com novidades exclusivas.</p></div></div>
-</section>
+  <!-- F1 -->
+  <section id="f1" class="screen collection-screen f1-screen">
+    <div class="collection-hero"><span class="hero-kicker">AYRTON SENNA</span><h1>FÓRMULA 1</h1><p>NOSSA LENDA</p></div>
+    <div class="finder-card"><div class="finder-icon">🏎️</div><div><h2>Em breve!</h2><p class="muted">Coleção em atualização com novidades exclusivas.</p></div></div>
+  </section>
 
-<section id="brasileirao" class="screen collection-screen brasileirao-screen">
-  <div class="collection-hero"><div class="collection-hero-copy"><span class="hero-kicker">FUTEBOL BRASILEIRO</span><h1>BRASILEIRÃO</h1><p>ÁLBUNS E FIGURINHAS POR ANO</p></div></div>
-  <div class="finder-card"><div class="finder-icon">⚽</div><div><h2>Em breve!</h2><p>Coleção em atualização com novidades exclusivas.</p></div></div>
-</section>
+  <!-- POKEMON -->
+  <section id="pokemon" class="screen collection-screen pokemon-screen">
+    <div class="collection-hero"><span class="hero-kicker">CARDS E FIGURINHAS</span><h1>POKÉMON</h1><p>COLECIONE, TROQUE E COMPLETE</p></div>
+    <div class="finder-card"><div class="finder-icon">⚡</div><div><h2>Em breve!</h2><p class="muted">Coleção em atualização com novidades exclusivas.</p></div></div>
+  </section>
 
-<section id="champions" class="screen collection-screen champions-screen">
-  <div class="collection-hero"><div class="collection-hero-copy"><span class="hero-kicker">FUTEBOL EUROPEU</span><h1>CHAMPIONS LEAGUE</h1><p>ÁLBUNS E FIGURINHAS POR ANO</p></div></div>
-  <div class="finder-card"><div class="finder-icon">🏆</div><div><h2>Em breve!</h2><p>Coleção em atualização com novidades exclusivas.</p></div></div>
-</section>
+  <!-- BRASILEIRAO -->
+  <section id="brasileirao" class="screen collection-screen brasileirao-screen">
+    <div class="collection-hero"><span class="hero-kicker">FUTEBOL BRASILEIRO</span><h1>BRASILEIRÃO</h1><p>ÁLBUNS E FIGURINHAS POR ANO</p></div>
+    <div class="finder-card"><div class="finder-icon">⚽</div><div><h2>Em breve!</h2><p class="muted">Coleção em atualização com novidades exclusivas.</p></div></div>
+  </section>
 
-<section id="libertadores" class="screen collection-screen libertadores-screen">
-  <div class="collection-hero"><div class="collection-hero-copy"><span class="hero-kicker">CONMEBOL</span><h1>LIBERTADORES</h1><p>ÁLBUNS E FIGURINHAS POR ANO</p></div></div>
-  <div class="finder-card"><div class="finder-icon">⭐</div><div><h2>Em breve!</h2><p>Coleção em atualização com novidades exclusivas.</p></div></div>
-</section>
+  <!-- CHAMPIONS -->
+  <section id="champions" class="screen collection-screen champions-screen">
+    <div class="collection-hero"><span class="hero-kicker">FUTEBOL EUROPEU</span><h1>CHAMPIONS LEAGUE</h1><p>ÁLBUNS E FIGURINHAS POR ANO</p></div>
+    <div class="finder-card"><div class="finder-icon">🏆</div><div><h2>Em breve!</h2><p class="muted">Coleção em atualização com novidades exclusivas.</p></div></div>
+  </section>
 
-<section id="outros" class="screen collection-screen shop-screen">
-  <div class="collection-hero"><div class="collection-hero-copy"><span class="hero-kicker">CLUBE DAS FIGURINHAS</span><h1>LOJA DO CLUBE</h1><p>ÁLBUNS, PACOTINHOS E FIGURINHAS</p></div></div>
-  <div class="shop-choice-grid">
-    <button class="shop-choice" type="button" onclick="showShopArea('albuns')"><span class="shop-choice-art">📕</span><span class="shop-choice-copy"><b>ÁLBUNS</b><small>Copas e coleções por ano</small></span></button>
-    <button class="shop-choice" type="button" onclick="showShopArea('pacotinhos')"><span class="shop-choice-art">📦</span><span class="shop-choice-copy"><b>PACOTINHOS</b><small>Antigos e atuais</small></span></button>
-    <button class="shop-choice" type="button" onclick="showShopArea('figurinhas')"><span class="shop-choice-art">🎴</span><span class="shop-choice-copy"><b>FIGURINHAS</b><small>Avulsas e especiais</small></span></button>
-  </div>
-  <div class="shop-shelf" id="shopShelf"><div class="shop-shelf-icon">🛍️</div><div><h2>Escolha o que você procura</h2><p>Toque nas opções acima para ver os produtos.</p></div></div>
-</section>
+  <!-- LIBERTADORES -->
+  <section id="libertadores" class="screen collection-screen libertadores-screen">
+    <div class="collection-hero"><span class="hero-kicker">CONMEBOL</span><h1>LIBERTADORES</h1><p>ÁLBUNS E FIGURINHAS POR ANO</p></div>
+    <div class="finder-card"><div class="finder-icon">⭐</div><div><h2>Em breve!</h2><p class="muted">Coleção em atualização com novidades exclusivas.</p></div></div>
+  </section>
 
-<section id="cart" class="screen"><div class="row"><button class="back" onclick="historyBack()">← Voltar</button><h1>Carrinho</h1></div><div id="cartItems"></div><h2>Total produtos: <span id="cartTotal" class="price">R$ 0,00</span></h2><button class="btn" onclick="go('checkout')">IR PARA CHECKOUT</button></section>
+  <!-- LOJA DO CLUBE -->
+  <section id="outros" class="screen collection-screen shop-screen">
+    <div class="collection-hero"><span class="hero-kicker">CLUBE DAS FIGURINHAS</span><h1>LOJA DO CLUBE</h1><p>ÁLBUNS, PACOTINHOS E FIGURINHAS</p></div>
+    <div class="shop-choice-grid">
+      <button class="shop-choice" type="button" onclick="showShopArea('albuns')"><span class="shop-choice-art">📕</span><span class="shop-choice-copy"><b>ÁLBUNS</b><small>Copas e coleções por ano</small></span></button>
+      <button class="shop-choice" type="button" onclick="showShopArea('pacotinhos')"><span class="shop-choice-art">📦</span><span class="shop-choice-copy"><b>PACOTINHOS</b><small>Antigos e atuais</small></span></button>
+      <button class="shop-choice" type="button" onclick="showShopArea('figurinhas')"><span class="shop-choice-art">🎴</span><span class="shop-choice-copy"><b>FIGURINHAS</b><small>Avulsas e especiais</small></span></button>
+    </div>
+    <div class="shop-shelf" id="shopShelf"><div class="shop-shelf-icon">🛍️</div><div><h2>Escolha o que você procura</h2><p class="muted">Toque nas opções acima para ver os produtos.</p></div></div>
+  </section>
 
-<section id="checkout" class="screen"><div class="row"><button class="back" onclick="showCart()">← Carrinho</button><h1>Finalizar pedido</h1></div>
-<label>Nome *</label><input id="name" placeholder="Seu nome">
-<label>WhatsApp *</label><input id="phone" placeholder="DDD + número">
-<label>E-mail (opcional)</label><input id="email" type="email" placeholder="seu@email.com">
-<label>Como deseja receber? *</label><select id="delivery" onchange="deliveryChanged()"><option value="">Escolha</option><option value="pickup">Vou buscar</option><option value="shipping">Quero envio</option></select>
-<div id="pickupBox" class="hidden notice">Retirada: o local e horário serão combinados pelo WhatsApp após a confirmação do pedido.</div>
-<div id="addressBox" class="hidden">
-<label>CEP *</label><input id="cep"><label>Rua *</label><input id="street"><label>Número *</label><input id="number">
-<label>Complemento</label><input id="comp"><label>Bairro *</label><input id="district"><label>Cidade *</label><input id="city"><label>UF *</label><input id="uf" maxlength="2">
-<div class="notice danger"><b>Envio:</b> o frete precisa ser confirmado antes do Pix. O pedido será enviado ao WhatsApp como “Aguardando cálculo do frete”.</div>
-</div>
-<button class="btn" onclick="reviewOrder()">REVISAR PEDIDO</button></section>
+  <!-- CARRINHO -->
+  <section id="cart" class="screen">
+    <div class="row"><button class="back" onclick="historyBack()">← Voltar</button><h1>Carrinho</h1></div>
+    <div id="cartItems"></div>
+    <h2 style="margin-top:14px">Total: <span id="cartTotal" class="price">R$ 0,00</span></h2>
+    <button class="btn" onclick="go('checkout')">IR PARA CHECKOUT</button>
+  </section>
 
-<section id="review" class="screen"><div class="row"><button class="back" onclick="go('checkout')">← Alterar</button><h1>Revisão</h1></div><div id="reviewText" class="card"></div>
-<div id="pixArea" class="card hidden"><h2>Pix</h2><p>Total para retirada: <span id="pixTotal" class="price"></span></p>
-<textarea id="pixCode" readonly style="width:100%;min-height:90px;background:#fff;color:#111;border:1px solid #29313b;border-radius:10px;padding:10px"></textarea>
-<button class="btn" onclick="copyPix()">COPIAR PIX</button><div class="notice">“Já paguei” não confirma o recebimento automaticamente. O pedido ficará aguardando conferência.</div></div>
-<button class="btn" onclick="sendWhatsApp()">ENVIAR PEDIDO NO WHATSAPP</button></section>
+  <!-- CHECKOUT -->
+  <section id="checkout" class="screen">
+    <div class="row"><button class="back" onclick="go('cart')">← Carrinho</button><h1>Finalizar pedido</h1></div>
+    <label>Nome *</label><input id="name" placeholder="Seu nome">
+    <label>WhatsApp *</label><input id="phone" placeholder="DDD + número">
+    <label>E-mail (opcional)</label><input id="email" type="email" placeholder="seu@email.com">
+    <label>Como deseja receber? *</label>
+    <select id="delivery" onchange="deliveryChanged()">
+      <option value="">Escolha</option>
+      <option value="pickup">Vou buscar (Retirada)</option>
+      <option value="shipping">Quero envio (Correios/Transportadora)</option>
+    </select>
+    <div id="pickupBox" class="notice" style="display:none">Retirada: local e horário serão combinados via WhatsApp após confirmação.</div>
+    <div id="addressBox" style="display:none">
+      <label>CEP *</label><input id="cep">
+      <label>Rua *</label><input id="street">
+      <label>Número *</label><input id="number">
+      <label>Bairro *</label><input id="district">
+      <label>Cidade *</label><input id="city">
+      <label>UF *</label><input id="uf" maxlength="2">
+      <div class="notice danger"><b>Envio:</b> O valor do frete será calculado e informado no WhatsApp antes do pagamento.</div>
+    </div>
+    <button class="btn" onclick="reviewOrder()">REVISAR PEDIDO</button>
+  </section>
 
-<footer>Clube das Figurinhas • Pagamento por Pix • Pedidos pelo WhatsApp</footer>
+  <!-- REVISAO / PIX -->
+  <section id="review" class="screen">
+    <div class="row"><button class="back" onclick="go('checkout')">← Alterar</button><h1>Revisão do Pedido</h1></div>
+    <div id="reviewText" class="card"></div>
+    <div id="pixArea" class="card" style="display:none">
+      <h2>Pagamento Pix</h2>
+      <p>Total: <span id="pixTotal" class="price"></span></p>
+      <textarea id="pixCode" readonly style="width:100%;min-height:90px;background:#f8fafc;border:1px solid #cbd5e1;border-radius:10px;padding:8px;margin:8px 0"></textarea>
+      <button class="btn" onclick="copyPix()">COPIAR CHAVE PIX</button>
+    </div>
+    <button class="btn" style="background:#25d366;color:#fff;margin-top:10px" onclick="sendWhatsApp()">ENVIAR PEDIDO NO WHATSAPP</button>
+  </section>
+
+  <footer>Clube das Figurinhas • Pagamento por Pix • Pedidos pelo WhatsApp</footer>
 </main>
 
-<div class="item-modal" id="itemModal" onclick="if(event.target===this)closeItem()"><div class="item-dialog"><button class="back modal-close" onclick="closeItem()">✕</button><div id="modalFallback" class="modal-fallback"></div><h2 id="modalCode"></h2><div class="price" id="modalPrice"></div><button class="btn" id="modalAdd">ADICIONAR AO CARRINHO</button></div></div>
-<div class="bottom"><button class="album-cta" type="button" onclick="showCart()" aria-label="Completar meu álbum e abrir carrinho"><span class="cta-cart">🛒</span><span class="cta-label">COMPLETAR MEU ÁLBUM</span><span class="cta-count" id="bottomCount">0 ITENS</span><span class="cta-arrow">›</span></button></div>
+<div class="item-modal" id="itemModal" onclick="if(event.target===this)closeItem()">
+  <div class="item-dialog">
+    <button class="back modal-close" onclick="closeItem()">✕</button>
+    <div id="modalFallback" class="modal-fallback"></div>
+    <h2 id="modalCode"></h2>
+    <div class="price" id="modalPrice" style="margin:6px 0 12px;font-size:18px"></div>
+    <button class="btn" id="modalAdd">ADICIONAR AO CARRINHO</button>
+  </div>
+</div>
+
+<div class="bottom">
+  <button class="album-cta" type="button" onclick="showCart()" aria-label="Completar meu álbum e abrir carrinho">
+    <span class="cta-cart">🛒</span>
+    <span class="cta-label">COMPLETAR MEU ÁLBUM</span>
+    <span class="cta-count" id="bottomCount">0 ITENS</span>
+  </button>
+</div>
 
 <script>
-const WHATSAPP='5562981595949';
-const PIX_CODE="00020101021126780014BR.GOV.BCB.PIX2556pix-qr.mercadopago.com/instore/ol/v2/CyPC7a5qhl11VaUFNat5204000053039865802BR5905pedro6009SAO PAULO62080504mpis630476FA";
+const WHATSAPP = '5562981595949';
+const PIX_CODE = "00020101021126780014BR.GOV.BCB.PIX2556pix-qr.mercadopago.com/instore/ol/v2/CyPC7a5qhl11VaUFNat5204000053039865802BR5905pedro6009SAO PAULO62080504mpis630476FA";
 
-const GROUPS={
-  "2014":[["A","Brasil","Croácia","México","Camarões"],["B","Espanha","Holanda","Chile","Austrália"],["C","Colômbia","Grécia","Costa do Marfim","Japão"],["D","Uruguai","Costa Rica","Inglaterra","Itália"],["E","Suíça","Equador","França","Honduras"],["F","Argentina","Bósnia e Herzegovina","Irã","Nigéria"],["G","Alemanha","Portugal","Gana","Estados Unidos"],["H","Bélgica","Argélia","Rússia","Coreia do Sul"]],
-  "2018":[["A","Rússia","Arábia Saudita","Egito","Uruguai"],["B","Portugal","Espanha","Marrocos","Irã"],["C","França","Austrália","Peru","Dinamarca"],["D","Argentina","Islândia","Croácia","Nigéria"],["E","Brasil","Suíça","Costa Rica","Sérvia"],["F","Alemanha","México","Suécia","Coreia do Sul"],["G","Bélgica","Panamá","Tunísia","Inglaterra"],["H","Polônia","Senegal","Colômbia","Japão"]],
-  "2022":[["A","Catar","Equador","Senegal","Holanda"],["B","Inglaterra","Irã","Estados Unidos","País de Gales"],["C","Argentina","Arábia Saudita","México","Polônia"],["D","França","Austrália","Dinamarca","Tunísia"],["E","Espanha","Costa Rica","Alemanha","Japão"],["F","Bélgica","Canadá","Marrocos","Croácia"],["G","Brasil","Sérvia","Suíça","Camarões"],["H","Portugal","Gana","Uruguai","Coreia do Sul"]],
-  "2026":[["A","México","África do Sul","Coreia do Sul","Tchéquia"],["B","Canadá","Bósnia e Herzegovina","Catar","Suíça"],["C","Brasil","Marrocos","Haiti","Escócia"],["D","Estados Unidos","Paraguai","Austrália","Turquia"],["E","Alemanha","Curaçau","Costa do Marfim","Equador"],["F","Holanda","Japão","Suécia","Tunísia"],["G","Bélgica","Egito","Irã","Nova Zelândia"],["H","Espanha","Cabo Verde","Arábia Saudita","Uruguai"],["I","França","Senegal","Iraque","Noruega"],["J","Argentina","Argélia","Áustria","Jordânia"],["K","Portugal","RD Congo","Uzbequistão","Colômbia"],["L","Inglaterra","Croácia","Gana","Panamá"]]
+const GROUPS = {
+  "2014": [["A","Brasil","Croácia","México","Camarões"],["B","Espanha","Holanda","Chile","Austrália"],["C","Colômbia","Grécia","Costa do Marfim","Japão"],["D","Uruguai","Costa Rica","Inglaterra","Itália"],["E","Suíça","Equador","França","Honduras"],["F","Argentina","Bósnia e Herzegovina","Irã","Nigéria"],["G","Alemanha","Portugal","Gana","Estados Unidos"],["H","Bélgica","Argélia","Rússia","Coreia do Sul"]],
+  "2018": [["A","Rússia","Arábia Saudita","Egito","Uruguai"],["B","Portugal","Espanha","Marrocos","Irã"],["C","França","Austrália","Peru","Dinamarca"],["D","Argentina","Islândia","Croácia","Nigéria"],["E","Brasil","Suíça","Costa Rica","Sérvia"],["F","Alemanha","México","Suécia","Coreia do Sul"],["G","Bélgica","Panamá","Tunísia","Inglaterra"],["H","Polônia","Senegal","Colômbia","Japão"]],
+  "2022": [["A","Catar","Equador","Senegal","Holanda"],["B","Inglaterra","Irã","Estados Unidos","País de Gales"],["C","Argentina","Arábia Saudita","México","Polônia"],["D","França","Austrália","Dinamarca","Tunísia"],["E","Espanha","Costa Rica","Alemanha","Japão"],["F","Bélgica","Canadá","Marrocos","Croácia"],["G","Brasil","Sérvia","Suíça","Camarões"],["H","Portugal","Gana","Uruguai","Coreia do Sul"]],
+  "2026": [["A","México","África do Sul","Coreia do Sul","Tchéquia"],["B","Canadá","Bósnia e Herzegovina","Catar","Suíça"],["C","Brasil","Marrocos","Haiti","Escócia"],["D","Estados Unidos","Paraguai","Austrália","Turquia"],["E","Alemanha","Curaçau","Costa do Marfim","Equador"],["F","Holanda","Japão","Suécia","Tunísia"],["G","Bélgica","Egito","Irã","Nova Zelândia"],["H","Espanha","Cabo Verde","Arábia Saudita","Uruguai"],["I","França","Senegal","Iraque","Noruega"],["J","Argentina","Argélia","Áustria","Jordânia"],["K","Portugal","RD Congo","Uzbequistão","Colômbia"],["L","Inglaterra","Croácia","Gana","Panamá"]]
 };
 
-const FLAGS={"Brasil":"🇧🇷","Marrocos":"🇲🇦","Suíça":"🇨🇭","Catar":"🇶🇦","México":"🇲🇽","África do Sul":"🇿🇦","Coreia do Sul":"🇰🇷","Tchéquia":"🇨🇿","Canadá":"🇨🇦","Haiti":"🇭🇹","Escócia":"🏴󠁧󠁢󠁳󠁣󠁴󠁿","Estados Unidos":"🇺🇸","Paraguai":"🇵🇾","Austrália":"🇦🇺","Turquia":"🇹🇷","Alemanha":"🇩🇪","Curaçau":"🇨🇼","Costa do Marfim":"🇨🇮","Equador":"🇪🇨","Holanda":"🇳🇱","Japão":"🇯🇵","Suécia":"🇸🇪","Tunísia":"🇹🇳","Bélgica":"🇧🇪","Egito":"🇪🇬","Irã":"🇮🇷","Nova Zelândia":"NZ","Espanha":"🇪🇸","Cabo Verde":"🇨🇻","Arábia Saudita":"🇸🇦","Uruguai":"🇺🇾","França":"🇫🇷","Senegal":"🇸🇳","Iraque":"🇮🇶","Noruega":"🇳🇴","Argentina":"🇦🇷","Argélia":"🇩🇿","Áustria":"🇦🇹","Jordânia":"🇯🇴","Portugal":"🇵🇹","RD Congo":"🇨🇩","Uzbequistão":"🇺🇿","Colômbia":"🇨🇴","Inglaterra":"🏴󠁧󠁢󠁥󠁮󠁧󠁿","Croácia":"🇭🇷","Gana":"🇬🇭","Panamá":"🇵🇦","Rússia":"🇷🇺","Camarões":"🇨🇲","Chile":"🇨🇱","Grécia":"🇬🇷","Costa Rica":"🇨🇷","Itália":"🇮🇹","Honduras":"🇭🇳","Bósnia e Herzegovina":"🇧🇦","Nigéria":"🇳🇬","Islândia":"🇮🇸","Peru":"🇵🇪","Dinamarca":"🇩🇰","Sérvia":"🇷🇸","Polônia":"🇵🇱","País de Gales":"🏴󠁧󠁢󠁷󠁬󠁳󠁿","FWC":"🏆","Coca-Cola":"🥤"};
+const FLAGS = {"Brasil":"🇧🇷","Marrocos":"🇲🇦","Suíça":"🇨🇭","Catar":"🇶🇦","México":"🇲🇽","África do Sul":"🇿🇦","Coreia do Sul":"🇰🇷","Tchéquia":"🇨🇿","Canadá":"🇨🇦","Haiti":"🇭🇹","Escócia":"🏴󠁧󠁢󠁳󠁣󠁴󠁿","Estados Unidos":"🇺🇸","Paraguai":"🇵🇾","Austrália":"🇦🇺","Turquia":"🇹🇷","Alemanha":"🇩🇪","Curaçau":"🇨🇼","Costa do Marfim":"🇨🇮","Equador":"🇪🇨","Holanda":"🇳🇱","Japão":"🇯🇵","Suécia":"🇸🇪","Tunísia":"🇹🇳","Bélgica":"🇧🇪","Egito":"🇪🇬","Irã":"🇮🇷","Nova Zelândia":"🇳🇿","Espanha":"🇪🇸","Cabo Verde":"🇨🇻","Arábia Saudita":"🇸🇦","Uruguai":"🇺🇾","França":"🇫🇷","Senegal":"🇸🇳","Iraque":"🇮🇶","Noruega":"🇳🇴","Argentina":"🇦🇷","Argélia":"🇩🇿","Áustria":"🇦🇹","Jordânia":"🇯🇴","Portugal":"🇵🇹","RD Congo":"🇨🇩","Uzbequistão":"🇺🇿","Colômbia":"🇨🇴","Inglaterra":"🏴󠁧󠁢󠁥󠁮󠁧󠁿","Croácia":"🇭🇷","Gana":"🇬🇭","Panamá":"🇵🇦","Rússia":"🇷🇺","Camarões":"🇨🇲","Chile":"🇨🇱","Grécia":"🇬🇷","Costa Rica":"🇨🇷","Itália":"🇮🇹","Honduras":"🇭🇳","Bósnia e Herzegovina":"🇧🇦","Nigéria":"🇳🇬","Islândia":"🇮🇸","Peru":"🇵🇪","Dinamarca":"🇩🇰","Sérvia":"🇷🇸","Polônia":"🇵🇱","País de Gales":"🏴󠁧󠁢󠁷󠁬󠁳󠁿","FWC":"🏆","Coca-Cola":"🥤"};
 
-const TEAM_PALETTES={
+const TEAM_PALETTES = {
   "Brasil":["#009c3b","#ffdf00","#002776"],"Argentina":["#75aadb","#ffffff","#f6b40e"],"Alemanha":["#111111","#dd0000","#ffce00"],"França":["#0055a4","#ffffff","#ef4135"],"Portugal":["#046a38","#da291c","#ffcc00"],"Espanha":["#aa151b","#f1bf00","#aa151b"],"Inglaterra":["#ffffff","#ce1124","#00205b"],"Itália":["#009246","#ffffff","#ce2b37"],"Holanda":["#ae1c28","#ffffff","#21468b"],"Uruguai":["#5bbbe9","#ffffff","#fcd116"],"México":["#006847","#ffffff","#ce1126"],"Catar":["#8a1538","#ffffff","#8a1538"],"Suíça":["#d52b1e","#ffffff","#d52b1e"],"Croácia":["#ff0000","#ffffff","#171796"],"Japão":["#ffffff","#bc002d","#001c58"],"Bélgica":["#111111","#ffd90c","#ef3340"],"Marrocos":["#c1272d","#006233","#ffffff"],"Equador":["#ffdd00","#034ea2","#ed1c24"],"Senegal":["#00853f","#fdef42","#e31b23"],"Estados Unidos":["#b22234","#ffffff","#3c3b6e"],"Coreia do Sul":["#ffffff","#cd2e3a","#0047a0"],"Canadá":["#d80621","#ffffff","#d80621"]
 };
 
-let currentYear='2014', currentGroup='', currentTeam='Brasil', stickerQuery='', cart=[], previousScreen='home';
+let currentYear='2014', currentGroup='A', currentTeam='Brasil', stickerQuery='', cart=[], previousScreen='home';
 
 try{cart=JSON.parse(localStorage.getItem('cf_cart')||'[]');if(!Array.isArray(cart))cart=[]}catch(e){cart=[]}
 
@@ -322,7 +449,7 @@ function historyBack(){go(previousScreen||'home')}
 
 function openCup(year){
   currentYear=year;
-  const defTeam={2014:'Brasil',2018:'Brasil',2022:'Brasil',2026:'Brasil'}[year]||'Brasil';
+  const defTeam={2014:'Brasil',2018:'Rússia',2022:'Catar',2026:'México'}[year]||'Brasil';
   const defGroup=((GROUPS[year]||[]).find(g=>g.slice(1).includes(defTeam))||['A'])[0];
   currentTeam=defTeam; currentGroup=defGroup;
   document.getElementById('cupTitle').textContent="Copa do Mundo " + year;
@@ -337,7 +464,7 @@ function renderGroups(){
   (GROUPS[currentYear]||[]).forEach(g=>{
     const teams=g.slice(1);
     const opened=teams.includes(currentTeam);
-    out+=`<div class="group-panel ${opened?'open':''}"><button class="group-toggle" onclick="toggleGroup('${g[0]}')"><b class="group-title">GRUPO ${g[0]}</b><span class="group-flags">${teams.map(t=>`<span class="team-flag">${flagIcon(t)}</span>`).join('')}</span></button><div class="group-teams">${teams.map(t=>`<button class="team-link ${currentTeam===t?'active':''}" onclick="openTeam('${g[0]}','${t.replace(/'/g,"\\'")}')"><span class="team-flag">${flagIcon(t)}</span><b>${t}</b></button>`).join('')}</div></div>`;
+    out+=`<div class="group-panel ${opened?'open':''}"><button class="group-toggle" onclick="toggleGroup('${g[0]}')"><b class="group-title">GRUPO ${g[0]}</b><span>▾</span></button><div class="group-teams">${teams.map(t=>`<button class="team-link ${currentTeam===t?'active':''}" onclick="openTeam('${g[0]}','${t.replace(/'/g,"\\'")}')"><span>${flagIcon(t)}</span><b>${t}</b></button>`).join('')}</div></div>`;
   });
   const head=`<div class="album-side-head"><b>ÁLBUM ${currentYear}</b><span>SELEÇÕES</span></div>`;
   let extras='';
@@ -407,7 +534,7 @@ function renderStickers(){
     </article>`;
   }
   
-  box.innerHTML=`<div class="team-toolbar"><div class="team-head"><span class="team-flag" style="font-size:24px">${flagIcon(currentTeam)}</span><div><h2>${esc(currentTeam)}</h2><span class="muted">${currentGroup!=='Especiais'?'Grupo '+currentGroup+' • ':''}${last-first+1} figurinhas</span></div></div><label class="team-search"><input placeholder="Buscar número..." value="${esc(stickerQuery)}" oninput="stickerQuery=this.value;renderStickers()"><button class="clear-search" onclick="stickerQuery='';renderStickers()">×</button></label></div><div class="product-grid">${cards}</div>`;
+  box.innerHTML=`<div class="team-toolbar"><div class="team-head"><span style="font-size:24px">${flagIcon(currentTeam)}</span><div><h2>${esc(currentTeam)}</h2><span class="muted">${currentGroup!=='Especiais'?'Grupo '+currentGroup+' • ':''}${last-first+1} figurinhas</span></div></div><div class="team-search"><input placeholder="Buscar número..." value="${esc(stickerQuery)}" oninput="stickerQuery=this.value;renderStickers()"><button class="clear-search" onclick="stickerQuery='';renderStickers()">×</button></div></div><div class="product-grid">${cards}</div>`;
 }
 
 function renderAdrenalynSection(type){
@@ -437,7 +564,7 @@ function renderAdrenalynSection(type){
       </div>
     </article>`;
   }
-  box.innerHTML=`<div class="team-toolbar"><div class="team-head"><span class="team-flag">🎴</span><div><h2>${title}</h2><span class="muted">${count} cards colecionáveis</span></div></div></div><div class="product-grid">${cards}</div>`;
+  box.innerHTML=`<div class="team-toolbar"><div class="team-head"><span style="font-size:24px">🎴</span><div><h2>${title}</h2><span class="muted">${count} cards colecionáveis</span></div></div></div><div class="product-grid">${cards}</div>`;
 }
 
 function showItem(code,qty,price){
@@ -494,8 +621,8 @@ function total(){return cart.reduce((a,i)=>a+i.price*i.qty,0)}
 
 function deliveryChanged(){
   let v=document.getElementById('delivery').value;
-  document.getElementById('pickupBox').classList.toggle('hidden',v!=='pickup');
-  document.getElementById('addressBox').classList.toggle('hidden',v!=='shipping');
+  document.getElementById('pickupBox').style.display=v==='pickup'?'block':'none';
+  document.getElementById('addressBox').style.display=v==='shipping'?'block':'none';
 }
 
 function reviewOrder(){
@@ -504,7 +631,7 @@ function reviewOrder(){
   if(!name||!phone||!d){alert('Preencha os campos obrigatórios.');return}
   let lines=cart.map(i=>`${i.qty}x ${i.name} = ${money(i.qty*i.price)}`).join('<br>');
   document.getElementById('reviewText').innerHTML=`<b>${name}</b><br>${lines}<hr>Total: <b>${money(total())}</b>`;
-  document.getElementById('pixArea').classList.toggle('hidden',d!=='pickup');
+  document.getElementById('pixArea').style.display=d==='pickup'?'block':'none';
   document.getElementById('pixTotal').textContent=money(total());
   document.getElementById('pixCode').value=PIX_CODE;
   go('review');
@@ -541,7 +668,7 @@ function quickSearch(){
 
 function showShopArea(area){
   const box=document.getElementById('shopShelf');
-  box.innerHTML=`<div class="shop-shelf-icon">📦</div><div><h2>Categoria: ${area.toUpperCase()}</h2><p>Exibindo catálogo completo de ${area}.</p></div>`;
+  box.innerHTML=`<div class="shop-shelf-icon">📦</div><div><h2>Categoria: ${area.toUpperCase()}</h2><p class="muted">Exibindo catálogo completo de ${area}.</p></div>`;
 }
 
 updateCounts();
