@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Clube das Figurinhas — álbuns, figurinhas e colecionáveis.">
+<title>Clube das Figurinhas</title>
+<style>
+:root{--bg:#f4f6f8;--panel:#fff;--panel2:#f8fafc;--line:#d9e0e7;--yellow:#ffc928;--text:#18212b;--muted:#637083;--green:#39b54a;--red:#d74343}
+*{box-sizing:border-box} body{margin:0;background:linear-gradient(180deg,#fff 0%,#f3f6f8 100%);color:var(--text);font-family:Arial,sans-serif;padding-bottom:92px} button,input,select,textarea{font:inherit}
+header.site-header.approved-header{position:sticky;top:8px;z-index:60;width:min(940px,calc(100% - 24px));height:78px;margin:12px auto 8px;padding:10px 16px;border:1px solid #dfe4e8;border-radius:18px;background:#fff;box-shadow:0 8px 25px #1f2b381c;display:flex;justify-content:space-between;align-items:center}
+.approved-brand{display:flex;align-items:center;gap:10px;min-width:0;flex:1}
+.approved-logo{width:48px;height:48px;flex:0 0 48px;display:block;object-fit:contain}
+.approved-brand-copy{min-width:0;line-height:1}
+.approved-brand-name{display:block;font-size:clamp(15px,3.5vw,20px);font-weight:950;color:#07361f;letter-spacing:-.45px}
+.approved-brand-tagline{display:block;margin-top:7px;color:#9c5b17;font-size:10px;font-weight:800;letter-spacing:2.1px;white-space:nowrap}
+.approved-header-actions{display:flex;align-items:center;gap:10px;flex:0 0 auto}
+.mini-search{width:clamp(80px,21vw,140px);height:42px;display:flex;align-items:center;gap:5px;padding:0 10px;border:1.5px solid #cfd5dc;border-radius:15px;background:#fff;color:#111}
+.mini-search .ui-icon{width:20px;height:20px;flex:0 0 20px}
+.mini-search input{width:100%;height:36px!important;margin:0!important;padding:0!important;border:0!important;outline:0!important;background:transparent!important;color:#18212b!important;font-size:14px}
+.pill,.btn{border:0;border-radius:12px;background:var(--yellow);color:#111;padding:12px 16px;font-weight:900;cursor:pointer;box-shadow:0 8px 24px rgba(255,201,40,.18);transition:transform .15s ease}
+.pill:active,.btn:active{transform:scale(.97)}
+.cart-pill{height:48px;min-width:64px;padding:9px 12px;border-radius:15px;background:linear-gradient(135deg,#ffd338,#ffb800);display:flex;align-items:center;justify-content:center;gap:7px}
+.ui-icon{width:21px;height:21px;display:block;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+main{width:min(940px,100%);max-width:940px;margin:auto;padding:8px 12px 105px}
+.screen{display:none;animation:screenIn .18s ease} .screen.active{display:block}
+@keyframes screenIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+h1,h2,h3{margin:8px 0 12px} h1{color:#07326f} .muted{color:var(--muted)} .card{background:#fff;border:1px solid #dce2e8;border-radius:16px;padding:14px;margin:10px 0;box-shadow:0 10px 30px #26344212}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap} .back{background:#fff;border:1px solid #cfd7df;color:#263442;border-radius:10px;padding:9px 12px;cursor:pointer}
+
+.approved-category-grid{width:min(940px,100%);margin:0 auto;display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:8px;padding:16px 12px 18px}
+.approved-category{overflow:hidden;border:1px solid #d8dde3;border-radius:14px;background:#fff;box-shadow:0 4px 14px #22313f12;cursor:pointer;padding:0;transition:transform .16s ease}
+.approved-category:active{transform:scale(.97)}
+.approved-category.active-category,.approved-category:focus-visible{outline:2px solid #f28319;outline-offset:1px}
+.approved-category img{width:100%;height:auto;aspect-ratio:2/3;object-fit:cover;display:block}
+.shop-category{display:flex;flex-direction:column;min-height:100%;color:#fff;background:linear-gradient(145deg,#102b1e,#050b09)}
+.shop-category .shop-art{flex:1;display:grid;place-items:center;padding:8px 2px 2px;font-size:clamp(14px,3vw,27px);letter-spacing:-3px}
+.shop-category .shop-label{padding:7px 2px;background:#fff;color:#12213d;font-size:clamp(6px,1.35vw,11px);font-weight:900;line-height:1.05;text-align:center}
+
+.fifa-landing,.collection-screen{padding:18px 4px 42px}
+.collection-hero{position:relative;isolation:isolate;overflow:hidden;min-height:260px;display:flex;align-items:flex-end;padding:26px;border-radius:22px;background:#072763;box-shadow:0 17px 38px #14283b2c;margin-bottom:14px}
+.collection-hero-copy{max-width:680px;color:#fff;text-shadow:0 3px 15px #000}
+.collection-hero-copy .hero-kicker{color:#ffd66b;font-size:11px;font-weight:900;letter-spacing:2px}
+.collection-hero-copy h1{margin:8px 0 4px;color:#fff;font-size:clamp(30px,6vw,56px);line-height:.96}
+.collection-hero-copy p{margin:8px 0 0;color:#fff;font-size:14px;font-weight:700;letter-spacing:2px}
+.worldcup-hero{background:#073b9a}
+.f1-screen .collection-hero{background:#0d2417}
+.pokemon-screen .collection-hero{background:#0d2a7c}
+.brasileirao-screen .collection-hero{background:#093b22}
+.champions-screen .collection-hero{background:#09194a}
+.libertadores-screen .collection-hero{background:#2a1405}
+.adrenalyn-screen .collection-hero{background:#6e1610}
+.shop-screen .collection-hero{background:#0d3322}
+
+.cup-year-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin:28px 6px}
+.cup-year-card{border:0;background:transparent;color:#20252a;cursor:pointer;text-align:center;padding:0}
+.year-flag{display:grid;place-items:center;min-height:128px;border-radius:20px;background:#fff;border:1px solid #dce2e7;box-shadow:0 8px 22px #1d2a3717;font-size:76px;overflow:hidden}
+.triple-hosts{font-size:42px;letter-spacing:-10px;padding-right:10px}
+.cup-year-card b{display:flex;align-items:center;justify-content:center;min-height:2.4em;margin-top:12px;font-size:15px;line-height:1.18}
+
+.finder-card{width:min(640px,92%);margin:12px auto 0;padding:22px;display:flex;align-items:center;gap:22px;border:1px solid #d9dfe5;border-radius:20px;background:#fff;box-shadow:0 8px 24px #1b293616}
+.finder-icon{flex:0 0 100px;height:100px;display:grid;place-items:center;border-radius:25px;background:linear-gradient(145deg,#123a8a,#05215c);color:#ffd54a;font-size:52px}
+
+.cup-year-banner{display:flex;align-items:center;justify-content:center;gap:18px;min-height:66px;margin:2px 0 12px;padding:8px 18px;border:2px solid #e6b833;border-radius:20px;background:linear-gradient(180deg,#0642a8,#082d76);color:#fff}
+.cup-year-banner h1{margin:0;color:#ffd75f;font-size:26px}
+.album-switch{display:flex;justify-content:center;gap:7px;margin:0 0 10px}
+.album-switch button{padding:7px 15px;border:1px solid #d1d8df;border-radius:18px;background:#fff;color:#253141;font-weight:800;cursor:pointer}
+.album-switch button.active{background:#0b3b91;color:#fff;border-color:#0b3b91}
+
+.catalog-layout{display:grid;grid-template-columns:160px 1fr;gap:12px;align-items:start}
+.group-menu{padding:12px 9px;border:1px solid #d9dfe5;border-radius:18px;background:#fff;box-shadow:0 6px 20px #1b2a3912}
+.album-side-head{padding:2px 2px 11px;border-bottom:1px solid #e4e8ec;margin-bottom:8px}
+.album-side-head b{display:block;font-size:16px}
+.album-side-head span{display:block;margin-top:6px;font-size:10px;font-weight:800;color:#3c4651}
+.group-panel{margin:0 0 5px;border-radius:9px;overflow:hidden}
+.group-toggle{width:100%;min-height:48px;padding:6px 7px;border:1px solid transparent;border-radius:9px;background:#fff;color:#151d25;text-align:left;cursor:pointer}
+.group-panel.open .group-toggle{border-color:#f1a621;background:#fffaf0}
+.group-title{font-size:12px;display:block}
+.group-flags{display:flex;align-items:center;gap:3px;margin-top:4px}
+.group-flags .team-flag{font-size:15px}
+.group-teams{padding:4px 2px 6px;background:#f7f9fb;display:none}
+.group-panel.open .group-teams{display:block}
+.team-link{width:100%;display:flex;align-items:center;gap:6px;padding:6px 5px;border:0;border-radius:7px;background:transparent;color:#344253;cursor:pointer;font-size:11px;text-align:left}
+.team-link:hover,.team-link.active{background:#16834d;color:#fff}
+.side-extra{display:block;width:100%;padding:7px 5px;border:1px solid #e1e5e9;border-radius:7px;background:#fafbfc;color:#35404c;text-align:left;font-size:10px;margin-top:4px;cursor:pointer}
+
+.team-view{padding:14px 12px;border:1px solid #d9dfe5;border-radius:18px;background:#fff;box-shadow:0 6px 20px #1b2a3912}
+.team-toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+.team-head{display:flex;align-items:center;gap:8px}
+.team-head h2{margin:0;font-size:24px}
+.team-search{position:relative;flex:0 0 min(240px,45%)}
+.team-search .ui-icon{position:absolute;left:10px;top:10px;width:18px;height:18px}
+.team-search input{height:38px;padding:6px 9px 6px 34px!important;border-radius:14px!important;font-size:13px;border:1px solid #ccd5de}
+.clear-search{position:absolute;right:6px;top:6px;width:26px;height:26px;border:0;border-radius:50%;background:#eef1f4;cursor:pointer}
+
+.product-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.product-card{display:flex;flex-direction:column;padding:5px;border-radius:10px;background:#fff;border:1px solid #e1e4e7;box-shadow:0 3px 10px #17253513;cursor:pointer;transition:transform .12s}
+.product-card:hover{transform:translateY(-2px);border-color:#f0b22a}
+.product-art{width:100%;aspect-ratio:2/3;overflow:hidden;border-radius:7px;background:#f8fafc;display:flex;align-items:center;justify-content:center}
+.product-card .product-art img{width:100%;height:100%;object-fit:contain;background:#fff}
+.flag-sticker{width:100%;height:100%;display:flex;align-items:center;justify-content:center;position:relative;background-color:var(--f1);color:#fff;border-radius:7px}
+.flag-motif{font-size:clamp(14px,2.8vw,32px);text-shadow:0 2px 6px rgba(0,0,0,.6)}
+.product-code{padding-top:5px;text-align:center;font-size:11px;font-weight:900;color:#111}
+.product-meta{display:flex;justify-content:space-between;gap:2px;padding-top:3px;border-top:1px solid #e1e4e7;font-size:10px;color:#222}
+.sold-out{color:var(--red);font-weight:800}
+
+.cartline{display:grid;grid-template-columns:1fr auto;gap:8px;border-bottom:1px solid var(--line);padding:10px 0}
+.price{color:#b47500;font-weight:900}
+.notice{border-left:4px solid var(--yellow);background:#fff9e6;padding:11px;border-radius:8px;margin:10px 0}
+.danger{border-left-color:var(--red);background:#fff0f0}
+input,select{width:100%;background:#fff;color:#18212b;border:1px solid var(--line);border-radius:10px;padding:12px;margin:5px 0}
+
+.item-modal{position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.75);display:none;align-items:center;justify-content:center;padding:18px}
+.item-modal.open{display:flex}
+.item-dialog{width:min(92vw,380px);background:#fff;border-radius:18px;padding:18px;box-shadow:0 24px 80px #000;text-align:center}
+.item-dialog img{width:100%;max-height:50vh;object-fit:contain;border-radius:12px}
+.modal-fallback{width:100%;aspect-ratio:4/5;overflow:hidden;border-radius:12px}
+.modal-fallback .flag-motif{font-size:64px}
+.modal-close{float:right;margin-bottom:8px}
+
+.bottom{position:fixed;bottom:0;left:0;right:0;height:86px;padding:12px;background:#02080c;border-top:1px solid #122430;display:flex;justify-content:center;z-index:50}
+.album-cta{width:min(900px,100%);height:62px;display:grid;grid-template-columns:58px 1fr auto 28px;align-items:center;gap:8px;padding:5px 15px;border:2px solid #ffe48d;border-radius:31px;background:linear-gradient(110deg,#ffd96d 0%,#ffc21d 55%,#ff9e16 100%);color:#07326f;font-weight:950;cursor:pointer}
+.album-cta .cta-cart{font-size:32px}
+.album-cta .cta-label{font-size:18px;text-align:center}
+.album-cta .cta-count{padding:8px 12px;border-radius:11px;background:#082c70;color:#fff;font-size:13px}
+.album-cta .cta-arrow{font-size:32px}
+
+.shop-choice-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:24px 0 16px}
+.shop-choice{border:1px solid #d9dfe5;border-radius:18px;background:#fff;color:#15202a;box-shadow:0 8px 22px #1b293617;cursor:pointer;text-align:left;overflow:hidden}
+.shop-choice-art{min-height:130px;display:flex;align-items:center;justify-content:center;font-size:54px;background:linear-gradient(145deg,#0d3c29,#07140e);color:#fff}
+.shop-choice:nth-child(2) .shop-choice-art{background:linear-gradient(145deg,#123a78,#061a3a)}
+.shop-choice:nth-child(3) .shop-choice-art{background:linear-gradient(145deg,#831d23,#2d080b)}
+.shop-choice-copy{display:block;padding:12px 14px}
+.shop-choice-copy b{font-size:16px;display:block}
+.shop-choice-copy small{font-size:11px;color:#56616d}
+.shop-shelf{min-height:92px;display:flex;align-items:center;gap:13px;padding:16px 18px;border:1px solid #d9dfe5;border-radius:17px;background:#fff;margin-top:10px}
+
+footer{color:#8f98a5;text-align:center;padding:25px 8px}
+
+@media(max-width:720px){
+  header.site-header.approved-header{top:6px;width:calc(100% - 20px);height:68px;padding:7px 10px}
+  .approved-brand-copy{max-width:145px}
+  .approved-brand-name{font-size:14px}
+  .approved-brand-tagline{font-size:7px}
+  .approved-category-grid{gap:4px;padding:14px 6px}
+  .cup-year-grid{gap:8px;margin:18px 4px}
+  .year-flag{min-height:76px;font-size:42px;border-radius:14px}
+  .cup-year-card b{font-size:10px;min-height:3em}
+  .catalog-layout{grid-template-columns:92px 1fr;gap:6px}
+  .group-menu{padding:6px 4px}
+  .group-title{font-size:9px}
+  .team-link{font-size:9px;padding:4px 2px}
+  .team-head h2{font-size:17px}
+  .product-grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:4px}
+  .product-card{padding:2px}
+  .product-code{font-size:8px}
+  .product-meta{font-size:7px}
+  .album-cta{height:54px;grid-template-columns:40px 1fr auto 20px}
+  .album-cta .cta-label{font-size:13px}
+}
+</style>
+</head>
+<body>
+<header class="site-header approved-header">
+  <div class="approved-brand">
+    <img class="approved-logo"
+      src="data:image/webp;base64,UklGRlQdAABXRUJQVlA4WAoAAAAQAAAAnwAAnwAAQUxQSDcIAAABDAVt20gJf9j77whExATwuPmATBu2C4cHjgOsuOEv7LFDj27BWHmeGm3bpubofo5t27Zt27Zt27ZtO22bse2UXfXlq3N2o+rl3vvel1/dY0TEBNCtbcmSFRmAY2jYOBb8jBgvRkSfhRz3PCAjI25G5tMjYgLEf6Y6k2fIXaRM5eo1q5crnj9rao/tA8KZsXSb8auPf3XlwcuA0PCI8KDXT279eGnX7F7VcyTxf+7cTacd+/NtHCNBT
