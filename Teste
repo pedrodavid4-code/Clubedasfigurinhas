@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Clube das Figurinhas — Álbuns, figurinhas e colecionáveis oficiais.">
+<title>Clube das Figurinhas</title>
+<style>
+:root{--bg:#f4f6f8;--panel:#fff;--panel2:#f8fafc;--line:#d9e0e7;--yellow:#ffc928;--text:#18212b;--muted:#637083;--green:#39b54a;--red:#d74343}
+*{box-sizing:border-box} body{margin:0;background:linear-gradient(180deg,#fff 0%,#f3f6f8 100%);color:var(--text);font-family:Arial,sans-serif;padding-bottom:96px} button,input,select,textarea{font:inherit}
+header.site-header.approved-header{position:sticky;top:8px;z-index:60;width:min(940px,calc(100% - 24px));height:78px;margin:12px auto 8px;padding:10px 16px;border:1px solid #dfe4e8;border-radius:18px;background:#fff;box-shadow:0 8px 25px #1f2b381c;display:flex;justify-content:space-between;align-items:center}
+.approved-brand{display:flex;align-items:center;gap:10px;min-width:0;flex:1}
+.approved-logo{width:48px;height:48px;flex:0 0 48px;display:block;object-fit:contain}
+.approved-brand-copy{min-width:0;line-height:1}
+.approved-brand-name{display:block;font-size:clamp(15px,3.5vw,20px);font-weight:950;color:#07361f;letter-spacing:-.45px}
+.approved-brand-tagline{display:block;margin-top:7px;color:#9c5b17;font-size:10px;font-weight:800;letter-spacing:2.1px;white-space:nowrap}
+.approved-header-actions{display:flex;align-items:center;gap:10px;flex:0 0 auto}
+.mini-search{width:clamp(80px,21vw,140px);height:42px;display:flex;align-items:center;gap:5px;padding:0 10px;border:1.5px solid #cfd5dc;border-radius:15px;background:#fff;color:#111}
+.mini-search .ui-icon{width:20px;height:20px;flex:0 0 20px}
+.mini-search input{width:100%;height:36px!important;margin:0!important;padding:0!important;border:0!important;outline:0!important;background:transparent!important;color:#18212b!important;font-size:14px}
+.pill,.btn{border:0;border-radius:12px;background:var(--yellow);color:#111;padding:12px 16px;font-weight:900;cursor:pointer;box-shadow:0 8px 24px rgba(255,201,40,.18);transition:transform .15s ease}
+.pill:active,.btn:active{transform:scale(.97)}
+.cart-pill{height:48px;min-width:64px;padding:9px 12px;border-radius:15px;background:linear-gradient(135deg,#ffd338,#ffb800);display:flex;align-items:center;justify-content:center;gap:7px}
+.ui-icon{width:21px;height:21px;display:block;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+main{width:min(940px,100%);max-width:940px;margin:auto;padding:8px 12px 105px}
+.screen{display:none;animation:screenIn .18s ease} .screen.active{display:block}
+@keyframes screenIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+h1,h2,h3{margin:8px 0 12px} h1{color:#07326f} .muted{color:var(--muted)} .card{background:#fff;border:1px solid #dce2e8;border-radius:16px;padding:14px;margin:10px 0;box-shadow:0 10px 30px #26344212}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap} .back{background:#fff;border:1px solid #cfd7df;color:#263442;border-radius:10px;padding:9px 12px;cursor:pointer}
+
+.approved-category-grid{width:min(940px,100%);margin:0 auto;display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:8px;padding:16px 12px 18px}
+.approved-category{overflow:hidden;border:1px solid #d8dde3;border-radius:14px;background:#fff;box-shadow:0 4px 14px #22313f12;cursor:pointer;padding:0;transition:transform .16s ease}
+.approved-category:active{transform:scale(.97)}
+.approved-category.active-category,.approved-category:focus-visible{outline:2px solid #f28319;outline-offset:1px}
+.approved-category img{width:100%;height:auto;aspect-ratio:2/3;object-fit:cover;display:block}
+.shop-category{display:flex;flex-direction:column;min-height:100%;color:#fff;background:linear-gradient(145deg,#102b1e,#050b09)}
+.shop-category .shop-art{flex:1;display:grid;place-items:center;padding:8px 2px 2px;font-size:clamp(14px,3vw,27px);letter-spacing:-3px}
+.shop-category .shop-label{padding:7px 2px;background:#fff;color:#12213d;font-size:clamp(6px,1.35vw,11px);font-weight:900;line-height:1.05;text-align:center}
+
+.fifa-landing,.collection-screen{padding:18px 4px 42px}
+.collection-hero{position:relative;isolation:isolate;overflow:hidden;min-height:260px;display:flex;align-items:flex-end;padding:26px;border-radius:22px;background:#072763;box-shadow:0 17px 38px #14283b2c;margin-bottom:14px}
+.collection-hero-copy{max-width:680px;color:#fff;text-shadow:0 3px 15px #000}
+.collection-hero-copy .hero-kicker{color:#ffd66b;font-size:11px;font-weight:900;letter-spacing:2px}
+.collection-hero-copy h1{margin:8px 0 4px;color:#fff;font-size:clamp(30px,6vw,56px);line-height:.96}
+.collection-hero-copy p{margin:8px 0 0;color:#fff;font-size:14px;font-weight:700;letter-spacing:2px}
+.worldcup-hero{background:#073b9a}
+.f1-screen .collection-hero{background:#0d2417}
+.pokemon-screen .collection-hero{background:#0d2a7c}
+.brasileirao-screen .collection-hero{background:#093b22}
+.champions-screen .collection-hero{background:#09194a}
+.libertadores-screen .collection-hero{background:#2a1405}
+.adrenalyn-screen .collection-hero{background:#6e1610}
+.shop-screen .collection-hero{background:#0d3322}
+
+.cup-year-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin:28px 6px}
+.cup-year-card{border:0;background:transparent;color:#20252a;cursor:pointer;text-align:center;padding:0}
+.year-flag{display:grid;place-items:center;min-height:128px;border-radius:20px;background:#fff;border:1px solid #dce2e7;box-shadow:0 8px 22px #1d2a3717;font-size:76px;overflow:hidden}
+.triple-hosts{font-size:42px;letter-spacing:-10px;padding-right:10px}
+.cup-year-card b{display:flex;align-items:center;justify-content:center;min-height:2.4em;margin-top:12px;font-size:15px;line-height:1.18}
+
+.finder-card{width:min(640px,92%);margin:12px auto 0;padding:22px;display:flex;align-items:center;gap:22px;border:1px solid #d9dfe5;border-radius:20px;background:#fff;box-shadow:0 8px 24px #1b293616}
+.finder-icon{flex:0 0 100px;height:100px;display:grid;place-items:center;border-radius:25px;background:linear-gradient(145deg,#123a8a,#05215c);color:#ffd54a;font-size:52px}
+
+.cup-year-banner{display:flex;align-items:center;justify-content:center;gap:18px;min-height:66px;margin:2px 0 12px;padding:8px 18px;border:2px solid #e6b833;border-radius:20px;background:linear-gradient(180deg,#0642a8,#082d76);color:#fff}
+.cup-year-banner h1{margin:0;color:#ffd75f;font-size:26px}
+.album-switch{display:flex;justify-content:center;gap:7px;margin:0 0 10px}
+.album-switch button{padding:7px 15px;border:1px solid #d1d8df;border-radius:18px;background:#fff;color:#253141;font-weight:800;cursor:pointer}
+.album-switch button.active{background:#0b3b91;color:#fff;border-color:#0b3b91}
+
+.catalog-layout{display:grid;grid-template-columns:160px 1fr;gap:12px;align-items:start}
+.group-menu{padding:12px 9px;border:1px solid #d9dfe5;border-radius:18px;background:#fff;box-shadow:0 6px 20px #1b2a3912}
+.album-side-head{padding:2px 2px 11px;border-bottom:1px solid #e4e8ec;margin-bottom:8px}
+.album-side-head b{display:block;font-size:16px}
+.album-side-head span{display:block;margin-top:6px;font-size:10px;font-weight:800;color:#3c4651}
+.group-panel{margin:0 0 5px;border-radius:9px;overflow:hidden}
+.group-toggle{width:100%;min-height:48px;padding:6px 7px;border:1px solid transparent;border-radius:9px;background:#fff;color:#151d25;text-align:left;cursor:pointer}
+.group-panel.open .group-toggle{border-color:#f1a621;background:#fffaf0}
+.group-title{font-size:12px;display:block}
+.group-flags{display:flex;align-items:center;gap:3px;margin-top:4px}
+.group-flags .team-flag{font-size:15px}
+.group-teams{padding:4px 2px 6px;background:#f7f9fb;display:none}
+.group-panel.open .group-teams{display:block}
+.team-link{width:100%;display:flex;align-items:center;gap:6px;padding:6px 5px;border:0;border-radius:7px;background:transparent;color:#344253;cursor:pointer;font-size:11px;text-align:left}
+.team-link:hover,.team-link.active{background:#16834d;color:#fff}
+.side-extra{display:block;width:100%;padding:7px 5px;border:1px solid #e1e5e9;border-radius:7px;background:#fafbfc;color:#35404c;text-align:left;font-size:10px;margin-top:4px;cursor:pointer}
+
+.team-view{padding:14px 12px;border:1px solid #d9dfe5;border-radius:18px;background:#fff;box-shadow:0 6px 20px #1b2a3912}
+.team-toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+.team-head{display:flex;align-items:center;gap:8px}
+.team-head h2{margin:0;font-size:24px}
+.team-search{position:relative;flex:0 0 min(240px,45%)}
+.team-search .ui-icon{position:absolute;left:10px;top:10px;width:18px;height:18px}
+.team-search input{height:38px;padding:6px 9px 6px 34px!important;border-radius:14px!important;font-size:13px;border:1px solid #ccd5de}
+.clear-search{position:absolute;right:6px;top:6px;width:26px;height:26px;border:0;border-radius:50%;background:#eef1f4;cursor:pointer}
+
+.product-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.product-card{display:flex;flex-direction:column;padding:5px;border-radius:10px;background:#fff;border:1px solid #e1e4e7;box-shadow:0 3px 10px #17253513;cursor:pointer;transition:transform .12s}
+.product-card:hover{transform:translateY(-2px);border-color:#f0b22a}
+.product-art{width:100%;aspect-ratio:2/3;overflow:hidden;border-radius:7px;background:#f8fafc;display:flex;align-items:center;justify-content:center}
+.product-card .product-art img{width:100%;height:100%;object-fit:contain;background:#fff}
+.flag-sticker{width:100%;height:100%;display:flex;align-items:center;justify-content:center;position:relative;background-color:var(--f1);color:#fff;border-radius:7px}
+.flag-motif{font-size:clamp(14px,2.8vw,32px);text-shadow:0 2px 6px rgba(0,0,0,.6)}
+.product-code{padding-top:5px;text-align:center;font-size:11px;font-weight:900;color:#111}
+.product-meta{display:flex;justify-content:space-between;gap:2px;padding-top:3px;border-top:1px solid #e1e4e7;font-size:10px;color:#222}
+.sold-out{color:var(--red);font-weight:800}
+
+.cartline{display:grid;grid-template-columns:1fr auto;gap:8px;border-bottom:1px solid var(--line);padding:10px 0}
+.price{color:#b47500;font-weight:900}
+.notice{border-left:4px solid var(--yellow);background:#fff9e6;padding:11px;border-radius:8px;margin:10px 0}
+.danger{border-left-color:var(--red);background:#fff0f0}
+input,select{width:100%;background:#fff;color:#18212b;border:1px solid var(--line);border-radius:10px;padding:12px;margin:5px 0}
+
+.item-modal{position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.75);display:none;align-items:center;justify-content:center;padding:18px}
+.item-modal.open{display:flex}
+.item-dialog{width:min(92vw,380px);background:#fff;border-radius:18px;padding:18px;box-shadow:0 24px 80px #000;text-align:center}
+.item-dialog img{width:100%;max-height:50vh;object-fit:contain;border-radius:12px}
+.modal-fallback{width:100%;aspect-ratio:4/5;overflow:hidden;border-radius:12px}
+.modal-fallback .flag-motif{font-size:64px}
+.modal-close{float:right;margin-bottom:8px}
+
+.bottom{position:fixed;bottom:0;left:0;right:0;height:86px;padding:12px;background:#02080c;border-top:1px solid #122430;display:flex;justify-content:center;z-index:50}
+.album-cta{width:min(900px,100%);height:62px;display:grid;grid-template-columns:58px 1fr auto 28px;align-items:center;gap:8px;padding:5px 15px;border:2px solid #ffe48d;border-radius:31px;background:linear-gradient(110deg,#ffd96d 0%,#ffc21d 55%,#ff9e16 100%);color:#07326f;font-weight:950;cursor:pointer}
+.album-cta .cta-cart{font-size:32px}
+.album-cta .cta-label{font-size:18px;text-align:center}
+.album-cta .cta-count{padding:8px 12px;border-radius:11px;background:#082c70;color:#fff;font-size:13px}
+.album-cta .cta-arrow{font-size:32px}
+
+.shop-choice-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:24px 0 16px}
+.shop-choice{border:1px solid #d9dfe5;border-radius:18px;background:#fff;color:#15202a;box-shadow:0 8px 22px #1b293617;cursor:pointer;text-align:left;overflow:hidden}
+.shop-choice-art{min-height:130px;display:flex;align-items:center;justify-content:center;font-size:54px;background:linear-gradient(145deg,#0d3c29,#07140e);color:#fff}
+.shop-choice:nth-child(2) .shop-choice-art{background:linear-gradient(145deg,#123a78,#061a3a)}
+.shop-choice:nth-child(3) .shop-choice-art{background:linear-gradient(145deg,#831d23,#2d080b)}
+.shop-choice-copy{display:block;padding:12px 14px}
+.shop-choice-copy b{font-size:16px;display:block}
+.shop-choice-copy small{font-size:11px;color:#56616d}
+.shop-shelf{min-height:92px;display:flex;align-items:center;gap:13px;padding:16px 18px;border:1px solid #d9dfe5;border-radius:17px;background:#fff;margin-top:10px}
+
+footer{color:#8f98a5;text-align:center;padding:25px 8px}
+
+@media(max-width:720px){
+  header.site-header.approved-header{top:6px;width:calc(100% - 20px);height:68px;padding:7px 10px}
+  .approved-brand-copy{max-width:145px}
+  .approved-brand-name{font-size:14px}
+  .approved-brand-tagline{font-size:7px}
+  .approved-category-grid{gap:4px;padding:14px 6px}
+  .cup-year-grid{gap:8px;margin:18px 4px}
+  .year-flag{min-height:76px;font-size:42px;border-radius:14px}
+  .cup-year-card b{font-size:10px;min-height:3em}
+  .catalog-layout{grid-template-columns:92px 1fr;gap:6px}
+  .group-menu{padding:6px 4px}
+  .group-title{font-size:9px}
+  .team-link{font-size:9px;padding:4px 2px}
+  .team-head h2{font-size:17px}
+  .product-grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:4px}
+  .product-card{padding:2px}
+  .product-code{font-size:8px}
+  .product-meta{font-size:7px}
+  .album-cta{height:54px;grid-template-columns:40px 1fr auto 20px}
+  .album-cta .cta-label{font-size:13px}
+}
+</style>
+</head>
+<body>
+<header class="site-header approved-header">
+  <div class="approved-brand">
+    <img class="approved-logo"
+      src="data:image/webp;base64,UklGRlQdAABXRUJQVlA4WAoAAAAQAAAAnwAAnwAAQUxQSDcIAAABDAVt20gJf9j77whExATwuPmATBu2C4cHjgOsuOEv7LFDj27BWHmeGm3bpubofo5t27Zt27Zt27ZtO22bse2UXfXlq3N2o+rl3vvel1/dY0TEBNCtbcmSFRmAY2jYOBb8jBgvRkSfhRz3PCAjI25G5tMjYgLEf6Y6k2fIXaRM5eo1q5crnj9rao/tA8KZsXSb8auPf3XlwcuA0PCI8KDXT279eGnX7F7VcyTxf+7cTacd+/NtHCNBThgJ+sLuXFrcsWhyP5ai/JiT96IZYJLMALwvPptXL73NHyUpM+mzAAKYVDM4/OeltVP6GVv2AedfE5g0ZSD0iwmFHf7DVWruVS+YtGbQo7VVPP7BVWXbCwKZkDngUMOk1ucov+kNmEzKCD1c221ttqJrvn+gmxG4rbTNwtKOvsfocsaTKRmtytnoEy/ogfB92cxlSZnnBYIsEiFLs1mPreYX8Ux6xgDi+G/r2i0m2YgXICLWIUYQ4dXoZJaSfXMMk8Vy7LacFlLqc2ayXOYvSluFrck1kHSaCQwhwrVGNkuwd3sJko57CuFFJ7sFuIYFgqTjn8FMeDvIaTrXmAgm6eSSoXiICWGjXCZzj49gUqSta5vRIGYmDh/nNpVjZCSTIhkXtfYNImbiiKF2E9n7hTApBZ30rAkwU4II6m03T5u3IJMvUqeYEOFNC9NUvw+yRpAkA7AQblU2SYGfQUqBMdUeiIjwawFTpDkMkg2QYIoInwwwEWFfKhM45/pILvmp8GmRQFKF3s1x6tc2hGWwVyJ3hE6omjERcUhr7QpeARlFEmX5IkKTMyYi/JZPs2S7QUbpKjUpNHxH2JFUr34xnBh1SejMaQ5wdG+tityCtqwCSdmWS2hpJ9woqJF7C6im/AVOQDk2u/VpFsqJUaoD6DEc1kKbtJ+AjMmJi2E0CB+n0WWQlxIH0KQLKVHcAE1yX0FiOEASj8KfOfWYQEYBWQsRTyEar0Wuq5AAGRvttlylKq7k0GFcPBneaEXFRQ8i3ygNsvyG90H7EylwH37Joq63l95He/QJkLe3suQXYICEXd0BoPn0cCm5qlohbGAFqLChgwB0HgZwSE1Vq0DykMBCLiM3EFYpyn5dCSZAgIZAT3Vm3MihppuXFJQXrew0QhJQwkHezkrsu9ASyMgOQC6gETMkYaddRY6bEswbEklAC5cm3M6polUMzRIobbGt7eEUxbRWsRKSwGbf6BiAjFipIPV30jSLrU6RWn5IK698AEsyArJT9EBBNg6sKK9fPJkLELmOcori+8lbC0XsOLDVHFmxTlqyT5WRcUxTD3yeXFaeByYj19wFz4PcsmqGsxw8KkOiRKNdHF5TVm8fKS7JCyiPKXZfL1lzYDahR2KOJNsuZfsDz8Reu5wkl3Vh9fCOz5LJSfebAq6JiDuuZpKT676C5qIhISMzHueTU+wVm20kx1g4oLScisGakF5TBkvK4TXk1Ikgw/GZUXQjOc1ijB3MeEA/KnFt5LSN0wte5u0kp5NXD1ZpFB2wRcHXTU5HTZRJE+Ked13ltIvTA0DP93aQ0zzmwyG2hZx6kUbCxzjuiKgrp1IIa8PrOKiCnGIvjRx0Rfju5BdF5OS6DxnR0iKD3op7OeWk+9VYRCIJWrJHRDzi57Rykn5sKCLCwyVMu+CRY99jyM6RSE3TsU1InqcBjthErjdMl9U7Xp0c+wqFCEOM8HaSVT2MTRS5mhFhiIheRESJA8rKyv0A7xEOLbRCsW+ExRoRoTKuZJSV/HMjIbdHJ3THCZcssUEDVk2KKWpMF9L7+cwSpkhNlKIX3Uxe2becmJtVT4BNpDXczSUv9bdQRG6REjUXuYEDR13yxDKz+CN0MItV3RFCYfNoPsANIyPU5bflVGS9hgPa6LURHVxMpsK2SQklLmAMjRFKW0ZPeTg/L6Emw88fB/Q54KBLjZjJJ4EvtqNQXPr7xymZYRg+/JJJlfOPU7LpFTRRKP/6Ax+gV/r4TgF1X/75kJCEQfoE5ggNv/0g8cIFeIoRNTwsqsOXPz/kv8IMJp4ntPz6PzbQayJUxq0Cenj2QNo72XXfjRaalnsCfbiDBjt8kV4XMZMShSQOTCfr7ji8tdA263dIjCSegWWPrR59RKMATgQ8RY1o4GYRobF9DhWQFPEIgEo3qpfQOtOnH7VnHmFTEr1Epf8+JJEegGlCTQof/+YSuveNZEoY7qHnx8t6Qnv3Yp8BbBJngAKUaHHUYJt+Iu0hJCQA22FUBUp04pd5hBlzfwkiIp/A2vCDVna8P60wZ+k/QSSdgYIyYICauJRdmLXmXVARPNqiIhzr4sfCwrwNH+AYG4ndcWjgz3LCzI0efuzclamspY8/KwpzN7wHRW6w0cJP5YTZa16BGQ4uZJS/KCbMX/pL1iVihAwzncwjrDD3QR/rMZIax27MKKwxzfwwmCAiHHUEjUsmrNLV+Q70O49rrRzCQkuf97G1cNyxosJa0095BTncwXg8LJWwWnvty17IMCdiT1a0CQtOO/w2sxUwXx+QQlh0oTVvwWZjvFyRT1i3s9reILAmeBhB28s7hKV76hwMBqvCBn6zu5ZbWL6n1ubHBFbSZv4Xgx6uqugWftFRZMZvMYA+/wYivxtf0C78pi1Tmx33vIAUDAzE3VrXJK3ws4483XbfjALACTBLYoDDft/QIZdd+GNntsazT98OiwcAA4kzAPiCrx6eWCuDXfhxd/Yag9ZevPIqwsswzN6wp7+fWdmvcman+AC0eTIWrd1h2PTl63cePHLk0N7Ny2cM61CtQHq3+PC02R0Ou038vzIAVlA4IPYUAACQTACdASqgAKAAPok4lUelI6IhMfm7oKARCWwAzyZT3/4x/vvNFrH+O3purPL057/7nrM/w3qZ/Sv60/AX+s/nRftH7nv2q9Qn7F/un7x/+j/ar3Tf4r1Gv7P/n+tW9CP9svTp9nj+1f8b9z/a/zUz+2eh/w9/deFP4x9F/m/LozD9lXpf7Ify38G/vvO/vn+U2oF+R/0newQCfWv/qf3/xndWLwB7AP6w/9DyqvEz8w9gb82/s17HmkB6w9Hxh+05CoAri4WM7l4q5r2Wb/lxW0KfslJwUXZ9/EY8lUsM7yWmL9pb4yt56tsN6z/uXWIsy/1GhF2Gd5jt6L1vzxiUcGVvKHH5ID1vifFm3teHxlamaBFyqF/OU2ekYvfcPSGZ9PgVmxppx5Eom/jdwM6jKEBMrRLTssXIBkj16ICDipCcjJU2neXWImCiybpqWSlJaB+gFOcKsE7mqxzTgp+AZDizcAUN0R9z9s/b6XKFyNpYJRxcFIsVk7oOLHFhEkaT4leApcH1Nzwn4bTctCTFqyF11ep4lsnEEVvzG8WZTcB97JDxC88pPZtULbCX3JM8KmyHEUvy5lBCdKh+Dg6oQBjr8GiPBt8Zdkaib6iJ9YPMzXPMiqJSdaCvtLAbjQIskatFAGluGt7jFMXJoKoAhnXm/GDmxiG8IuAWlND2AWy7GcEmnjP+uoki1Su15MjfP3vZrA/UVzSMakv10GOzyG/JqyqAw8zHObwz6VKpZziokctCl8iJpxufRz2b9aS7PoWOfiY++kptNQv+hmpfdp1Lrm6HPrzDUEs//Tsffdc0xr95dx57OizsNwAA/v4G0FdGAGYu9Rr9FwKczzF2b+iaa1DXTN+ROOtCJEL64X9FWKe6rekT7qr/hg1leMGdMOgjWyGwBfIXyFaillm1Y6nuNwvhM0B0MUQfRZk9WE2bIhXNyLfGj4RKQKHriSebvMoPwu7x8Y1VAE1NaMeelkk5tzsfhr2dFqguueE5n5qhzT1Swr9N3R9Mt/+RNurqyKMP1I27JIFke7af991GO9xgIcdJ2PjouGHGDQN00LZareXgC/elkK2ydjdLw6GoZvyU5cI6+4TMCDtJeiHX4g4e6L7EhP479dONxZ8t1YgjaaxTVTwKNFXxGmH8j9gemCaOkQbZoqrBwcF/ZpOaK2A3PuMdZRxzOVXlhNq9JE0S3NsPDDQRP4ArGYqqdHK+Td2WWBau+st6gsOMdZxJOENqWwRv+hr1APVWqBHG1bCgFTdXttcNP7IJufHB1RNxKNUnySoC5BdQI1vljmCVcPIHLMuf73bJT29w6vA+WkXfITXC2fz029kvkaFBkWxdJQ0dEy08OqkUuJcuI0Paf215cYFqC56aYBPKowrsT52nwVvs/qQdTHeofUVSfVCg/hCMY9dZkfxW95JnY6F6U1iaCzJ2n/cGFn1LQgb2NdjcLA9wfPQISz0jC4EFZOmEAwQUWl28K8kBC9n89gwIgtXWvlR5h9iS+7k32NaJt/02VT7XMjhFHBeX92GBVA5zEJYImOqSttj4fNAo4fuJMXSbOgQCJslx3mhs6+wjqXIukM+vsz7UmQHQsZ94SgYTnxutosHEZU9uoegLXBiXlL0DWYaT11XhK9m/J2hYOaxTNe9JokwVFCh1pZOj5rvJ1ThU6w2ypxss7PpQ2+4HELbXlTdkYpGuXZrAOAdV6EUXS+LGD7+fEXDqC7j0t0yRa1V7sLvZ7fuqkNgNlhNmZJ0les/2I+uEI6LU37GxhqjxHJOegOXGWD/S1oRg7z1EeawpZfPJoPuD5qwsKYBbN0uJ+W3DzurKdmk1kjpMDG5yTVaOlN5ttuNtXxaT1Pzh6awiHjw9KbTbDz0khRCaiGVuwCLHsLAFd4vraAkzakBT5NdUg6tU4cAkaop6Pr6Bm95/ddCMEvRYsNrUYz4pIazTaWjHfRu8Dk4Bk8PLXfnFGRBfTiGNjr4lo7Vx+H+0J9WHCvXNZ00D28V5MMjf/6LC/H9DuLSuYUj1UA06kOuqht5Wu9gugD/9FIJT7yf2n4fB70tOfPxvpVQPlH3iA3pOV0HFe482w0zy3o/igWS/y+YhEixVBz6ZoI7jczV7LaR3M3sgM5BquYP5mgQOfEEcpS4L01cpSF+UcyBkEHy3GOIdnc9FoA4f+9CSi0YuqQegX6ViW/Q6GzHYBBon+2yLOU1L6Rg7GHTH/EXa26oxlLOgazDeE731bHXFiV5t8uJCe7NuhPL4hYPm3eFwMS8LkW2DdAwq7qMtAtQN1di5WaRcoV1gqqnrMn3GVep/lAl0XARdfBKHzpCPoC3RmNXjz5jvmfRDOJBpaGpLqoDTwx6JRF8rQ3UO65fZANk9kwx1NzZ29qbEhxA/KL9n9MRkjLtV247AclnikjAUnzS139BLNblCVKvevWlxmkz2mXwAFPU171QRsCvppjLWlWq5JozINJgnILML3DYNVH29i+xZrjL70sAON8RoFLBrB3hg3JRzLzgS+eexEltJiKapnoUglKjrsecx98rKA3qxbu0QJVHBChxcFSGhqnQ4U7cNbu+J4vYcPpFUweGzOkzGya0Kb1eNekacF6Ct6eGyXCFDXZknjiGx2tgi4L6Gt6YFsy+7/Df3LsdNiBBkmjDS3c5VO4LiCeTwZY6Fe6UHhGBvvN5fLJHOoaH+5itS67+gQ1y4JkHL0vP3NoiL1kILM6DsNIx2NRvZqRZWWX+byToJpqJbP8bRp1r/HdJLZmDUyW1cZUdYxsxo6p79Qb5f0mUhNzyVMp+LDT/fKa6Q3iAX9cDd2RMGkKYyJnS6EPc1tnW5NcJV3UlGn5QISVQOES4O/YlNVcF0VMjm3qLUOi0xEvKWkhKMXHvzrmDBKHh609WRGwgR1c9EYMRJGn94m6jZrKdJfkPWkOxqWBSNw8ntfGW4dx7pBJPaqRvTy5jEW610k3Q8zm/WAsphHr0Z8v97Nz+z1WCkYHH6Pc+hjND1BjpJMf0I3VQehmSC5oaI9Lsoha4uudMQZfKPXVZFjKImJlixzGHhj9YRRi26ss0+JPaoxc5zj2NQs/zr4rtFT/muUYcKuBw1o67MqIwXtwVX8G9uPVIrO0N1fN8JPYA9fhY8uDJgW/YfLJsBkJE8dWrlCvbniWmfUFq5OAk7QDpVqUIrvrcvAm3gCo9qk+/FKxwdZQHd4OF+Q4zK21hSxfUt4An3gYUR+Nf57rwzqCCpg3m5PA6rxySuByWn7o+tV6MdRse3yXNgzYA3VgV8fWwoNCNjlrQoBpgctHdqxuzKYXk8Pk+qL+nh3Y7OyqcP2SDOJKta6KhB5bfu7NTqbyoTYwhCvcYqLXSEED6X7x6lDOoMbbbh35myYJ2S64vbEnrzGdFno9rJ4PK1fBpwsi1MSWsRrLHrn0gxTNaxrY4QgfnNZTJzH6v96oofLaWU77npHmCyWbVcVVC6qPXXnYhYxYt3Rq0ixbPcP/4TcYXSPA4y2UgFrpZ2vhzY8kom1RxYMh5EGeleeXokqPGkj8ziTtmfcMWcoBw5dJ+5LkZQ2Hs8PqrPBftmHxy3p5SfjWN0qNVDFEt/8qAczO74+viCSpeK92IlizQAvX5s595mwsj/Sax8Jy+NgEWo9eQqre4cKCFHabDqr/27c+xAVYKp8xNtvB4TC+W+eL0MZOxQv0h0mqwlLg0D4W7SEZfEetaTfbv7e4Vpq2X53nicYQh8fLWHEl3KKDfO+yaMFbX9B/mAljlBQQ9C2vLDuw8z6UQ1LzwXTTOXcfWH4iwkUPdgGU+z8K99emd2RtQ1GQegkPwLrZmDQJ3tum8aw82suViU8l4gm2wbuVRjUQC8dC3vUKqWP1BJRt+E0PVrAlsCyB1wPnjr/VBL2g3yjKl+KPq7HrJycw938+RgPdH0gvXHYakZSE9YeyTDPCyAQr9QVGdc+QEbFz/++1mJFHvQO4QLP2OH9R7pDtRbUVlXtpolnQtgipmK/pJa+99bW8vLqs91xlP1thJhbIs3QVNtspBojtTsxjeeVb8+II1Etq8MKTceId5MyjWFYFyyiWG5faJSi1Ey1iH8b4b8Zi4i862Ol7wOMcyvz5MrDgIPV7+jL9r9ASz+nE69oSEJlhSG4xSNiQjwf6kjnsynNpbJ+Wsbu2Jc5fiExBNX8iRPwwyM9COdEzbrfjy7pVsLtUZeZVfZR0s5KfkcdWSuoGIMvnAKzaV3FC31AVqsqaa1UkkFFn9OPge+82iEiys6lQiS3WLQxJKXOKYFGBkbAb9evXkNAgdYIBv9ll3i3i8EPQyrhu4CZrlWH5zvGySRGqwWfa1lWmQLSJlzFbKlOJGejEB7/DHj3eHfrezxquDNl3rncGS1kOipK1JvgpF97RQDvaV11o+fDK4k94Wa8Izx9QNZpvC9HFj0r9SLI5SrtRvfrwBe/GpE5dxMQaUchTYqapmuAQYBRqrHLn0o1ZfAn3s8dSPIvY4dhExkHjIxoVXqcdwQJwa4rzUtQLZkXh7mBeNMf6j2PhmI4Jz6Z25bNdRI2sDs50Mmrt5UcGC78ByS8y+k0Cq1zG+r68TWfRUL9XgnGaTdlvKPcEuVr1dNUdFCfhFDX9eCtCifwyhKDBIK0wEfaXKVoKn46l6BxiNVCx7iPiIVU1EZYFJdqK9TQWTpn5/8awgdqxKjlFhRgpCvUzl1TcXKK3wyTVOvGvC/mfWKrwM9RLDpWw/24HqY3Em+sqFnOoOv70j13nFT8lkDbufUPanlDwptGLM2Sa7XKEBtFnVieTRISYn9zlLQYISrDaBbyEnX1QPiumAadlX5BkoS/Vo5lg9k5KIuIHjtqGNSRZrJRm37k8NBvMvevTHljvLz8NLmUEs75iyoOxdLKymR6Jc03LeBh+aKeDMhV/IbgmaywFBhl6Bz87PHcYMMFGsAJM2R8vvK6cHbdimsvMvSPC0g9/xBJAWp4Met2hhxC+3OiOVz4pu3M4J52PJj5IdAgu0f8tUdoo5biu3BWpQyqmN6878LG+rdHWLZzStY+NoKYFTFvzZF4iZeTE/BdIqsi5laldrtLjwoYqqSvBqrVC467aPM1EolEgyqS2EEvegAbBgeT8Zu4psuFqPYIrMWk31AHsYe/juKeYBZyXl7c9a1yEJBn2AVmdkp8vMD3go0wbwzycH8dUHaT+x7ZaNf0tK+Yw0g76WFolNaRri5afjWGTs6vL67xFWO66lmPoPTq7wrAmzpXJohbohHJ2tNp4+/DKoZqMjVEFl9DAnP3whCAeDc8z6+7KRFcSi7MrWlOYkGK4SLtkD7zvEu+slH8Zu4DnyC7PPXZevUBb0fE4do5r8zbWraUPYnLWMe8V/o4eA9q3aXHjgjMHNmjWepYNllhoPz7ikTMhJGbovPJKunZhSOPSZY2XZy/6XjmbLxYOyzm0TtOMbT7Kju4DrnxdpPatG41R4wFjFIEs5ueLhbviOP8UDtD+0595/D69RRZrBaAsaztBgZFeS8SAuWLa4IaWnxCWGDw25RDji/VXYlSCNnaomJ/HBLQenqlR4XQw2U3VT0k4QLYdZI5Tjlre31eIz8N/e73qD/5gPWxHPTowAAA==" alt="Logo Clube das Figurinhas">
+    <span class="approved-brand-copy">
+      <b class="approved-brand-name">Clube das Figurinhas</b>
+      <small class="approved-brand-tagline">PAIXÃO QUE COMPLETA</small>
+    </span>
+  </div>
+  <div class="approved-header-actions">
+    <label class="mini-search" aria-label="Buscar"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="globalSearch" type="search" placeholder="Buscar" onkeydown="if(event.key==='Enter')quickSearch()"></label>
+    <button class="pill cart-pill" onclick="showCart()" aria-label="Abrir carrinho"><svg class="ui-icon" viewBox="0 0 24 24"><path d="M3 4h2l2.2 10h10.9l2-7H6"/><circle cx="9" cy="19" r="1.5"/><circle cx="18" cy="19" r="1.5"/></svg><span id="cartCount">0</span></button>
+  </div>
+</header>
+<main>
+<section id="home" class="screen active approved-home">
+  <div class="fifa-landing">
+    <div class="collection-hero worldcup-hero">
+      <div class="collection-hero-copy"><span class="hero-kicker">COLEÇÕES OFICIAIS</span><h1>FIFA WORLD CUP</h1><p>ÁLBUNS E FIGURINHAS POR ANO</p></div>
+    </div>
+    <div class="cup-year-grid" aria-label="Escolha o ano da Copa">
+      <button class="cup-year-card" type="button" onclick="openCup('2014')"><span class="year-flag" aria-hidden="true">🇧🇷</span><b>🇧🇷 Copa 2014 🇧🇷</b></button>
+      <button class="cup-year-card" type="button" onclick="openCup('2018')"><span class="year-flag" aria-hidden="true">🇷🇺</span><b>🇷🇺 Copa 2018 🇷🇺</b></button>
+      <button class="cup-year-card" type="button" onclick="openCup('2022')"><span class="year-flag" aria-hidden="true">🇶🇦</span><b>🇶🇦 Copa 2022 🇶🇦</b></button>
+      <button class="cup-year-card" type="button" onclick="openCup('2026')"><span class="year-flag triple-hosts" aria-hidden="true">🇺🇸🇨🇦🇲🇽</span><b>🇺🇸🇨🇦🇲🇽 Copa 2026 🇺🇸🇨🇦🇲🇽</b></button>
+    </div>
+    <div class="finder-card"><div class="finder-icon" aria-hidden="true">⚽</div><div><h2>Encontre a figurinha que falta!</h2><p>Escolha o ano da Copa, encontre sua seleção e complete seu álbum.</p></div></div>
+  </div>
+</section>
+
+<section id="cups" class="screen"><h1>Copas</h1><p class="muted">Toque no ano e encontre sua seleção.</p><div class="grid album-grid">
+<div class="card album cup-tile" onclick="openCup('2014')" role="button" tabindex="0"><div class="cup-meta"><div><h2>🇧🇷 Copa 2014</h2><span>Brasil</span></div><i class="cup-go">›</i></div></div>
+<div class="card album cup-tile" onclick="openCup('2018')" role="button" tabindex="0"><div class="cup-meta"><div><h2>🇷🇺 Copa 2018</h2><span>Rússia</span></div><i class="cup-go">›</i></div></div>
+<div class="card album cup-tile" onclick="openCup('2022')" role="button" tabindex="0"><div class="cup-meta"><div><h2>🇶🇦 Copa 2022</h2><span>Catar</span></div><i class="cup-go">›</i></div></div>
+<div class="card album cup-tile" onclick="openCup('2026')" role="button" tabindex="0"><div class="cup-meta"><div><h2>🇺🇸🇨🇦🇲🇽 Copa 2026</h2><span>EUA • Canadá • México</span></div><i class="cup-go">›</i></div></div>
+</div></section>
+
+<section id="cupDetail" class="screen"><div class="cup-year-banner"><button class="back" onclick="go('home')">← Voltar</button><h1 id="cupTitle"></h1></div>
+<div class="album-switch" aria-label="Trocar álbum"><button data-year="2014" onclick="openCup('2014')">2014</button><button data-year="2018" onclick="openCup('2018')">2018</button><button data-year="2022" onclick="openCup('2022')">2022</button><button data-year="2026" onclick="openCup('2026')">2026</button></div>
+<input class="hidden" id="teamSearch" value="">
+<div class="catalog-layout"><aside class="group-menu" id="groups"></aside><section class="team-view" id="teamWorkspace"><div class="catalog-empty"><b>Escolha uma seleção</b></div></section></div></section>
+
+<section id="cart" class="screen"><div class="row"><button class="back" onclick="historyBack()">← Voltar</button><h1>Carrinho</h1></div><div id="cartItems"></div><h2>Total produtos: <span id="cartTotal" class="price">R$ 0,00</span></h2><button class="btn" onclick="go('checkout')">IR PARA CHECKOUT</button></section>
+
+<section id="checkout" class="screen"><div class="row"><button class="back" onclick="showCart()">← Carrinho</button><h1>Finalizar pedido</h1></div>
+<label>Nome *</label><input id="name" placeholder="Seu nome">
+<label>WhatsApp *</label><input id="phone" placeholder="DDD + número">
+<label>E-mail (opcional)</label><input id="email" type="email" placeholder="seu@email.com">
+<label>Como deseja receber? *</label><select id="delivery" onchange="deliveryChanged()"><option value="">Escolha</option><option value="pickup">Vou buscar</option><option value="shipping">Quero envio</option></select>
+<div id="pickupBox" class="hidden notice">Retirada: o local e horário serão combinados pelo WhatsApp após a confirmação do pedido.</div>
+<div id="addressBox" class="hidden">
+<label>CEP *</label><input id="cep"><label>Rua *</label><input id="street"><label>Número *</label><input id="number">
+<label>Complemento</label><input id="comp"><label>Bairro *</label><input id="district"><label>Cidade *</label><input id="city"><label>UF *</label><input id="uf" maxlength="2">
+<div class="notice danger"><b>Envio:</b> o frete precisa ser confirmado antes do Pix. O pedido será enviado ao WhatsApp como “Aguardando cálculo do frete”.</div>
+</div>
+<button class="btn" onclick="reviewOrder()">REVISAR PEDIDO</button></section>
+
+<section id="review" class="screen"><div class="row"><button class="back" onclick="go('checkout')">← Alterar</button><h1>Revisão</h1></div><div id="reviewText" class="card"></div>
+<div id="pixArea" class="card hidden"><h2>Pix</h2><p>Total para retirada: <span id="pixTotal" class="price"></span></p>
+<textarea id="pixCode" readonly style="width:100%;min-height:90px;background:#fff;color:#111;border:1px solid #29313b;border-radius:10px;padding:10px"></textarea>
+<button class="btn" onclick="copyPix()">COPIAR PIX</button><div class="notice">“Já paguei” não confirma o recebimento automaticamente. O pedido ficará aguardando conferência.</div></div>
+<button class="btn" onclick="sendWhatsApp()">ENVIAR PEDIDO NO WHATSAPP</button></section>
+
+<section id="f1" class="screen collection-screen f1-screen">
+  <div class="collection-hero"><div class="collection-hero-copy"><span class="hero-kicker">AYRTON SENNA</span><h1>FÓRMULA 1</h1><p>NOSSA LENDA</p></div></div>
+  <div class="finder-card"><div class="finder-icon">🏎️</div><div><h2>Em breve!</h2><p>Coleção em atualização com novidades exclusivas.</p></div></div>
+</section>
+<section id="pokemon" class="screen collection-screen pokemon-screen">
+  <div class="collection-hero"><div class="collection-hero-copy"><span class="hero-kicker">CARDS E FIGURINHAS</span><h1>POKÉMON</h1><p>COLECIONE, TROQUE E COMPLETE</p></div></div>
+  <div class="finder-card"><div class="finder-icon">⚡</div><div><h2>Em breve!</h2><p>Coleção em atualização com novidades exclusivas.</p></div></div>
+</section>
+<section id="brasileirao" class="screen collection-screen brasileirao-screen">
+  <div class="collection-hero"><div class="collection-hero-copy"><span class="hero-kicker">FUTEBOL BRASILEIRO</span><h1>BRASILEIRÃO</h1><p>ÁLBUNS E FIGURINHAS POR ANO</p></div></div>
+  <div class="finder-card"><div class="finder-icon">⚽</div><div><h2>Em breve!</h2><p>Coleção em atualização com novidades exclusivas.</p></div></div>
+</section>
+<section id="champions" class="screen collection-screen champions-screen">
+  <div class="collection-hero"><div class="collection-hero-copy"><span class="hero-kicker">FUTEBOL EUROPEU</span><h1>CHAMPIONS LEAGUE</h1><p>ÁLBUNS E FIGURINHAS POR ANO</p></div></div>
+  <div class="finder-card"><div class="finder-icon">🏆</div><div><h2>Em breve!</h2><p>Coleção em atualização com novidades exclusivas.</p></div></div>
+</section>
+<section id="libertadores" class="screen collection-screen libertadores-screen">
+  <div class="collection-hero"><div class="collection-hero-copy"><span class="hero-kicker">CONMEBOL</span><h1>LIBERTADORES</h1><p>ÁLBUNS E FIGURINHAS POR ANO</p></div></div>
+  <div class="finder-card"><div class="finder-icon">⭐</div><div><h2>Em breve!</h2><p>Coleção em atualização com novidades exclusivas.</p></div></div>
+</section>
+<section id="adrenalyn" class="screen collection-screen adrenalyn-screen">
+  <div class="collection-hero"><div class="collection-hero-copy"><span class="hero-kicker">PANINI</span><h1>ADRENALYN XL</h1><p>CARDS, CRAQUES E EDIÇÕES ESPECIAIS</p></div></div>
+  <div class="finder-card"><div class="finder-icon">🎴</div><div><h2>Cards Adrenalyn XL</h2><p>Selecione as edições e complete seus sets especiais.</p></div></div>
+</section>
+<section id="outros" class="screen collection-screen shop-screen">
+  <div class="collection-hero"><div class="collection-hero-copy"><span class="hero-kicker">CLUBE DAS FIGURINHAS</span><h1>LOJA DO CLUBE</h1><p>ÁLBUNS, PACOTINHOS E FIGURINHAS</p></div></div>
+  <div class="shop-choice-grid">
+    <button class="shop-choice" type="button" onclick="showShopArea('albuns')"><span class="shop-choice-art">📕</span><span class="shop-choice-copy"><b>ÁLBUNS</b><small>Copas e coleções por ano</small></span></button>
+    <button class="shop-choice" type="button" onclick="showShopArea('pacotinhos')"><span class="shop-choice-art">📦</span><span class="shop-choice-copy"><b>PACOTINHOS</b><small>Antigos e atuais</small></span></button>
+    <button class="shop-choice" type="button" onclick="showShopArea('figurinhas')"><span class="shop-choice-art">🎴</span><span class="shop-choice-copy"><b>FIGURINHAS</b><small>Avulsas e especiais</small></span></button>
+  </div>
+  <div class="shop-shelf" id="shopShelf"><div class="shop-shelf-icon">🛍️</div><div><h2>Escolha o que você procura</h2><p>Toque nas opções acima para ver os produtos.</p></div></div>
+</section>
+<footer>Clube das Figurinhas • Pagamento por Pix • Pedidos pelo WhatsApp</footer>
+</main>
+<div class="item-modal" id="itemModal" onclick="if(event.target===this)closeItem()"><div class="item-dialog"><button class="back modal-close" onclick="closeItem()">✕</button><img id="modalImg" alt="" style="display:none"><div id="modalFallback" class="modal-fallback"></div><h2 id="modalCode"></h2><div class="price" id="modalPrice"></div><button class="btn" id="modalAdd">ADICIONAR AO CARRINHO</button></div></div>
+<div class="bottom"><button class="album-cta" type="button" onclick="showCart()" aria-label="Completar meu álbum e abrir carrinho"><span class="cta-cart">🛒</span><span class="cta-label">COMPLETAR MEU ÁLBUM</span><span class="cta-count" id="bottomCount">0 ITENS</span><span class="cta-arrow">›</span></button></div>
+
+<script>
+const WHATSAPP='5562981595949';
+const PIX_CODE="00020101021126780014BR.GOV.BCB.PIX2556pix-qr.mercadopago.com/instore/ol/v2/CyPC7a5qhl11VaUFNat5204000053039865802BR5905pedro6009SAO PAULO62080504mpis630476FA";
+const GROUPS={
+  "2014":[["A","Brasil","Croácia","México","Camarões"],["B","Espanha","Holanda","Chile","Austrália"],["C","Colômbia","Grécia","Costa do Marfim","Japão"],["D","Uruguai","Costa Rica","Inglaterra","Itália"],["E","Suíça","Equador","França","Honduras"],["F","Argentina","Bósnia e Herzegovina","Irã","Nigéria"],["G","Alemanha","Portugal","Gana","Estados Unidos"],["H","Bélgica","Argélia","Rússia","Coreia do Sul"]],
+  "2018":[["A","Rússia","Arábia Saudita","Egito","Uruguai"],["B","Portugal","Espanha","Marrocos","Irã"],["C","França","Austrália","Peru","Dinamarca"],["D","Argentina","Islândia","Croácia","Nigéria"],["E","Brasil","Suíça","Costa Rica","Sérvia"],["F","Alemanha","México","Suécia","Coreia do Sul"],["G","Bélgica","Panamá","Tunísia","Inglaterra"],["H","Polônia","Senegal","Colômbia","Japão"]],
+  "2022":[["A","Catar","Equador","Senegal","Holanda"],["B","Inglaterra","Irã","Estados Unidos","País de Gales"],["C","Argentina","Arábia Saudita","México","Polônia"],["D","França","Austrália","Dinamarca","Tunísia"],["E","Espanha","Costa Rica","Alemanha","Japão"],["F","Bélgica","Canadá","Marrocos","Croácia"],["G","Brasil","Sérvia","Suíça","Camarões"],["H","Portugal","Gana","Uruguai","Coreia do Sul"]],
+  "2026":[["A","México","África do Sul","Coreia do Sul","Tchéquia"],["B","Canadá","Bósnia e Herzegovina","Catar","Suíça"],["C","Brasil","Marrocos","Haiti","Escócia"],["D","Estados Unidos","Paraguai","Austrália","Turquia"],["E","Alemanha","Curaçau","Costa do Marfim","Equador"],["F","Holanda","Japão","Suécia","Tunísia"],["G","Bélgica","Egito","Irã","Nova Zelândia"],["H","Espanha","Cabo Verde","Arábia Saudita","Uruguai"],["I","França","Senegal","Iraque","Noruega"],["J","Argentina","Argélia","Áustria","Jordânia"],["K","Portugal","RD Congo","Uzbequistão","Colômbia"],["L","Inglaterra","Croácia","Gana","Panamá"]]
+};
+const FLAGS={"Brasil":"🇧🇷","Marrocos":"🇲🇦","Suíça":"🇨🇭","Catar":"🇶🇦","México":"🇲🇽","África do Sul":"🇿🇦","Coreia do Sul":"🇰🇷","Tchéquia":"🇨🇿","Canadá":"🇨🇦","Haiti":"🇭🇹","Escócia":"🏴󠁧󠁢󠁳󠁣󠁴󠁿","Estados Unidos":"🇺🇸","Paraguai":"🇵🇾","Austrália":"🇦🇺","Turquia":"🇹🇷","Alemanha":"🇩🇪","Curaçau":"🇨🇼","Costa do Marfim":"🇨🇮","Equador":"🇪🇨","Holanda":"🇳🇱","Japão":"🇯🇵","Suécia":"🇸🇪","Tunísia":"🇹🇳","Bélgica":"🇧🇪","Egito":"🇪🇬","Irã":"🇮🇷","Nova Zelândia":"🇳🇿","Espanha":"🇪🇸","Cabo Verde":"🇨🇻","Arábia Saudita":"🇸🇦","Uruguai":"🇺🇾","França":"🇫🇷","Senegal":"🇸🇳","Iraque":"🇮🇶","Noruega":"🇳🇴","Argentina":"🇦🇷","Argélia":"🇩🇿","Áustria":"🇦🇹","Jordânia":"🇯🇴","Portugal":"🇵🇹","RD Congo":"🇨🇩","Uzbequistão":"🇺🇿","Colômbia":"🇨🇴","Inglaterra":"🏴󠁧󠁢󠁥󠁮󠁧󠁿","Croácia":"🇭🇷","Gana":"🇬🇭","Panamá":"🇵🇦","Rússia":"🇷🇺","Camarões":"🇨🇲","Chile":"🇨🇱","Grécia":"🇬🇷","Costa Rica":"🇨🇷","Itália":"🇮🇹","Honduras":"🇭🇳","Bósnia e Herzegovina":"🇧🇦","Nigéria":"🇳🇬","Islândia":"🇮🇸","Peru":"🇵🇪","Dinamarca":"🇩🇰","Sérvia":"🇷🇸","Polônia":"🇵🇱","País de Gales":"🏴󠁧󠁢󠁷󠁬󠁳󠁿","FWC":"🏆","Coca-Cola":"🥤"};
+const TEAM_PALETTES={"Brasil":["#009c3b","#ffdf00","#002776"],"Argentina":["#75aadb","#ffffff","#f6b40e"],"Alemanha":["#111111","#dd0000","#ffce00"],"França":["#0055a4","#ffffff","#ef4135"],"Portugal":["#046a38","#da291c","#ffcc00"],"Espanha":["#aa151b","#f1bf00","#aa151b"],"Inglaterra":["#ffffff","#ce1124","#00205b"],"Itália":["#009246","#ffffff","#ce2b37"],"Holanda":["#ae1c28","#ffffff","#21468b"],"Uruguai":["#5bbbe9","#ffffff","#fcd116"],"México":["#006847","#ffffff","#ce1126"]};
+
+let currentYear='2014', currentGroup='', currentTeam='Brasil', stickerQuery='', cart=[];
+try{cart=JSON.parse(localStorage.getItem('cf_cart')||'[]');if(!Array.isArray(cart))cart=[]}catch(e){cart=[]}
+function money(v){return v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'})}
+function esc(v){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function go(id){
+  const el=document.getElementById(id);
+  if(!el) return;
+  document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));
+  el.classList.add('active');
+  window.scrollTo({top:0,behavior:'instant'});
+  if(id==='cart') renderCart();
+}
+function historyBack(){go('home')}
+function openCup(year){
+  currentYear=year;
+  const defTeam={2014:'Brasil',2018:'Brasil',2022:'Brasil',2026:'Brasil'}[year]||'Brasil';
+  const defGroup=((GROUPS[year]||[]).find(g=>g.slice(1).includes(defTeam))||['A'])[0];
+  currentTeam=defTeam; currentGroup=defGroup;
+  document.getElementById('cupTitle').textContent="Copa do Mundo " + year;
+  document.querySelectorAll('.album-switch button').forEach(b=>b.classList.toggle('active',b.dataset.year===year));
+  go('cupDetail'); renderGroups(); renderStickers();
+}
+function flagIcon(t){return FLAGS[t]||'🏳️'}
+function renderGroups(){
+  let out='';
+  (GROUPS[currentYear]||[]).forEach(g=>{
+    const teams=g.slice(1);
+    const opened=teams.includes(currentTeam);
+    out+=`<div class="group-panel ${opened?'open':''}"><button class="group-toggle" onclick="toggleGroup('${g[0]}')"><b class="group-title">GRUPO ${g[0]}</b><span class="group-flags">${teams.map(t=>`<span class="team-flag">${flagIcon(t)}</span>`).join('')}</span></button><div class="group-teams">${teams.map(t=>`<button class="team-link ${currentTeam===t?'active':''}" onclick="openTeam('${g[0]}','${t}')"><span class="team-flag">${flagIcon(t)}</span><b>${t}</b></button>`).join('')}</div></div>`;
+  });
+  const head=`<div class="album-side-head"><b>ÁLBUM ${currentYear}</b><span>SELEÇÕES</span></div>`;
+  document.getElementById('groups').innerHTML=head+out;
+}
+function toggleGroup(g){
+  document.querySelectorAll('.group-panel').forEach(p=>{
+    if(p.innerText.includes('GRUPO '+g)) p.classList.toggle('open');
+  });
+}
+function openTeam(g,t){
+  currentGroup=g; currentTeam=t; stickerQuery='';
+  renderGroups(); renderStickers();
+  document.getElementById('teamWorkspace').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function teamIndex(y,t){return (GROUPS[y]||[]).flatMap(g=>g.slice(1)).indexOf(t)}
+function albumRange(y,t){
+  const idx=teamIndex(y,t);
+  if(idx===-1) return [1,20];
+  if(y==='2014') return [32+idx*19, 32+idx*19+18];
+  if(y==='2018') return [32+idx*20, 32+idx*20+19];
+  return [1,20];
+}
+function stickerCode(n){
+  if(currentYear==='2014'||currentYear==='2018') return String(n);
+  const p=currentTeam.substring(0,3).toUpperCase();
+  return p+' '+n;
+}
+function renderStickers(){
+  const box=document.getElementById('teamWorkspace');
+  const [first,last]=albumRange(currentYear,currentTeam);
+  let cards='';
+  const pal=TEAM_PALETTES[currentTeam]||['#083b8f','#f1bd37','#ffffff'];
+  
+  for(let n=first;n<=last;n++){
+    const code=stickerCode(n);
+    if(stickerQuery && !code.toLowerCase().includes(stickerQuery.toLowerCase())) continue;
+    const price= (n===first)? 8.00 : (n%5===0 ? 4.50 : 2.50);
+    const qty= (n%7===0)? 0 : ((n*3)%6)+1;
+    const unav= qty<=0;
+    
+    cards+=`<article class="product-card" onclick="showItem('${code}','',${qty},${price},${n})">
+      <div class="product-art">
+        <div class="flag-sticker" style="--f1:${pal[0]};--f2:${pal[1]};--f3:${pal[2]}">
+          <span class="flag-motif">⚽</span>
+        </div>
+      </div>
+      <div class="product-code">${code}</div>
+      <div class="product-meta">
+        <span class="${unav?'sold-out':''}">${unav?'0':qty} un.</span>
+        <span>${unav?'R$ —':money(price)}</span>
+      </div>
+    </article>`;
+  }
+  
+  box.innerHTML=`<div class="team-toolbar"><div class="team-head"><span class="team-flag">${flagIcon(currentTeam)}</span><div><h2>${esc(currentTeam)}</h2><span class="muted">Grupo ${currentGroup} • ${last-first+1} figurinhas</span></div></div><label class="team-search"><input placeholder="Buscar número..." value="${esc(stickerQuery)}" oninput="stickerQuery=this.value;renderStickers()"><button class="clear-search" onclick="stickerQuery='';renderStickers()">×</button></label></div><div class="product-grid">${cards}</div>`;
+}
+function showItem(code,img,qty,price,n){
+  document.getElementById('modalCode').textContent=code;
+  document.getElementById('modalPrice').textContent=qty>0?`${money(price)} • ${qty} un. disponível`:'Produto indisponível';
+  const pal=TEAM_PALETTES[currentTeam]||['#083b8f','#f1bd37','#ffffff'];
+  document.getElementById('modalFallback').innerHTML=`<div class="flag-sticker" style="--f1:${pal[0]};--f2:${pal[1]};--f3:${pal[2]};width:100%;height:100%;"><span class="flag-motif" style="font-size:60px">⚽</span></div>`;
+  const add=document.getElementById('modalAdd');
+  add.disabled=qty<=0;
+  add.onclick=()=>{if(qty<=0)return;addToCart(`Copa ${currentYear} • ${currentTeam} • ${code}`,price,qty,true);closeItem()};
+  document.getElementById('itemModal').classList.add('open');
+}
+function closeItem(){document.getElementById('itemModal').classList.remove('open')}
+function addToCart(name,price,stock,notify){
+  let x=cart.find(i=>i.name===name);
+  if(x){
+    if(x.qty>=stock){if(notify)alert('Quantidade máxima atingida.');return}
+    x.qty++;
+  }else{
+    cart.push({name,price,stock,qty:1});
+  }
+  saveCart();
+  if(notify) alert('Adicionado ao carrinho!');
+}
+function saveCart(){localStorage.setItem('cf_cart',JSON.stringify(cart));updateCounts()}
+function updateCounts(){
+  let c=cart.reduce((a,i)=>a+i.qty,0);
+  document.getElementById('cartCount').textContent=c;
+  document.getElementById('bottomCount').textContent=`${c} ${c===1?'ITEM':'ITENS'}`;
+}
+function showCart(){go('cart')}
+function renderCart(){
+  let box=document.getElementById('cartItems');
+  if(!cart.length){box.innerHTML='<div class="card">Seu carrinho está vazio.</div>';document.getElementById('cartTotal').textContent=money(0);return}
+  box.innerHTML=cart.map((i,k)=>`<div class="cartline"><div><b>${i.name}</b><br><span class="muted">${money(i.price)} cada</span></div><div><button class="back" onclick="qty(${k},-1)">−</button> ${i.qty} <button class="back" onclick="qty(${k},1)">+</button><br><b>${money(i.price*i.qty)}</b></div></div>`).join('');
+  document.getElementById('cartTotal').textContent=money(total());
+}
+function qty(k,d){
+  let i=cart[k];
+  if(d>0&&i.qty>=i.stock){alert('Limite de estoque atingido.');return}
+  i.qty+=d;
+  if(i.qty<=0) cart.splice(k,1);
+  saveCart(); renderCart();
+}
+function total(){return cart.reduce((a,i)=>a+i.price*i.qty,0)}
+function deliveryChanged(){
+  let v=document.getElementById('delivery').value;
+  document.getElementById('pickupBox').classList.toggle('hidden',v!=='pickup');
+  document.getElementById('addressBox').classList.toggle('hidden',v!=='shipping');
+}
+function reviewOrder(){
+  if(!cart.length){alert('Carrinho vazio.');return}
+  let name=document.getElementById('name').value.trim(),phone=document.getElementById('phone').value.trim(),d=document.getElementById('delivery').value;
+  if(!name||!phone||!d){alert('Preencha os campos obrigatórios.');return}
+  let lines=cart.map(i=>`${i.qty}x ${i.name} = ${money(i.qty*i.price)}`).join('<br>');
+  document.getElementById('reviewText').innerHTML=`<b>${name}</b><br>${lines}<hr>Total: <b>${money(total())}</b>`;
+  document.getElementById('pixArea').classList.toggle('hidden',d!=='pickup');
+  document.getElementById('pixTotal').textContent=money(total());
+  document.getElementById('pixCode').value=PIX_CODE;
+  go('review');
+}
+function copyPix(){
+  const el=document.getElementById('pixCode');
+  navigator.clipboard.writeText(el.value).then(()=>alert('Pix copiado com sucesso!'));
+}
+function sendWhatsApp(){
+  let name=document.getElementById('name').value, phone=document.getElementById('phone').value, d=document.getElementById('delivery').value;
+  let lines=cart.map(i=>`${i.qty}x ${i.name} - ${money(i.qty*i.price)}`).join('\n');
+  let msg=`PEDIDO NOVO\nCliente: ${name}\nWhatsApp: ${phone}\n\nITENS:\n${lines}\n\nTotal: ${money(total())}\nRecebimento: ${d}`;
+  window.open('https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(msg),'_blank');
+}
+function quickSearch(){
+  let q=document.getElementById('globalSearch').value.trim();
+  if(!q) return;
+  openCup('2022');
+}
+function showShopArea(area){
+  const box=document.getElementById('shopShelf');
+  box.innerHTML=`<div class="shop-shelf-icon">📦</div><div><h2>Categoria: ${area.toUpperCase()}</h2><p>Carregando itens disponíveis...</p></div>`;
+}
+
+updateCounts();
+go('home');
+</script>
+</body>
+</html>
+O que fazer no GitHub agora:
+Abra o arquivo no GitHub e certifique-se de que o nome dele é index.html (minúsculo e sem acento).
+Desative o tradutor do navegador caso esteja ligado.
+Clique no ícone do Lápis ✏️, apague tudo o que está lá dentro e cole o código acima.
+Clique em Commit changes... para salvar. Em 30 segundos seu site estará online e funcionando perfeitamente!
+Citations
+
+http://esporteregionalvgpta.blogspot.com/2013/12/brasil-estreia-na-copa-diante-da-croacia.html
+https://www.sites-de-apostas.net/noticia/copa-do-mundo-brasil-recebe-turne-da-taca-em-outubro
+info
+Google AI models may make mistakes, so double-check outputs.
+Use Arrow Up and Arrow Down to select a turn, Enter to jump to it, and Escape to return to the chat.
+Vou mostrar ate a parte q foi e vc me manda o complemento
