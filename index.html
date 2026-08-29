@@ -1,0 +1,760 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="description" content="Clube das Figurinhas — Álbuns, figurinhas e colecionáveis oficiais.">
+<title>Clube das Figurinhas - Paixão que Completa</title>
+<style>
+:root{
+  --royal-blue:#0047ab;
+  --royal-dark:#07326f;
+  --bg-secondary:#f4f6f8;
+  --line:#dfe5ec;
+  --yellow:#ffc928;
+  --text:#111827;
+  --muted:#64748b;
+  --green:#2e7d32;
+  --red:#dc2626;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg-secondary);color:var(--text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;padding-bottom:96px}
+button,input,select,textarea{font:inherit}
+
+header.site-header{position:sticky;top:8px;z-index:100;width:min(940px,calc(100% - 20px));height:76px;margin:8px auto;padding:8px 16px;border:1px solid #e2e8f0;border-radius:20px;background:#fff;box-shadow:0 8px 24px rgba(0,71,171,0.08);display:flex;justify-content:space-between;align-items:center}
+.approved-brand{display:flex;align-items:center;gap:10px;cursor:pointer}
+.brand-logo-badge{width:46px;height:46px;border-radius:50%;background:radial-gradient(circle,#2e7d32 0%,#1b5e20 80%,#ffd700 100%);border:2.5px solid #ffd700;display:grid;place-items:center;font-size:24px;box-shadow:0 4px 10px rgba(0,0,0,0.15)}
+.approved-brand-copy{display:flex;flex-direction:column;line-height:1.1}
+.approved-brand-name{font-size:clamp(16px,4vw,21px);font-weight:900;color:#07361f;letter-spacing:-.5px}
+.approved-brand-tagline{font-size:9.5px;font-weight:800;color:#b45309;letter-spacing:1.8px;margin-top:3px;text-transform:uppercase}
+.approved-header-actions{display:flex;align-items:center;gap:8px}
+.mini-search{height:42px;display:flex;align-items:center;gap:6px;padding:0 12px;border:1.5px solid #cbd5e1;border-radius:22px;background:#fff;width:clamp(85px,22vw,140px)}
+.mini-search input{width:100%;border:0;outline:0;background:transparent;font-size:13px}
+.cart-pill{height:44px;min-width:62px;padding:6px 14px;border-radius:16px;background:linear-gradient(135deg,#ffd43f,#f59e0b);display:flex;align-items:center;justify-content:center;gap:6px;border:0;cursor:pointer;font-weight:900;font-size:15px;color:#111;box-shadow:0 4px 14px rgba(245,158,11,0.35)}
+.ui-icon{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+.category-bar-wrapper{width:min(940px,100%);margin:4px auto 12px;padding:0 10px;overflow-x:auto;scrollbar-width:none}
+.category-bar-wrapper::-webkit-scrollbar{display:none}
+.category-bar{display:flex;gap:8px;width:max-content}
+.cat-btn{flex:0 0 76px;border:1px solid #cbd5e1;border-radius:14px;background:#fff;padding:6px 4px;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;transition:all .15s}
+.cat-btn.active,.cat-btn:hover{border-color:#f97316;outline:2px solid #f97316;background:#fffaf0}
+.cat-btn-icon{width:100%;height:42px;border-radius:9px;display:grid;place-items:center;font-size:22px;color:#fff}
+.cat-btn-title{font-size:9px;font-weight:800;color:#1e293b;text-transform:uppercase}
+
+main{width:min(940px,100%);margin:auto;padding:0 10px}
+.screen{display:none;animation:fadeIn .2s ease}
+.screen.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+.pele-hero-banner{position:relative;border-radius:20px;overflow:hidden;background:radial-gradient(ellipse at center,#4a154b 0%,#20073b 60%,#0f021e 100%);border:2px solid #eab308;padding:24px 14px 18px;text-align:center;box-shadow:0 12px 32px rgba(32,7,59,0.3);margin-bottom:18px}
+.pele-logo-title{font-family:"Impact","Arial Black",sans-serif;font-size:clamp(28px,7vw,46px);letter-spacing:1px;background:linear-gradient(180deg,#fff 0%,#ffd700 50%,#d97706 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 3px 12px rgba(0,0,0,0.8);text-transform:uppercase}
+.pele-logo-sub{font-size:11px;font-weight:900;color:#fef08a;letter-spacing:3px;margin:2px 0 16px;text-transform:uppercase}
+.pele-stage{background:radial-gradient(circle at center,#facc15 0%,#854d0e 30%,#3b0764 75%);border-radius:16px;padding:20px 10px;border:1px solid #fef08a44;display:flex;flex-direction:column;align-items:center}
+.pele-crowning{font-size:62px;filter:drop-shadow(0 8px 16px rgba(0,0,0,0.6))}
+.pele-legends{display:flex;justify-content:center;gap:12px;margin-top:10px;font-size:24px}
+
+.home-categories-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
+.home-cat-card{border-radius:18px;overflow:hidden;background:#fff;border:1px solid #cbd5e1;box-shadow:0 6px 18px rgba(0,0,0,.06);cursor:pointer;display:flex;flex-direction:column;transition:transform .15s}
+.home-cat-card:hover{transform:translateY(-3px)}
+.home-cat-banner{aspect-ratio:4/5;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:12px;text-align:center;position:relative;background-size:cover;background-position:center}
+.home-cat-card .cat-name{padding:10px 4px;font-weight:900;font-size:11.5px;text-align:center;color:#0f172a;text-transform:uppercase}
+.home-cat-card.full-width{grid-column:1 / -1;max-width:340px;margin:0 auto;width:100%}
+.home-cat-card.full-width .home-cat-banner{aspect-ratio:16/7}
+
+.bg-fifa{background:linear-gradient(135deg,#003b94 0%,#001a44 100%)}
+.bg-f1{background:radial-gradient(circle at center,#facc15 0%,#166534 60%,#052e16 100%)}
+.bg-adrenalyn{background:radial-gradient(circle at center,#dc2626 0%,#991b1b 50%,#450a0a 100%)}
+.bg-pokemon{background:radial-gradient(circle at center,#38bdf8 0%,#1d4ed8 50%,#0f172a 100%)}
+.bg-brasileirao{background:linear-gradient(135deg,#15803d 0%,#14532d 50%,#052e16 100%)}
+.bg-champions{background:radial-gradient(circle at center,#1e1b4b 0%,#0f172a 60%,#020617 100%)}
+.bg-libertadores{background:radial-gradient(circle at center,#b45309 0%,#451a03 70%,#000 100%)}
+.bg-loja{background:linear-gradient(135deg,#0f766e,#115e59)}
+
+.page-hero{border-radius:20px;overflow:hidden;padding:28px 16px;text-align:center;color:#fff;margin-bottom:16px;box-shadow:0 12px 30px rgba(0,0,0,0.15);border:2px solid rgba(255,255,255,0.2)}
+.page-hero h1{font-size:clamp(26px,6vw,44px);font-weight:900;text-transform:uppercase;letter-spacing:1px;text-shadow:0 3px 12px rgba(0,0,0,0.6)}
+.page-hero p{font-size:12px;font-weight:800;letter-spacing:2px;margin-top:6px;text-transform:uppercase}
+
+.fifa-hero-banner{display:flex;align-items:center;justify-content:space-between;padding:26px 20px;background:linear-gradient(135deg,#053b94,#001948)}
+.fifa-trophy{font-size:46px;filter:drop-shadow(0 4px 10px rgba(255,215,0,0.5))}
+
+.cup-flag-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:20px 0}
+.cup-flag-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:12px 6px;text-align:center;cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,0.05);transition:transform .12s}
+.cup-flag-card:hover{transform:translateY(-2px)}
+.cup-flag-art{height:80px;border-radius:12px;display:grid;place-items:center;font-size:44px;margin-bottom:8px;box-shadow:inset 0 0 10px rgba(0,0,0,0.1)}
+.cup-flag-card b{font-size:12px;color:#0f172a;display:block;text-transform:uppercase}
+
+.info-card{padding:20px;border-radius:18px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;gap:18px;margin-top:14px;box-shadow:0 6px 18px rgba(0,0,0,0.05)}
+.info-card-icon{flex:0 0 74px;height:74px;border-radius:16px;background:linear-gradient(145deg,#0047ab,#072b63);color:#ffd700;display:grid;place-items:center;font-size:36px}
+.unavailable-box{padding:22px;border-radius:18px;background:#fff;border:1px solid #cbd5e1;display:flex;align-items:center;gap:16px;margin:20px auto;max-width:550px;box-shadow:0 6px 18px rgba(0,0,0,0.05)}
+.unavailable-badge{width:70px;height:90px;border-radius:10px;display:grid;place-items:center;font-size:36px;color:#fff;box-shadow:0 4px 10px rgba(0,0,0,0.2)}
+
+.cup-header-banner{background:linear-gradient(180deg,#0642a8,#082d76);border:2px solid #e6b833;color:#fff;border-radius:18px;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.cup-header-banner h1{font-size:22px;color:#ffd75f;font-weight:900;letter-spacing:1px}
+.cup-header-flags{display:flex;gap:6px;font-size:24px}
+
+.catalog-layout{display:grid;grid-template-columns:190px 1fr;gap:12px;align-items:start}
+.group-menu{padding:12px 8px;border:1px solid var(--line);border-radius:16px;background:#fff;box-shadow:0 6px 18px rgba(0,0,0,0.05)}
+.album-side-head{padding-bottom:8px;border-bottom:1px solid #e2e8f0;margin-bottom:8px}
+.album-side-head b{display:block;font-size:15px;color:#0f172a}
+.album-side-head span{display:block;font-size:10px;color:#64748b;font-weight:800;margin-top:2px}
+.group-panel{margin-bottom:5px;border-radius:9px;overflow:hidden}
+.group-toggle{width:100%;background:#f8fafc;border:1px solid #e2e8f0;padding:8px;text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:3px;border-radius:9px}
+.group-panel.open .group-toggle{border-color:#f59e0b;background:#fffaf0}
+.group-title{font-size:11px;font-weight:900;color:#1e293b}
+.group-flags{display:flex;gap:3px;font-size:14px}
+.group-teams{padding:4px 2px;background:#f8fafc;display:none}
+.group-panel.open .group-teams{display:flex;flex-direction:column;gap:2px}
+.team-link{width:100%;display:flex;align-items:center;gap:6px;padding:6px;border:0;border-radius:7px;background:transparent;color:#334155;cursor:pointer;font-size:11px;font-weight:700}
+.team-link:hover,.team-link.active{background:#15803d;color:#fff}
+.side-extra{width:100%;padding:8px 6px;margin-top:4px;background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;font-size:10.5px;font-weight:800;cursor:pointer;text-align:left;color:#334155}
+
+.team-view{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:0 6px 18px rgba(0,0,0,0.05)}
+.team-toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:10px}
+.team-head{display:flex;align-items:center;gap:10px}
+.team-head h2{font-size:22px;margin:0}
+.product-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.product-card{display:flex;flex-direction:column;padding:5px;border-radius:10px;background:#fff;border:1px solid #cbd5e1;box-shadow:0 3px 8px rgba(0,0,0,0.05);cursor:pointer;transition:transform .12s}
+.product-card:hover{transform:translateY(-2px);border-color:#f59e0b}
+.product-art{aspect-ratio:2/3;width:100%;border-radius:6px;overflow:hidden;background:#fff;display:flex;align-items:center;justify-content:center}
+
+.mex-card{width:100%;height:100%;display:flex;align-items:center;justify-content:center;position:relative;border-radius:6px;box-shadow:inset 0 0 8px rgba(0,0,0,0.25)}
+.pattern-1{background:linear-gradient(135deg,var(--f1) 0 45%,var(--f2) 45% 55%,var(--f3) 55% 100%)}
+.pattern-2{background:repeating-linear-gradient(45deg,var(--f1) 0 8px,var(--f2) 8px 16px,var(--f3) 16px 24px)}
+.pattern-3{background:radial-gradient(circle at 30% 30%,var(--f2) 0 20%,transparent 22%),linear-gradient(135deg,var(--f1),var(--f3))}
+.pattern-4{background:linear-gradient(to right,var(--f1) 33%,var(--f2) 33% 66%,var(--f3) 66%)}
+.pattern-5{background:linear-gradient(to bottom,var(--f1) 33%,var(--f2) 33% 66%,var(--f3) 66%)}
+.ball-icon{font-size:24px;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.6))}
+.product-code{text-align:center;font-weight:900;font-size:11px;margin-top:4px;color:#111}
+.product-meta{display:flex;justify-content:space-between;font-size:9.5px;color:#475569;margin-top:2px;border-top:1px solid #e2e8f0;padding-top:2px}
+
+.bottom{position:fixed;bottom:0;left:0;right:0;height:84px;padding:12px;background:#030712;border-top:1px solid #1e293b;display:flex;justify-content:center;z-index:90}
+.album-cta{width:min(900px,100%);height:58px;background:linear-gradient(90deg,#ffd54f 0%,#f59e0b 100%);border:2px solid #fff;border-radius:29px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;color:#07361f;font-weight:900;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,0.4)}
+.album-cta .cta-cart{font-size:28px}
+.album-cta .cta-label{font-size:17px;text-align:center;letter-spacing:.5px}
+.album-cta .cta-count{padding:6px 12px;border-radius:12px;background:#072b63;color:#fff;font-size:13px}
+
+.item-modal{position:fixed;inset:0;background:rgba(0,0,0,0.75);display:none;place-items:center;z-index:200;padding:16px}
+.item-modal.open{display:grid}
+.item-dialog{background:#fff;border-radius:22px;padding:20px;width:min(360px,95vw);text-align:center}
+.modal-fallback{width:100%;aspect-ratio:2/3;max-height:38vh;border-radius:12px;overflow:hidden;margin:0 auto 12px}
+.modal-close{float:right;margin-bottom:8px;cursor:pointer;border:1px solid #cbd5e1;padding:4px 10px;border-radius:8px;background:#f8fafc}
+.btn{background:var(--yellow);border:0;border-radius:12px;padding:12px 20px;font-weight:900;cursor:pointer;width:100%;margin-top:10px}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;margin:10px 0;box-shadow:0 6px 20px rgba(38,52,66,.06)}
+.cartline{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line)}
+.price{color:#b45309;font-weight:900}
+.notice{border-left:4px solid var(--yellow);background:#fff9e6;padding:11px;border-radius:8px;margin:10px 0}
+.danger{border-left-color:var(--red);background:#fff0f0}
+input,select{width:100%;background:#fff;color:#18212b;border:1px solid var(--line);border-radius:10px;padding:12px;margin:5px 0}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.back{background:#fff;border:1px solid #cfd7df;color:#263442;border-radius:10px;padding:8px 14px;cursor:pointer;font-weight:700}
+footer{color:#8f98a5;text-align:center;padding:25px 8px;font-size:13px}
+
+@media(max-width:720px){
+  header.site-header{height:68px;padding:6px 10px}
+  .home-categories-grid{grid-template-columns:repeat(3,1fr);gap:6px}
+  .catalog-layout{grid-template-columns:105px 1fr;gap:6px}
+  .product-grid{grid-template-columns:repeat(3,1fr);gap:4px}
+  .cup-flag-grid{grid-template-columns:repeat(2,1fr);gap:8px}
+  .album-cta{height:52px;padding:0 12px}
+  .album-cta .cta-label{font-size:13px}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="approved-brand" onclick="go('home')">
+    <div class="brand-logo-badge">⚽</div>
+    <div class="approved-brand-copy">
+      <span class="approved-brand-name">Clube das Figurinhas</span>
+      <span class="approved-brand-tagline">PAIXÃO QUE COMPLETA</span>
+    </div>
+  </div>
+  <div class="approved-header-actions">
+    <div class="mini-search">
+      <svg class="ui-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+      <input id="globalSearch" type="search" placeholder="Buscar" onkeydown="if(event.key==='Enter')quickSearch()">
+    </div>
+    <button class="cart-pill" onclick="go('cart')" aria-label="Ver Carrinho">
+      🛒 <span id="cartCount">0</span>
+    </button>
+  </div>
+</header>
+
+<div class="category-bar-wrapper">
+  <div class="category-bar">
+    <button class="cat-btn active" onclick="go('cups')"><div class="cat-btn-icon bg-fifa">🏆</div><span class="cat-btn-title">FIFA</span></button>
+    <button class="cat-btn" onclick="go('f1')"><div class="cat-btn-icon bg-f1">🏎️</div><span class="cat-btn-title">FÓRMULA 1</span></button>
+    <button class="cat-btn" onclick="go('adrenalyn')"><div class="cat-btn-icon bg-adrenalyn">🎴</div><span class="cat-btn-title">ADRENALYN</span></button>
+    <button class="cat-btn" onclick="go('pokemon')"><div class="cat-btn-icon bg-pokemon">⚡</div><span class="cat-btn-title">POKÉMON</span></button>
+    <button class="cat-btn" onclick="go('brasileirao')"><div class="cat-btn-icon bg-brasileirao">⚽</div><span class="cat-btn-title">BRASILEIRÃO</span></button>
+    <button class="cat-btn" onclick="go('champions')"><div class="cat-btn-icon bg-champions">🌟</div><span class="cat-btn-title">CHAMPIONS</span></button>
+    <button class="cat-btn" onclick="go('libertadores')"><div class="cat-btn-icon bg-libertadores">⭐</div><span class="cat-btn-title">LIBERTA</span></button>
+    <button class="cat-btn" onclick="go('outros')"><div class="cat-btn-icon bg-loja">🛍️</div><span class="cat-btn-title">LOJA CLUBE</span></button>
+  </div>
+</div>
+
+<main>
+  <!-- HOME COM O REI PELÉ (FOTO 8) -->
+  <section id="home" class="screen active">
+    <div class="pele-hero-banner">
+      <div class="pele-logo-title">CLUBE DAS FIGURINHAS</div>
+      <div class="pele-logo-sub">— PAIXÃO QUE COMPLETA —</div>
+      <div class="pele-stage">
+        <div class="pele-crowning">👑 ⚽ 👑</div>
+        <div style="color:#ffd700;font-weight:900;font-size:18px;margin-top:6px;">REI PELÉ NO TRONO DAS LENDAS</div>
+        <div class="pele-legends">
+          <span>🇦🇷</span><span>🇧🇷</span><span>🇫🇷</span><span>🇩🇪</span><span>🇮🇹</span><span>🇵🇹</span><span>🇳🇱</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- GRADE DE CATEGORIAS DA HOME (FOTO 8) -->
+    <div class="home-categories-grid">
+      <div class="home-cat-card" onclick="go('cups')">
+        <div class="home-cat-banner bg-fifa">
+          <div style="font-size:40px;">🏆</div>
+          <b style="font-size:14px;margin-top:6px;">FIFA WORLD CUP</b>
+        </div>
+        <div class="cat-name">FIFA</div>
+      </div>
+
+      <div class="home-cat-card" onclick="go('f1')">
+        <div class="home-cat-banner bg-f1">
+          <div style="font-size:40px;">🏎️</div>
+          <b style="font-size:14px;margin-top:6px;">AYRTON SENNA</b>
+        </div>
+        <div class="cat-name">FÓRMULA 1</div>
+      </div>
+
+      <div class="home-cat-card" onclick="go('adrenalyn')">
+        <div class="home-cat-banner bg-adrenalyn">
+          <div style="font-size:40px;">🎴</div>
+          <b style="font-size:14px;margin-top:6px;">ADRENALYN XL</b>
+        </div>
+        <div class="cat-name">ADRENALYN XL</div>
+      </div>
+
+      <div class="home-cat-card" onclick="go('pokemon')">
+        <div class="home-cat-banner bg-pokemon">
+          <div style="font-size:40px;">⚡</div>
+          <b style="font-size:14px;margin-top:6px;">POKÉMON</b>
+        </div>
+        <div class="cat-name">POKÉMON</div>
+      </div>
+
+      <div class="home-cat-card" onclick="go('brasileirao')">
+        <div class="home-cat-banner bg-brasileirao">
+          <div style="font-size:40px;">⚽</div>
+          <b style="font-size:14px;margin-top:6px;">BRASILEIRÃO ASSAÍ</b>
+        </div>
+        <div class="cat-name">BRASILEIRÃO</div>
+      </div>
+
+      <div class="home-cat-card" onclick="go('champions')">
+        <div class="home-cat-banner bg-champions">
+          <div style="font-size:40px;">🌟</div>
+          <b style="font-size:14px;margin-top:6px;">CHAMPIONS LEAGUE</b>
+        </div>
+        <div class="cat-name">CHAMPIONS LEAGUE</div>
+      </div>
+
+      <div class="home-cat-card full-width" onclick="go('libertadores')">
+        <div class="home-cat-banner bg-libertadores">
+          <div style="font-size:32px;">⭐ 🏆 ⭐</div>
+          <b style="font-size:14px;">CONMEBOL LIBERTADORES</b>
+        </div>
+        <div class="cat-name">LIBERTADORES</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SELEÇÃO DE COPAS (FOTO 3) -->
+  <section id="cups" class="screen">
+    <div class="page-hero fifa-hero-banner">
+      <div class="fifa-trophy">🏆</div>
+      <div>
+        <h1 style="font-size:26px">FIFA WORLD CUP</h1>
+        <p>ÁLBUNS E FIGURINHAS POR ANO</p>
+      </div>
+      <div class="fifa-trophy">🏆</div>
+    </div>
+
+    <div class="cup-flag-grid">
+      <div class="cup-flag-card" onclick="openCup('2014')"><div class="cup-flag-art" style="background:#009c3b;color:#ffdf00">🇧🇷</div><b>BRASIL 2014</b></div>
+      <div class="cup-flag-card" onclick="openCup('2018')"><div class="cup-flag-art" style="background:#0039a6;color:#ffffff">🇷🇺</div><b>RÚSSIA 2018</b></div>
+      <div class="cup-flag-card" onclick="openCup('2022')"><div class="cup-flag-art" style="background:#8a1538;color:#ffffff">🇶🇦</div><b>CATAR 2022</b></div>
+      <div class="cup-flag-card" onclick="openCup('2026')"><div class="cup-flag-art" style="background:#0047ab;color:#ffffff">🇺🇸🇲🇽🇨🇦</div><b>EUA•MEX•CAN 2026</b></div>
+    </div>
+
+    <div class="info-card">
+      <div class="info-card-icon">⚽</div>
+      <div>
+        <h2 style="font-size:18px">Encontre a figurinha que falta!</h2>
+        <p class="muted" style="font-size:13px;margin-top:3px">Escolha o ano da Copa, encontre sua seleção e complete seu álbum.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATÁLOGO DE FIGURINHAS COM 5 COLUNAS (FOTO 1) -->
+  <section id="cupDetail" class="screen">
+    <div class="cup-header-banner">
+      <h1 id="cupTitle">COPA 2026</h1>
+      <div class="cup-header-flags" id="hostFlags">🇺🇸 🇲🇽 🇨🇦</div>
+    </div>
+
+    <div class="catalog-layout">
+      <aside class="group-menu" id="groups"></aside>
+      <section class="team-view" id="teamWorkspace"></section>
+    </div>
+  </section>
+
+  <!-- BRASILEIRÃO (FOTO 2) -->
+  <section id="brasileirao" class="screen">
+    <div class="page-hero bg-brasileirao">
+      <div style="font-size:42px;">🏆</div>
+      <h1 style="font-size:26px">BRASILEIRÃO</h1>
+      <p>ÁLBUNS E FIGURINHAS POR ANO</p>
+    </div>
+    <div class="unavailable-box">
+      <div class="unavailable-badge bg-brasileirao">⚽</div>
+      <div>
+        <h3>Produtos indisponíveis no momento</h3>
+        <p class="muted">Aguarde! Em breve vamos atualizar esta coleção.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FÓRMULA 1 (FOTO 4) -->
+  <section id="f1" class="screen">
+    <div class="page-hero bg-f1">
+      <div style="font-size:42px;">🏎️</div>
+      <h1 style="font-size:26px">FÓRMULA 1</h1>
+      <p>AYRTON SENNA • NOSSA LENDA</p>
+    </div>
+    <div class="unavailable-box">
+      <div class="unavailable-badge bg-f1">🏎️</div>
+      <div>
+        <h3>Produtos indisponíveis no momento</h3>
+        <p class="muted">Aguarde! Em breve vamos atualizar esta coleção.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHAMPIONS LEAGUE (FOTO 5) -->
+  <section id="champions" class="screen">
+    <div class="page-hero bg-champions">
+      <div style="font-size:42px;">🌟</div>
+      <h1 style="font-size:26px">CHAMPIONS LEAGUE</h1>
+      <p>ÁLBUNS E FIGURINHAS POR ANO</p>
+    </div>
+    <div class="unavailable-box">
+      <div class="unavailable-badge bg-champions">🏆</div>
+      <div>
+        <h3>Produtos indisponíveis no momento</h3>
+        <p class="muted">Aguarde! Em breve vamos atualizar esta coleção.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIBERTADORES (FOTO 6) -->
+  <section id="libertadores" class="screen">
+    <div class="page-hero bg-libertadores">
+      <div style="font-size:42px;">⭐</div>
+      <h1 style="font-size:26px">CONMEBOL LIBERTADORES</h1>
+      <p>ÁLBUNS E FIGURINHAS POR ANO</p>
+    </div>
+    <div class="unavailable-box">
+      <div class="unavailable-badge bg-libertadores">🏆</div>
+      <div>
+        <h3>Produtos indisponíveis no momento</h3>
+        <p class="muted">Aguarde! Em breve vamos atualizar esta coleção.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- POKÉMON (FOTO 7) -->
+  <section id="pokemon" class="screen">
+    <div class="page-hero bg-pokemon">
+      <div style="font-size:42px;">⚡</div>
+      <h1 style="font-size:26px">POKÉMON</h1>
+      <p>CARDS E FIGURINHAS</p>
+    </div>
+    <div class="unavailable-box">
+      <div class="unavailable-badge bg-pokemon">⚡</div>
+      <div>
+        <h3>Produtos indisponíveis no momento</h3>
+        <p class="muted">Aguarde! Em breve vamos atualizar esta coleção.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADRENALYN XL -->
+  <section id="adrenalyn" class="screen">
+    <div class="page-hero bg-adrenalyn">
+      <div style="font-size:42px;">🎴</div>
+      <h1 style="font-size:26px">ADRENALYN XL</h1>
+      <p>CARDS, CRAQUES E EDIÇÕES ESPECIAIS</p>
+    </div>
+    <div class="album-switch" style="display:flex;justify-content:center;gap:6px;margin-bottom:12px">
+      <button class="active" onclick="renderAdrenalynSection('base')">Team Mates</button>
+      <button onclick="renderAdrenalynSection('fans')">Fans' Favourite</button>
+      <button onclick="renderAdrenalynSection('power')">Power &amp; Titans</button>
+      <button onclick="renderAdrenalynSection('masters')">Top Masters</button>
+    </div>
+    <div class="team-view" id="adrenalynWorkspace"></div>
+  </section>
+
+  <!-- LOJA DO CLUBE -->
+  <section id="outros" class="screen">
+    <div class="page-hero bg-loja">
+      <div style="font-size:42px;">🛍️</div>
+      <h1 style="font-size:26px">LOJA DO CLUBE</h1>
+      <p>ÁLBUNS, PACOTINHOS E FIGURINHAS</p>
+    </div>
+    <div class="info-card">
+      <div class="info-card-icon" style="background:#0f766e">📦</div>
+      <div>
+        <h3>Itens Exclusivos</h3>
+        <p class="muted">Álbuns completos, kits de envelopes e itens colecionáveis.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARRINHO -->
+  <section id="cart" class="screen">
+    <div class="row"><button class="back" onclick="historyBack()">← Voltar</button><h1>Carrinho</h1></div>
+    <div id="cartItems"></div>
+    <h2 style="margin-top:14px">Total: <span id="cartTotal" class="price">R$ 0,00</span></h2>
+    <button class="btn" onclick="go('checkout')">IR PARA CHECKOUT</button>
+  </section>
+
+  <!-- CHECKOUT -->
+  <section id="checkout" class="screen">
+    <div class="row"><button class="back" onclick="go('cart')">← Carrinho</button><h1>Finalizar pedido</h1></div>
+    <label>Nome *</label><input id="name" placeholder="Seu nome">
+    <label>WhatsApp *</label><input id="phone" placeholder="DDD + número">
+    <label>E-mail (opcional)</label><input id="email" type="email" placeholder="seu@email.com">
+    <label>Como deseja receber? *</label>
+    <select id="delivery" onchange="deliveryChanged()">
+      <option value="">Escolha</option>
+      <option value="pickup">Vou buscar (Retirada)</option>
+      <option value="shipping">Quero envio (Correios)</option>
+    </select>
+    <div id="pickupBox" class="notice" style="display:none">Retirada: local e horário combinados via WhatsApp.</div>
+    <div id="addressBox" style="display:none">
+      <label>CEP *</label><input id="cep">
+      <label>Rua *</label><input id="street">
+      <label>Número *</label><input id="number">
+      <label>Bairro *</label><input id="district">
+      <label>Cidade *</label><input id="city">
+      <label>UF *</label><input id="uf" maxlength="2">
+      <div class="notice danger"><b>Envio:</b> O valor do frete será informado no WhatsApp antes do pagamento.</div>
+    </div>
+    <button class="btn" onclick="reviewOrder()">REVISAR PEDIDO</button>
+  </section>
+
+  <!-- REVISÃO / PIX -->
+  <section id="review" class="screen">
+    <div class="row"><button class="back" onclick="go('checkout')">← Alterar</button><h1>Revisão do Pedido</h1></div>
+    <div id="reviewText" class="card"></div>
+    <div id="pixArea" class="card" style="display:none">
+      <h2>Pagamento Pix</h2>
+      <p>Total: <span id="pixTotal" class="price"></span></p>
+      <textarea id="pixCode" readonly style="width:100%;min-height:85px;background:#f8fafc;border:1px solid #cbd5e1;border-radius:10px;padding:8px;margin:8px 0"></textarea>
+      <button class="btn" onclick="copyPix()">COPIAR CHAVE PIX</button>
+    </div>
+    <button class="btn" style="background:#25d366;color:#fff;margin-top:10px" onclick="sendWhatsApp()">ENVIAR PEDIDO NO WHATSAPP</button>
+  </section>
+
+  <footer>Clube das Figurinhas • Pagamento por Pix • Pedidos pelo WhatsApp</footer>
+</main>
+
+<!-- MODAL DE COMPRA -->
+<div class="item-modal" id="itemModal" onclick="if(event.target===this)closeItem()">
+  <div class="item-dialog">
+    <button class="modal-close" onclick="closeItem()">✕</button>
+    <div id="modalFallback" class="modal-fallback"></div>
+    <h2 id="modalCode" style="font-size:22px"></h2>
+    <div class="price" id="modalPrice" style="margin:6px 0 12px;font-size:18px"></div>
+    <button class="btn" id="modalAdd">ADICIONAR AO CARRINHO</button>
+  </div>
+</div>
+
+<!-- BARRA FIXA INFERIOR -->
+<div class="bottom">
+  <button class="album-cta" type="button" onclick="showCart()" aria-label="Completar meu álbum e abrir carrinho">
+    <span class="cta-cart">🛒</span>
+    <span class="cta-label">COMPLETAR MEU ÁLBUM</span>
+    <span class="cta-count" id="bottomCount">0 ITENS</span>
+  </button>
+</div>
+
+<script>
+const WHATSAPP = '5562981595949';
+const PIX_CODE = "00020101021126780014BR.GOV.BCB.PIX2556pix-qr.mercadopago.com/instore/ol/v2/CyPC7a5qhl11VaUFNat5204000053039865802BR5905pedro6009SAO PAULO62080504mpis630476FA";
+
+const GROUPS = {
+  "2014": [["A","Brasil","Croácia","México","Camarões"],["B","Espanha","Holanda","Chile","Austrália"],["C","Colômbia","Grécia","Costa do Marfim","Japão"],["D","Uruguai","Costa Rica","Inglaterra","Itália"],["E","Suíça","Equador","França","Honduras"],["F","Argentina","Bósnia e Herzegovina","Irã","Nigéria"],["G","Alemanha","Portugal","Gana","Estados Unidos"],["H","Bélgica","Argélia","Rússia","Coreia do Sul"]],
+  "2018": [["A","Rússia","Arábia Saudita","Egito","Uruguai"],["B","Portugal","Espanha","Marrocos","Irã"],["C","França","Austrália","Peru","Dinamarca"],["D","Argentina","Islândia","Croácia","Nigéria"],["E","Brasil","Suíça","Costa Rica","Sérvia"],["F","Alemanha","México","Suécia","Coreia do Sul"],["G","Bélgica","Panamá","Tunísia","Inglaterra"],["H","Polônia","Senegal","Colômbia","Japão"]],
+  "2022": [["A","Catar","Equador","Senegal","Holanda"],["B","Inglaterra","Irã","Estados Unidos","País de Gales"],["C","Argentina","Arábia Saudita","México","Polônia"],["D","França","Austrália","Dinamarca","Tunísia"],["E","Espanha","Costa Rica","Alemanha","Japão"],["F","Bélgica","Canadá","Marrocos","Croácia"],["G","Brasil","Sérvia","Suíça","Camarões"],["H","Portugal","Gana","Uruguai","Coreia do Sul"]],
+  "2026": [["A","México","África do Sul","Coreia do Sul","Tchéquia"],["B","Canadá","Bósnia e Herzegovina","Catar","Suíça"],["C","Brasil","Marrocos","Haiti","Escócia"],["D","Estados Unidos","Paraguai","Austrália","Turquia"],["E","Alemanha","Curaçau","Costa do Marfim","Equador"],["F","Holanda","Japão","Suécia","Tunísia"],["G","Bélgica","Egito","Irã","Nova Zelândia"],["H","Espanha","Cabo Verde","Arábia Saudita","Uruguai"],["I","França","Senegal","Iraque","Noruega"],["J","Argentina","Argélia","Áustria","Jordânia"],["K","Portugal","RD Congo","Uzbequistão","Colômbia"],["L","Inglaterra","Croácia","Gana","Panamá"]]
+};
+
+const FLAGS = {"Brasil":"🇧🇷","Marrocos":"🇲🇦","Suíça":"🇨🇭","Catar":"🇶🇦","México":"🇲🇽","África do Sul":"🇿🇦","Coreia do Sul":"🇰🇷","Tchéquia":"🇨🇿","Canadá":"🇨🇦","Haiti":"🇭🇹","Escócia":"🏴󠁧󠁢󠁳󠁣󠁴󠁿","Estados Unidos":"🇺🇸","Paraguai":"🇵🇾","Austrália":"🇦🇺","Turquia":"🇹🇷","Alemanha":"🇩🇪","Curaçau":"🇨🇼","Costa do Marfim":"🇨🇮","Equador":"🇪🇨","Holanda":"🇳🇱","Japão":"🇯🇵","Suécia":"🇸🇪","Tunísia":"🇹🇳","Bélgica":"🇧🇪","Egito":"🇪🇬","Irã":"🇮🇷","Nova Zelândia":"🇳🇿","Espanha":"🇪🇸","Cabo Verde":"🇨🇻","Arábia Saudita":"🇸🇦","Uruguai":"🇺🇾","França":"🇫🇷","Senegal":"🇸🇳","Iraque":"🇮🇶","Noruega":"🇳🇴","Argentina":"🇦🇷","Argélia":"🇩🇿","Áustria":"🇦🇹","Jordânia":"🇯🇴","Portugal":"🇵🇹","RD Congo":"🇨🇩","Uzbequistão":"🇺🇿","Colômbia":"🇨🇴","Inglaterra":"🏴󠁧󠁢󠁥󠁮󠁧󠁿","Croácia":"🇭🇷","Gana":"🇬🇭","Panamá":"🇵🇦","Rússia":"🇷🇺","Camarões":"🇨🇲","Chile":"🇨🇱","Grécia":"🇬🇷","Costa Rica":"🇨🇷","Itália":"🇮🇹","Honduras":"🇭🇳","Bósnia e Herzegovina":"🇧🇦","Nigéria":"🇳🇬","Islândia":"🇮🇸","Peru":"🇵🇪","Dinamarca":"🇩🇰","Sérvia":"🇷🇸","Polônia":"🇵🇱","País de Gales":"🏴󠁧󠁢󠁷󠁬󠁳󠁿","FWC":"🏆","Coca-Cola":"🥤"};
+
+const TEAM_PALETTES = {
+  "México":["#006847","#ffffff","#ce1126"],"Brasil":["#009c3b","#ffdf00","#002776"],"Argentina":["#75aadb","#ffffff","#f6b40e"],"Alemanha":["#111111","#dd0000","#ffce00"],"França":["#0055a4","#ffffff","#ef4135"],"Portugal":["#046a38","#da291c","#ffcc00"],"Espanha":["#aa151b","#f1bf00","#aa151b"],"Inglaterra":["#ffffff","#ce1124","#00205b"],"Itália":["#009246","#ffffff","#ce2b37"],"Holanda":["#ae1c28","#ffffff","#21468b"],"Uruguai":["#5bbbe9","#ffffff","#fcd116"],"Catar":["#8a1538","#ffffff","#8a1538"],"Suíça":["#d52b1e","#ffffff","#d52b1e"],"Croácia":["#ff0000","#ffffff","#171796"],"Canadá":["#d80621","#ffffff","#d80621"],"África do Sul":["#007749","#ffb81c","#de3831"],"Coreia do Sul":["#ffffff","#cd2e3a","#0047a0"],"Tchéquia":["#ffffff","#d7141a","#11457e"],"Bósnia e Herzegovina":["#002f6c","#ffcd00","#ffffff"],"Estados Unidos":["#b22234","#ffffff","#3c3b6e"]
+};
+
+let currentYear='2026', currentGroup='A', currentTeam='México', stickerQuery='', cart=[], previousScreen='home';
+
+try{cart=JSON.parse(localStorage.getItem('cf_cart')||'[]');if(!Array.isArray(cart))cart=[]}catch(e){cart=[]}
+
+function money(v){return v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'})}
+function esc(v){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+
+function go(id){
+  const el=document.getElementById(id);
+  if(!el) return;
+  const cur=document.querySelector('.screen.active');
+  if(cur && cur.id!==id) previousScreen=cur.id;
+  document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));
+  el.classList.add('active');
+  window.scrollTo({top:0,behavior:'instant'});
+  if(id==='cart') renderCart();
+  if(id==='adrenalyn') renderAdrenalynSection('base');
+}
+
+function historyBack(){go(previousScreen||'home')}
+
+function openCup(year){
+  currentYear=year;
+  const defTeam={2014:'Brasil',2018:'Rússia',2022:'Catar',2026:'México'}[year]||'México';
+  const defGroup=((GROUPS[year]||[]).find(g=>g.slice(1).includes(defTeam))||['A'])[0];
+  currentTeam=defTeam; currentGroup=defGroup;
+  document.getElementById('cupTitle').textContent="COPA " + year;
+  
+  const hostMap = {
+    '2014': '🇧🇷',
+    '2018': '🇷🇺',
+    '2022': '🇶🇦',
+    '2026': '🇺🇸 🇲🇽 🇨🇦'
+  };
+  document.getElementById('hostFlags').textContent = hostMap[year] || '';
+  
+  go('cupDetail'); renderGroups(); renderStickers();
+}
+
+function flagIcon(t){return FLAGS[t]||'🏳️'}
+
+function renderGroups(){
+  let out='';
+  (GROUPS[currentYear]||[]).forEach(g=>{
+    const teams=g.slice(1);
+    const opened=teams.includes(currentTeam);
+    out+=`<div class="group-panel ${opened?'open':''}"><button class="group-toggle" onclick="toggleGroup('${g[0]}')"><span class="group-title">GRUPO ${g[0]}</span><span class="group-flags">${teams.map(t=>`<span>${flagIcon(t)}</span>`).join('')}</span></button><div class="group-teams">${teams.map(t=>`<button class="team-link ${currentTeam===t?'active':''}" onclick="openTeam('${g[0]}','${t.replace(/'/g,"\\'")}')"><span>${flagIcon(t)}</span><b>${t}</b></button>`).join('')}</div></div>`;
+  });
+  const head=`<div class="album-side-head"><b>ÁLBUM ${currentYear}</b><span>INÍCIO 00–08</span></div>`;
+  let extras=`<button class="side-extra" onclick="openTeam('Especiais','FWC')">FIFA MUSEU</button><button class="side-extra" onclick="openTeam('Especiais','Coca-Cola')">COCA-COLA</button><button class="side-extra" onclick="alert('Extra Stickers em breve!')">EXTRA STICKERS</button>`;
+  document.getElementById('groups').innerHTML=head+out+extras;
+}
+
+function toggleGroup(g){
+  document.querySelectorAll('.group-panel').forEach(p=>{
+    if(p.innerText.includes('GRUPO '+g)) p.classList.toggle('open');
+  });
+}
+
+function openTeam(g,t){
+  currentGroup=g; currentTeam=t; stickerQuery='';
+  renderGroups(); renderStickers();
+  document.getElementById('teamWorkspace').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+function teamIndex(y,t){return (GROUPS[y]||[]).flatMap(g=>g.slice(1)).indexOf(t)}
+
+function albumRange(y,t){
+  if(t==='FWC') return y==='2022'?[0,39]:[0,19];
+  if(t==='Coca-Cola') return y==='2022'?[1,8]:[1,14];
+  const idx=teamIndex(y,t);
+  if(idx===-1) return [1,20];
+  if(y==='2014') return [32+idx*19, 32+idx*19+18];
+  if(y==='2018') return [32+idx*20, 32+idx*20+19];
+  return [1,20];
+}
+
+function stickerCode(n){
+  if(currentYear==='2014'||currentYear==='2018') return String(n);
+  if(currentTeam==='FWC') return 'FWC '+String(n).padStart(2,'0');
+  if(currentTeam==='Coca-Cola') return 'CC '+n;
+  const p=currentTeam.substring(0,3).toUpperCase();
+  return p+' '+n;
+}
+
+function renderStickers(){
+  const box=document.getElementById('teamWorkspace');
+  const [first,last]=albumRange(currentYear,currentTeam);
+  let cards='';
+  const pal=TEAM_PALETTES[currentTeam]||['#006847','#ffffff','#ce1126'];
+  
+  for(let n=first;n<=last;n++){
+    const code=stickerCode(n);
+    if(stickerQuery && !code.toLowerCase().includes(stickerQuery.toLowerCase())) continue;
+    const price= (n===first || n===0)? 8.00 : (n%5===0 ? 4.50 : 2.50);
+    const qty= ((n*3+currentTeam.length)%4)+1;
+    const patternClass = 'pattern-' + (((n - 1) % 5) + 1);
+    
+    cards+=`<article class="product-card" onclick="showItem('${code}',${qty},${price},'${patternClass}')">
+      <div class="product-art">
+        <div class="mex-card ${patternClass}" style="--f1:${pal[0]};--f2:${pal[1]};--f3:${pal[2]}">
+          <span class="ball-icon">⚽</span>
+        </div>
+      </div>
+      <div class="product-code">${code}</div>
+      <div class="product-meta">
+        <span>${qty} un.</span>
+        <span>${money(price)}</span>
+      </div>
+    </article>`;
+  }
+  
+  box.innerHTML=`<div class="team-toolbar"><div class="team-head"><span style="font-size:26px">${flagIcon(currentTeam)}</span><div><h2>${esc(currentTeam.toUpperCase())}</h2><span class="muted" style="font-size:12px">Grupo ${currentGroup} • ${last-first+1} figurinhas</span></div></div><div class="mini-search" style="width:160px"><svg class="ui-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input placeholder="Buscar figurinha" value="${esc(stickerQuery)}" oninput="stickerQuery=this.value;renderStickers()"></div></div><div class="product-grid">${cards}</div>`;
+}
+
+function renderAdrenalynSection(type){
+  const box=document.getElementById('adrenalynWorkspace');
+  document.querySelectorAll('#adrenalyn .album-switch button').forEach(b=>b.classList.remove('active'));
+  let title="Team Mates (Base)", count=36, price=4.00, prefix="ADR-TM";
+  if(type==='fans'){ title="Fans' Favourites"; count=18; price=8.00; prefix="ADR-FF"; }
+  if(type==='power'){ title="Power & Titans"; count=12; price=12.00; prefix="ADR-PWR"; }
+  if(type==='masters'){ title="Top Masters"; count=6; price=25.00; prefix="ADR-TOP"; }
+  
+  let cards='';
+  for(let i=1;i<=count;i++){
+    const code=`${prefix} #${i}`;
+    const qty=((i*7)%4)+1;
+    cards+=`<article class="product-card" onclick="showItem('${code}',${qty},${price},'pattern-1')">
+      <div class="product-art">
+        <div class="mex-card pattern-1" style="--f1:#dc2626;--f2:#991b1b;--f3:#ffd700">
+          <span class="ball-icon">🎴</span>
+        </div>
+      </div>
+      <div class="product-code">${code}</div>
+      <div class="product-meta">
+        <span>${qty} un.</span>
+        <span>${money(price)}</span>
+      </div>
+    </article>`;
+  }
+  box.innerHTML=`<div class="team-toolbar"><div class="team-head"><span style="font-size:24px">🎴</span><div><h2>${title}</h2><span class="muted">${count} cards</span></div></div></div><div class="product-grid">${cards}</div>`;
+}
+
+function showItem(code,qty,price,patternClass){
+  document.getElementById('modalCode').textContent=code;
+  document.getElementById('modalPrice').textContent=qty>0?`${money(price)} • ${qty} un. disponível`:'Produto indisponível';
+  const pal=TEAM_PALETTES[currentTeam]||['#006847','#ffffff','#ce1126'];
+  document.getElementById('modalFallback').innerHTML=`<div class="mex-card ${patternClass||'pattern-1'}" style="--f1:${pal[0]};--f2:${pal[1]};--f3:${pal[2]};width:100%;height:100%;"><span class="ball-icon" style="font-size:64px">⚽</span></div>`;
+  const add=document.getElementById('modalAdd');
+  add.disabled=qty<=0;
+  add.onclick=()=>{if(qty<=0)return;addToCart(`${currentTeam} • ${code}`,price,qty,true);closeItem()};
+  document.getElementById('itemModal').classList.add('open');
+}
+
+function closeItem(){document.getElementById('itemModal').classList.remove('open')}
+
+function addToCart(name,price,stock,notify){
+  let x=cart.find(i=>i.name===name);
+  if(x){
+    if(x.qty>=stock){if(notify)alert('Quantidade máxima atingida.');return}
+    x.qty++;
+  }else{
+    cart.push({name,price,stock,qty:1});
+  }
+  saveCart();
+  if(notify) alert('Adicionado ao carrinho!');
+}
+
+function saveCart(){localStorage.setItem('cf_cart',JSON.stringify(cart));updateCounts()}
+
+function updateCounts(){
+  let c=cart.reduce((a,i)=>a+i.qty,0);
+  document.getElementById('cartCount').textContent=c;
+  document.getElementById('bottomCount').textContent=`${c} ${c===1?'ITEM':'ITENS'}`;
+}
+
+function showCart(){go('cart')}
+
+function renderCart(){
+  let box=document.getElementById('cartItems');
+  if(!cart.length){box.innerHTML='<div class="card">Seu carrinho está vazio.</div>';document.getElementById('cartTotal').textContent=money(0);return}
+  box.innerHTML=cart.map((i,k)=>`<div class="cartline"><div><b>${i.name}</b><br><span class="muted">${money(i.price)} cada</span></div><div><button class="back" onclick="qty(${k},-1)">−</button> ${i.qty} <button class="back" onclick="qty(${k},1)">+</button><br><b>${money(i.price*i.qty)}</b></div></div>`).join('');
+  document.getElementById('cartTotal').textContent=money(total());
+}
+
+function qty(k,d){
+  let i=cart[k];
+  if(d>0&&i.qty>=i.stock){alert('Limite de estoque atingido.');return}
+  i.qty+=d;
+  if(i.qty<=0) cart.splice(k,1);
+  saveCart(); renderCart();
+}
+
+function total(){return cart.reduce((a,i)=>a+i.price*i.qty,0)}
+
+function deliveryChanged(){
+  let v=document.getElementById('delivery').value;
+  document.getElementById('pickupBox').style.display=v==='pickup'?'block':'none';
+  document.getElementById('addressBox').style.display=v==='shipping'?'block':'none';
+}
+
+function reviewOrder(){
+  if(!cart.length){alert('Carrinho vazio.');return}
+  let name=document.getElementById('name').value.trim(),phone=document.getElementById('phone').value.trim(),d=document.getElementById('delivery').value;
+  if(!name||!phone||!d){alert('Preencha os campos obrigatórios.');return}
+  let lines=cart.map(i=>`${i.qty}x ${i.name} = ${money(i.qty*i.price)}`).join('<br>');
+  document.getElementById('reviewText').innerHTML=`<b>${name}</b><br>${lines}<hr>Total: <b>${money(total())}</b>`;
+  document.getElementById('pixArea').style.display=d==='pickup'?'block':'none';
+  document.getElementById('pixTotal').textContent=money(total());
+  document.getElementById('pixCode').value=PIX_CODE;
+  go('review');
+}
+
+function copyPix(){
+  const el=document.getElementById('pixCode');
+  navigator.clipboard.writeText(el.value).then(()=>alert('Pix copiado com sucesso!'));
+}
+
+function sendWhatsApp(){
+  let name=document.getElementById('name').value, phone=document.getElementById('phone').value, d=document.getElementById('delivery').value;
+  let lines=cart.map(i=>`${i.qty}x ${i.name} - ${money(i.qty*i.price)}`).join('\n');
+  let msg=`PEDIDO NOVO\nCliente: ${name}\nWhatsApp: ${phone}\n\nITENS:\n${lines}\n\nTotal: ${money(total())}\nRecebimento: ${d}`;
+  window.open('https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(msg),'_blank');
+}
+
+function quickSearch(){
+  let q=document.getElementById('globalSearch').value.trim().toLowerCase();
+  if(!q) return;
+  for(let year of ['2014','2018','2022','2026']){
+    for(let g of GROUPS[year]){
+      for(let t of g.slice(1)){
+        if(t.toLowerCase().includes(q)){
+          openCup(year);
+          openTeam(g[0],t);
+          return;
+        }
+      }
+    }
+  }
+  openCup('2026');
+}
+
+function showShopArea(area){
+  alert('Seção ' + area.toUpperCase() + ' selecionada!');
+}
+
+updateCounts();
+go('home');
+</script>
+</body>
+</html>
